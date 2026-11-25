@@ -152,6 +152,107 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
 .cipher-actions button{min-width:125px}
 @media(max-width:650px){.memory-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.memory-card{min-height:100px;font-size:12px}.cipher-slot,.cipher-letter{width:36px;height:42px}}
 
+
+/* Mevcut soru akışları için ipucu ve seri geri bildirimi */
+.quiz-footer-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.hint-btn{border-color:#cbb88f;background:#f4ead8;color:#684b20;font-weight:700}
+.hint-btn:hover:not(:disabled){background:#ead9b9;border-color:var(--gold)}
+.hint-btn:disabled{opacity:.55;cursor:default;transform:none}
+.answer-btn.eliminated,.atelier-option.eliminated{display:none!important}
+.combo-note{display:inline-block;margin-left:7px;padding:4px 7px;border-radius:7px;background:#f2e6d0;color:#784b18;font:700 10px Arial,sans-serif}
+@media(max-width:560px){.quiz-footer-actions{width:100%;justify-content:stretch}.quiz-footer-actions button{flex:1}}
+
+/* Atölye için tek kişilik / takım yarışı seçimi */
+.atelier-mode-select{margin-top:18px;padding:24px}
+.atelier-mode-select-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px}
+.atelier-mode-select-head h3{font-size:24px;margin:7px 0}
+.atelier-mode-select-head p{font:13px/1.65 Arial,sans-serif;color:var(--muted);margin:0;max-width:650px}
+.atelier-mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-top:20px}
+.atelier-mode-choice{display:grid;grid-template-columns:46px 1fr;column-gap:12px;row-gap:5px;align-items:center;text-align:left;padding:18px;border:1px solid var(--line);border-radius:15px;background:#fffdf8;color:var(--ink);transition:.2s}
+.atelier-mode-choice:hover{transform:translateY(-2px);border-color:var(--gold);box-shadow:var(--shadow)}
+.atelier-mode-choice>span{grid-row:span 2;font-size:32px;text-align:center}
+.atelier-mode-choice strong{font-size:18px}
+.atelier-mode-choice small{font:12px/1.55 Arial,sans-serif;color:var(--muted)}
+.atelier-team-setup{margin-top:18px;padding:18px;border-radius:14px;background:#f5eddf;border:1px solid var(--line)}
+.atelier-team-setup .field{max-width:260px}
+.atelier-team-setup-actions{display:flex;justify-content:flex-end;margin-top:12px}
+.atelier-team-bar{padding:14px 16px;margin:15px 0 18px;border:1px solid var(--line);border-radius:14px;background:#f5eddf}
+.atelier-team-turn{font:700 14px Arial,sans-serif;color:var(--red-dark);margin-bottom:10px}
+.atelier-team-scores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.atelier-team-score{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;min-width:0}
+.atelier-team-score.active{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);background:#fff8e8}
+.atelier-team-score span{font:700 11px/1.35 Arial,sans-serif;overflow-wrap:anywhere}
+.atelier-team-score strong{font:bold 13px Georgia,serif;color:var(--red);white-space:nowrap}
+.atelier-team-results{max-width:620px;margin:18px auto 0;padding:16px;border:1px solid var(--line);border-radius:14px;background:#f5eddf;text-align:left}
+.atelier-team-results h3{margin:0 0 10px;font-size:18px}
+.atelier-team-results ol{margin:0;padding-left:24px;display:grid;gap:8px}
+.atelier-team-results li{font:700 13px Arial,sans-serif;padding:8px 10px;border-radius:9px;background:#fffdf8}
+.atelier-team-results li strong{float:right;color:var(--red)}
+@media(max-width:700px){.atelier-mode-select-head{flex-direction:column}.atelier-mode-buttons{grid-template-columns:1fr}.atelier-team-scores{grid-template-columns:repeat(2,minmax(0,1fr))}.atelier-team-score{align-items:flex-start;flex-direction:column}}
+@media(max-width:480px){.atelier-mode-select{padding:16px}.atelier-team-setup-actions button{width:100%}.atelier-team-scores{grid-template-columns:1fr 1fr}}
+
+/* Günün Meydan Okuması */
+.daily-teaser{margin-top:18px;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(115deg,#e9edf0,#fffaf0)}
+.daily-teaser-copy{display:flex;align-items:flex-start;gap:15px;min-width:0}
+.daily-teaser-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:14px;background:var(--ink);color:var(--gold-light);font-size:23px}
+.daily-teaser h2{font-size:23px;margin:6px 0}.daily-teaser p{font:13px/1.6 Arial,sans-serif;color:var(--muted);margin:0;max-width:680px}
+.daily-teaser-status{display:inline-flex;margin-top:8px;padding:6px 10px;border-radius:999px;background:#f0e6d4;color:var(--red-dark);font:700 10px Arial,sans-serif}
+.daily-banner{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 26px;background:linear-gradient(115deg,var(--ink),var(--ink-2));color:#fffaf0;border-radius:20px;box-shadow:var(--shadow)}
+.daily-banner h2{font-size:clamp(25px,4vw,35px);margin:8px 0}.daily-banner p{font:13px/1.65 Arial,sans-serif;color:#d7dfdc;margin:0;max-width:670px}
+.daily-badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.daily-badges span{padding:7px 10px;border:1px solid rgba(230,202,135,.35);border-radius:999px;color:#f3e5c4;font:700 10px Arial,sans-serif}
+.daily-stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:15px 0}.daily-stat{padding:15px 17px;background:var(--paper);border:1px solid var(--line);border-radius:14px}.daily-stat strong{display:block;font-size:23px}.daily-stat span{font:10px Arial,sans-serif;color:var(--muted);letter-spacing:.06em}
+.daily-panel{padding:clamp(20px,4vw,30px);margin-top:15px}.daily-panel h3{font-size:23px;margin:6px 0 9px}.daily-panel p{font:13px/1.7 Arial,sans-serif;color:var(--muted);max-width:760px}
+.daily-progress{display:flex;align-items:center;gap:12px;margin:16px 0 22px;font:700 11px Arial,sans-serif;color:var(--muted)}.daily-progress .progress-track{min-width:80px}
+.daily-question{font-size:clamp(20px,3vw,27px);line-height:1.4;margin:16px 0}
+.daily-answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.daily-answer{border:1px solid var(--line);border-radius:12px;background:#fffdf8;color:var(--ink);padding:15px;text-align:left;font:14px/1.5 Arial,sans-serif;min-height:58px}.daily-answer:hover:not(:disabled){border-color:var(--gold);background:#f8f0df}.daily-answer.correct{border-color:#6d9d82;background:#e8f2eb;color:#244d38}.daily-answer.wrong{border-color:#c47d7d;background:#f8e9e7;color:#7c3038}.daily-answer:disabled{cursor:default}
+.daily-result{text-align:center;padding:30px 20px}.daily-result-icon{font-size:52px}.daily-result h3{font-size:30px;margin:10px 0}.daily-result p{max-width:620px;margin:0 auto 18px;font:14px/1.7 Arial,sans-serif;color:var(--muted)}
+.daily-mode-buttons{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:17px}.daily-mode-buttons button{min-height:58px}
+.daily-team-setup{margin-top:14px;padding:16px;background:#f5eddf;border:1px solid var(--line);border-radius:13px}.daily-team-setup-top{display:flex;align-items:center;justify-content:space-between;gap:12px}.daily-team-setup .field{max-width:260px}.daily-team-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px}.daily-team-setup-actions{display:flex;justify-content:flex-end;margin-top:8px}
+.daily-team-bar{padding:14px 16px;margin:0 0 18px;border:1px solid var(--line);border-radius:14px;background:#f5eddf}.daily-team-turn{font:700 14px Arial,sans-serif;color:var(--red-dark);margin-bottom:10px}.daily-team-scores{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.daily-team-score{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;min-width:0}.daily-team-score.active{border-color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold);background:#fff8e8}.daily-team-score span{font:700 11px/1.35 Arial,sans-serif;overflow-wrap:anywhere}.daily-team-score strong{font:bold 13px Georgia,serif;color:var(--red);white-space:nowrap}
+.daily-team-results{max-width:620px;margin:18px auto;padding:16px;border:1px solid var(--line);border-radius:14px;background:#f5eddf;text-align:left}.daily-team-results h4{margin:0 0 10px}.daily-team-results ol{margin:0;padding-left:23px;display:grid;gap:7px}.daily-team-results li{padding:8px 10px;border-radius:9px;background:#fffdf8;font:700 12px Arial,sans-serif}.daily-team-results li strong{float:right;color:var(--red)}
+@media(max-width:700px){.daily-teaser{align-items:flex-start;flex-direction:column}.daily-teaser>button{width:100%}.daily-banner{align-items:flex-start;flex-direction:column}.daily-stat-grid{grid-template-columns:1fr}.daily-answers{grid-template-columns:1fr}.daily-team-scores{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.daily-mode-buttons{grid-template-columns:1fr}.daily-team-inputs{grid-template-columns:1fr}.daily-team-setup-actions button{width:100%}}
+
+
+/* Görev günlüğü ve öğretmen masası */
+.quest-metric-grid,.teacher-metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 16px}
+.quest-metric{padding:17px 18px;border:1px solid var(--line);border-radius:15px;background:var(--paper);box-shadow:0 7px 20px rgba(23,43,59,.045);min-width:0}
+.quest-metric strong{display:block;font-size:clamp(20px,2vw,27px);line-height:1.25;overflow-wrap:anywhere}
+.quest-metric span{display:block;margin-top:6px;color:var(--muted);font:700 9px Arial,sans-serif;letter-spacing:.1em}
+.quest-next-panel{padding:22px 24px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(110deg,#f0e5d1,#fffaf0)}
+.quest-next-panel h3{font-size:23px;margin:6px 0}.quest-next-panel p{font:13px/1.6 Arial,sans-serif;color:var(--muted);margin:0;max-width:690px}
+.quest-columns{display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:start}
+.quest-section{padding:20px;margin-bottom:15px;min-width:0}.quest-section-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}.quest-section-head h3{font-size:19px;margin:0 0 5px}.quest-section-head p{font:12px/1.5 Arial,sans-serif;color:var(--muted);margin:0}.quest-section-head>span{border-radius:999px;background:#f2e6d0;padding:7px 10px;color:var(--red-dark);font:700 11px Arial,sans-serif;white-space:nowrap}
+.quest-list{display:grid;gap:9px}.quest-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fffdf8}.quest-row-main{min-width:0}.quest-row-main strong{display:block;font:700 13px Arial,sans-serif;color:var(--ink)}.quest-row-main small{display:block;margin-top:4px;font:11px/1.4 Arial,sans-serif;color:var(--muted)}.quest-row-status{font:700 10px Arial,sans-serif;color:var(--green);white-space:nowrap}.quest-row-bar{height:5px;background:#eee6d8;border-radius:99px;overflow:hidden;margin-top:8px}.quest-row-bar span{display:block;height:100%;background:var(--gold);border-radius:99px}
+.quest-row button{border:1px solid var(--line);border-radius:9px;background:#f5eddf;padding:8px 10px;color:var(--ink);font:700 10px Arial,sans-serif}.quest-row button:hover:not(:disabled){border-color:var(--gold)}.quest-row button:disabled{opacity:.5;cursor:not-allowed}
+.quest-daily-strip{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:13px;margin-top:13px;border-radius:12px;background:#edf1f2}.quest-daily-strip strong,.quest-daily-strip span{display:block}.quest-daily-strip strong{font:700 12px Arial,sans-serif}.quest-daily-strip span{font:10px Arial,sans-serif;color:var(--muted);margin-top:4px}.quest-daily-number{text-align:center;padding:0 8px}.quest-daily-number strong{font-size:20px;color:var(--red)}
+.quest-achievements{margin-top:0}.quest-achievement-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.quest-achievement{padding:11px;border:1px solid var(--line);border-radius:11px;background:#fffdf8;min-width:0}.quest-achievement.earned{background:#f2e8d5;border-color:var(--gold)}.quest-achievement strong{display:block;font:700 11px Arial,sans-serif}.quest-achievement span{display:block;margin-top:4px;font:10px/1.45 Arial,sans-serif;color:var(--muted)}
+.teacher-desk-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px}.teacher-desk-card{padding:22px;min-width:0}.teacher-desk-card h3{font-size:22px;margin:7px 0}.teacher-desk-card>p{font:13px/1.65 Arial,sans-serif;color:var(--muted);max-width:600px}.teacher-actions{display:flex;gap:9px;flex-wrap:wrap}.teacher-actions button{flex:1}.teacher-status{font:11px Arial,sans-serif;color:var(--muted);margin:12px 0 0!important}
+.teacher-launch-list{display:grid;gap:9px}.teacher-launch{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:10px;width:100%;text-align:left;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fffdf8;color:var(--ink)}.teacher-launch:hover{border-color:var(--gold);background:#fff9ec}.teacher-launch>span:first-child{font-size:22px}.teacher-launch strong,.teacher-launch small{display:block}.teacher-launch strong{font:700 12px Arial,sans-serif}.teacher-launch small{font:10px/1.45 Arial,sans-serif;color:var(--muted);margin-top:4px}.teacher-launch>b{color:var(--red);font-size:18px}
+.teacher-help{margin-bottom:15px}.teacher-help h3{font-size:19px}.teacher-help-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.teacher-help-grid>div{padding:13px;border-radius:11px;background:#f5eddf}.teacher-help-grid strong{font:700 12px Arial,sans-serif}.teacher-help-grid p{font:11px/1.55 Arial,sans-serif;color:var(--muted);margin:5px 0 0}
+body.board-large .question,body.board-large .daily-question{font-size:clamp(26px,3vw,34px)}body.board-large .answer-btn,body.board-large .atelier-option,body.board-large .daily-answer{font-size:17px;min-height:72px;padding:18px}
+body.board-xlarge .question,body.board-xlarge .daily-question{font-size:clamp(30px,3.8vw,42px)}body.board-xlarge .answer-btn,body.board-xlarge .atelier-option,body.board-xlarge .daily-answer{font-size:20px;min-height:86px;padding:20px}
+body.board-presentation .app-shell{max-width:1400px}body.board-presentation .topbar{padding-bottom:12px}body.board-presentation .story-text{font-size:18px}body.board-presentation .teacher-note{font-size:14px}
+@media(max-width:900px){.quest-metric-grid,.teacher-metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quest-columns,.teacher-desk-grid{grid-template-columns:1fr}.quest-achievement-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.quest-next-panel{align-items:flex-start;flex-direction:column}.quest-next-panel button{width:100%}.quest-metric-grid,.teacher-metric-grid{gap:8px}.quest-metric{padding:13px}.quest-metric span{font-size:8px}.quest-row{grid-template-columns:1fr}.quest-row button{width:100%}.quest-daily-strip{grid-template-columns:1fr auto}.quest-daily-strip button{grid-column:1/-1;width:100%}.quest-achievement-grid,.teacher-help-grid{grid-template-columns:1fr}.teacher-actions{flex-direction:column}.teacher-actions button{width:100%}}
+
+
+/* Kavram rehberi */
+.glossary-teaser{margin-top:14px;padding:20px 23px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(115deg,#e9edf0,#fffaf0)}
+.glossary-teaser h2{font-size:22px;margin:6px 0}.glossary-teaser p{font:13px/1.6 Arial,sans-serif;color:var(--muted);margin:0;max-width:700px}
+.glossary-tools{padding:18px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(190px,.8fr) auto;gap:12px;align-items:end}
+.glossary-search,.glossary-category{display:grid;gap:7px}.glossary-tools label{font:700 12px Arial,sans-serif;color:var(--ink-2)}
+.glossary-tools input,.glossary-tools select{width:100%;min-height:44px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;padding:11px 12px;color:var(--ink);font:13px Arial,sans-serif}
+.glossary-result-line{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:15px 2px 10px;font:11px Arial,sans-serif;color:var(--muted)}.glossary-result-line strong{color:var(--red-dark);font-size:12px}
+.glossary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.glossary-card{background:var(--paper);border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 6px 18px rgba(23,43,59,.045)}
+.glossary-card summary{cursor:pointer;list-style:none;padding:16px 17px;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}.glossary-card summary::-webkit-details-marker{display:none}
+.glossary-card summary strong{font-size:16px}.glossary-card summary:after{content:'＋';color:var(--red);font:700 16px Arial,sans-serif}.glossary-card[open] summary:after{content:'−'}
+.glossary-tag{grid-column:1/-1;justify-self:start;border-radius:99px;padding:5px 8px;background:#f1e7d5;color:var(--red-dark);font:700 9px Arial,sans-serif;letter-spacing:.05em}
+.glossary-definition{padding:0 17px 16px;font:13px/1.7 Arial,sans-serif;color:#53616a}.glossary-empty{grid-column:1/-1;padding:30px 18px;text-align:center;border:1px dashed var(--line);border-radius:14px;background:rgba(255,250,240,.65);font:13px/1.6 Arial,sans-serif;color:var(--muted)}
+@media(max-width:850px){.glossary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.glossary-tools{grid-template-columns:1fr 1fr}.glossary-clear{grid-column:1/-1}}
+@media(max-width:600px){.glossary-teaser{align-items:flex-start;flex-direction:column}.glossary-teaser>button{width:100%}.glossary-grid{grid-template-columns:1fr}.glossary-tools{grid-template-columns:1fr}.glossary-clear{grid-column:auto}.glossary-result-line{align-items:flex-start;flex-direction:column}}
+
 </style>
 </head>
 <body>
@@ -160,8 +261,12 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
     <div class="brand"><div>OSMANLI LALE DEVRİ<small>1718 — 1730 · TARİH MACERASI</small></div></div>
     <div class="top-actions">
       <button class="icon-btn" id="summaryBtn" type="button">Konu anlatımı</button>
+      <button class="icon-btn" id="glossaryBtn" type="button">Kavram Rehberi</button>
+      <button class="icon-btn" id="dailyBtn" type="button">Günün Görevi</button>
       <button class="icon-btn" id="atelierBtn" type="button">Tarih Atölyesi</button>
       <button class="icon-btn" id="collectionBtn" type="button">Koleksiyon</button>
+      <button class="icon-btn" id="questLogBtn" type="button">Görev Günlüğü</button>
+      <button class="icon-btn" id="teacherDeskBtn" type="button">Öğretmen Masası</button>
       <button class="icon-btn" id="homeBtn" type="button">Ana sayfa</button>
       <button class="icon-btn" id="resetBtn" type="button" title="Oyun ilerlemesini sıfırla">Sıfırla</button>
     </div>
@@ -195,14 +300,19 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
         <div class="info-card"><strong>🖥️ Akıllı tahta dostu</strong><p>Büyük düğmeler ve tek ekrandan yönetilebilen sınıf modu.</p></div>
         <div class="info-card"><strong>🏺 Tarih koleksiyonu</strong><p>Bölümleri tamamladıkça döneme ait bilgi kartlarını aç.</p></div>
       </div>
-      <div class="atelier-teaser panel"><div><span class="eyebrow">Yeni etkinlik alanı</span><h2>🧩 Tarih Atölyesi</h2><p>Kronolojiyi sırala, tarihî kişileri tanı, ifadeleri değerlendir ve arşiv ipuçlarını çöz. Altı farklı mini oyunla öğrendiklerini pekiştir.</p></div><button class="secondary-btn" id="homeAtelierBtn" type="button">Atölyeye git →</button></div>
+      <div class="daily-teaser panel">
+        <div class="daily-teaser-copy"><div class="daily-teaser-icon" aria-hidden="true">⚔</div><div><span class="eyebrow">Her gün yenilenen görev</span><h2>Günün Meydan Okuması</h2><p>Her gün değişen beş soruyu cevapla, doğru bildikçe meydan okuma puanını yükselt. Görevi tamamla ve günlük serini koru.</p><span class="daily-teaser-status" id="dailyHomeStatus">Bugünün soruları hazır</span></div></div>
+        <button class="primary-btn" id="dailyHomeBtn" type="button">Meydan okumaya başla →</button>
+      </div>
+      <div class="atelier-teaser panel"><div><span class="eyebrow">Etkinlik alanı</span><h2>🧩 Tarih Atölyesi</h2><p>Kronolojiyi sırala, tarihî kişileri tanı, ifadeleri değerlendir, arşiv ipuçlarını çöz ve tarihî durumları yorumla. Yedi farklı mini oyunla öğrendiklerini pekiştir.</p></div><button class="secondary-btn" id="homeAtelierBtn" type="button">Atölyeye git →</button></div>
+      <div class="glossary-teaser panel"><div><span class="eyebrow">Hızlı başvuru</span><h2>📖 Kavram Rehberi</h2><p>Sadrazam, sefaretname, matbaa ve dönemin diğer kavramlarını kısa açıklamalarla öğren. Aradığın terimi anında bul.</p></div><button class="secondary-btn" id="homeGlossaryBtn" type="button">Kavramlara göz at →</button></div>
       <div class="github-card" aria-label="GitHub profili">
         <div class="github-card-copy">
           <div class="github-card-icon" aria-hidden="true">&lt;/&gt;</div>
           <div><h2>GitHub sayfam</h2><p>Projelerimi, çalışmalarımı ve yeni güncellemeleri GitHub üzerinden inceleyebilirsin.</p></div>
         </div>
         <!-- Kendi GitHub profil adresini aşağıdaki href alanına yaz. Örnek: https://github.com/kullaniciadi -->
-        <a class="github-link" href="https://github.com/SoftArchX" target="_blank" rel="noopener noreferrer" aria-label="GitHub profilini yeni sekmede aç">
+        <a class="github-link" href="https://github.com/KULLANICI_ADIN" target="_blank" rel="noopener noreferrer" aria-label="GitHub profilini yeni sekmede aç">
           <span class="secondary-btn">GitHub profilini ziyaret et ↗</span>
         </a>
       </div>
@@ -227,7 +337,7 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
               <div class="question-type-pill" id="questionTypeLabel">Bilgi sorusu</div><h3 class="question" id="questionText"></h3>
               <div class="answers" id="answerButtons"></div>
               <div class="feedback" id="feedback" aria-live="polite"></div>
-              <div class="quiz-footer"><span id="questionHint" style="font:11px Arial,sans-serif;color:var(--muted)">Düşün, seç ve öğren.</span><button class="primary-btn hidden" id="nextQuestionBtn" type="button">Devam et →</button></div>
+              <div class="quiz-footer"><span id="questionHint" style="font:11px Arial,sans-serif;color:var(--muted)">Düşün, seç ve öğren.</span><div class="quiz-footer-actions"><button class="subtle-btn hint-btn" id="exploreHintBtn" type="button">50:50 ipucu</button><button class="primary-btn hidden" id="nextQuestionBtn" type="button">Devam et →</button></div></div>
             </div>
             <div class="completion hidden" id="chapterCompletion"><div class="big-icon">🏅</div><h2>Bölüm tamamlandı!</h2><p id="completionText"></p><button class="primary-btn" id="nextChapterBtn" type="button">Sonraki bölüme geç →</button><br><button class="text-btn" id="completionMapBtn" type="button">Bölüm haritasına dön</button></div>
           </div>
@@ -251,12 +361,12 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
           <div class="turn-pill" id="classTurn">Sıra: Lale Takımı</div>
           <div class="class-selects"><div class="field"><label for="classChapterSelect">Oynanacak içerik</label><select id="classChapterSelect"><option value="all">Tüm bölümler · Karışık</option></select></div><div class="field"><label for="classLengthSelect">Soru sayısı</label><select id="classLengthSelect"><option value="10">10 soru</option><option value="20">20 soru</option><option value="all">Tüm sorular</option></select></div></div>
           <div class="class-question-meta" id="classQuestionMeta">Karışık tarih turu</div>
-          <div class="quiz-top"><span id="classQuestionCount">SORU 1 / 10</span><strong>+100 PUAN</strong></div>
+          <div class="quiz-top"><span id="classQuestionCount">SORU 1 / 10</span><strong id="classQuestionReward">+100 PUAN</strong></div>
           <div class="question-type-pill" id="classQuestionType">Bilgi sorusu</div><h3 class="question" id="classQuestionText">Hazır mısınız?</h3>
           <div class="answers" id="classAnswers"></div>
           <div class="feedback" id="classFeedback" aria-live="polite"></div>
-          <div class="quiz-footer"><span id="classHint" style="font:11px Arial,sans-serif;color:var(--muted)">Takımınız cevabını söylesin.</span><button class="primary-btn hidden" id="classNextBtn" type="button">Sıradaki soru →</button></div>
-          <div class="teacher-note">Öğretmen için: Takım cevabını söyledikten sonra seçeneğe dokun. Doğru cevap 100 puan kazandırır. Bir takım üç doğru cevabı art arda verirse 50 puan seri bonusu kazanır. Her soruda sıra bir sonraki takıma geçer.</div>
+          <div class="quiz-footer"><span id="classHint" style="font:11px Arial,sans-serif;color:var(--muted)">Takımınız cevabını söylesin.</span><div class="quiz-footer-actions"><button class="subtle-btn hint-btn" id="classHintBtn" type="button">50:50 ipucu</button><button class="primary-btn hidden" id="classNextBtn" type="button">Sıradaki soru →</button></div></div>
+          <div class="teacher-note">Öğretmen için: Takım cevabını söyledikten sonra seçeneğe dokun. Doğru cevap 100 puan kazandırır; 50:50 ipucu kullanılırsa 50 puan alınır. Bir takım üç doğru cevabı art arda verirse 50 puan seri bonusu kazanır. Her soruda sıra bir sonraki takıma geçer.</div>
         </div>
         <aside class="panel class-score-panel"><h3>🏆 Takım tablosu</h3><ol class="score-list" id="scoreList"></ol>
           <div class="manual-score-box"><strong>Öğretmen puan kontrolü</strong><p>Bir takıma katılım veya ek görev puanı verebilirsin.</p><label for="scoreAdjustTeam">Takım seç</label><select id="scoreAdjustTeam"></select><div class="manual-score-actions"><button class="subtle-btn" id="addTeamPointsBtn" type="button">+50 puan</button><button class="subtle-btn" id="removeTeamPointsBtn" type="button">−50 puan</button></div></div>
@@ -281,7 +391,7 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
       </div><p><strong>Bir tarih notu:</strong> “Lale Devri” adı, dönemin insanlarının kullandığı resmî bir dönem adı değildir. Bu ad, tarihçi Ahmet Refik Altınay'ın 20. yüzyıl başındaki çalışmalarıyla yaygınlaşmıştır.</p></article>
     </section>
     <section class="view" id="atelierView">
-      <div class="section-head"><div><div class="eyebrow">Ek etkinlikler</div><h2>Tarih Atölyesi</h2><p>Ana hikâyenin dışında, öğrendiklerini farklı yollarla dene. Her etkinlik ilk tamamlandığında 100 ek puan kazandırır.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="section-head"><div><div class="eyebrow">Ek etkinlikler</div><h2>Tarih Atölyesi</h2><p>Ana hikâyenin dışında, öğrendiklerini farklı yollarla dene. Her etkinliği tek başına veya 2–4 takımla oynayabilirsin. İlk tamamlamada 100 ek puan kazanılır.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
       <div class="atelier-cards" id="atelierCards">
         <button class="atelier-card" type="button" data-atelier-mode="chronology"><span class="atelier-icon">⏳</span><span class="eyebrow">Zaman ve sıralama</span><strong>Zaman Tüneli</strong><span>Lale Devri boyunca yaşanan önemli olayları doğru sıraya yerleştir.</span><small id="bestChronology">Henüz oynanmadı</small><b>Etkinliği başlat →</b></button>
         <button class="atelier-card" type="button" data-atelier-mode="people"><span class="atelier-icon">👥</span><span class="eyebrow">Kişiler ve görevler</span><strong>Kim Kimdir?</strong><span>Nedim, Levni, İbrahim Müteferrika ve dönemin diğer önemli kişilerini tanı.</span><small id="bestPeople">Henüz oynanmadı</small><b>Etkinliği başlat →</b></button>
@@ -289,19 +399,37 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
         <button class="atelier-card" type="button" data-atelier-mode="detective"><span class="atelier-icon">🕵️</span><span class="eyebrow">İpuçları ve çıkarım</span><strong>Belge Avı</strong><span>Arşivden çıkan tarihî ipuçlarını birleştir ve gizemli olay ya da kişiyi bul.</span><small id="bestDetective">Henüz oynanmadı</small><b>Dosyayı aç →</b></button>
         <button class="atelier-card" type="button" data-atelier-mode="memory"><span class="atelier-icon">🧠</span><span class="eyebrow">Hafıza ve eşleştirme</span><strong>Hafıza Oyunu</strong><span>Kapalı kartları çevir; tarihî kişi, olay ve kavram çiftlerini bul.</span><small id="bestMemory">Henüz oynanmadı</small><b>Kartları aç →</b></button>
         <button class="atelier-card" type="button" data-atelier-mode="cipher"><span class="atelier-icon">🔐</span><span class="eyebrow">Harf ve kelime bulmacası</span><strong>Şifreli Sandık</strong><span>Karışık harfleri doğru sıraya koyarak Lale Devri'nin anahtar kelimelerini çöz.</span><small id="bestCipher">Henüz oynanmadı</small><b>Şifreyi çöz →</b></button>
+        <button class="atelier-card" type="button" data-atelier-mode="council"><span class="atelier-icon">⚖️</span><span class="eyebrow">Senaryo ve karar</span><strong>Karar Divanı</strong><span>Tarihî durumları incele, kanıta dayalı en uygun değerlendirmeyi seç.</span><small id="bestCouncil">Henüz oynanmadı</small><b>Divana katıl →</b></button>
+      </div>
+      <div class="panel atelier-mode-select hidden" id="atelierModeSelect">
+        <div class="atelier-mode-select-head">
+          <div><div class="eyebrow">Oynama biçimi</div><h3 id="atelierModeSelectTitle">Etkinliği nasıl oynamak istersin?</h3><p>Tek başına oynayabilir veya sınıfı takımlara ayırarak aynı akıllı tahtadan yarışabilirsiniz.</p></div>
+          <button class="back-btn" id="atelierModeBackBtn" type="button">← Etkinlikler</button>
+        </div>
+        <div class="atelier-mode-buttons">
+          <button class="atelier-mode-choice" id="atelierSoloStartBtn" type="button"><span>🧭</span><strong>Tek Kişilik</strong><small>Kendi puanını topla ve etkinliği kendi hızında tamamla.</small></button>
+          <button class="atelier-mode-choice" id="atelierTeamModeBtn" type="button"><span>🏆</span><strong>Takım Yarışı</strong><small>2–4 takım sırayla oynasın, puan tablosunda yarışsın.</small></button>
+        </div>
+        <div class="atelier-team-setup hidden" id="atelierTeamSetup">
+          <div class="field"><label for="atelierTeamCount">Kaç takım oynayacak?</label><select id="atelierTeamCount"><option value="2">2 takım</option><option value="3">3 takım</option><option value="4">4 takım</option></select></div>
+          <div class="team-inputs" id="atelierTeamInputs"></div>
+          <div class="teacher-note">Takımlar aynı ekrandan sırayla oynar. Doğru cevap veya eşleşme puan kazandırır. Etkinlik sonunda takım sıralaması gösterilir.</div>
+          <div class="atelier-team-setup-actions"><button class="primary-btn" id="atelierTeamStartBtn" type="button">Takım yarışını başlat →</button></div>
+        </div>
       </div>
       <div class="panel atelier-play hidden" id="atelierPlayPanel">
         <div class="atelier-play-head"><div><div class="eyebrow" id="atelierModeLabel">Etkinlik</div><h2 id="atelierTitle">Zaman Tüneli</h2><p id="atelierInstruction">Olayları doğru sıraya yerleştir.</p></div><button class="back-btn" id="atelierBackBtn" type="button">← Atölye menüsü</button></div>
+        <div class="atelier-team-bar hidden" id="atelierTeamBar"><div class="atelier-team-turn" id="atelierTeamTurn">Sıradaki takım: —</div><div class="atelier-team-scores" id="atelierMiniTeamScores"></div></div>
         <div class="atelier-progress"><span id="atelierCounter">1 / 5</span><div class="progress-track"><div class="progress-fill" id="atelierProgressFill"></div></div><strong id="atelierLiveScore">0 puan</strong></div>
         <div class="clue-board hidden" id="atelierClues" aria-live="polite"></div>
         <div class="atelier-game-board hidden" id="atelierGameBoard" aria-live="polite"></div>
         <h3 class="question" id="atelierQuestion">Etkinlik yükleniyor…</h3>
         <div class="atelier-answers" id="atelierAnswers"></div>
         <div class="feedback" id="atelierFeedback" aria-live="polite"></div>
-        <div class="quiz-footer"><span id="atelierHint" style="font:12px Arial,sans-serif;color:var(--muted)">Dikkatlice düşün ve seçimini yap.</span><button class="primary-btn hidden" id="atelierNextBtn" type="button">Sonraki soru →</button><button class="primary-btn hidden" id="atelierCheckBtn" type="button">Sıralamayı kontrol et ✓</button></div>
+        <div class="quiz-footer"><span id="atelierHint" style="font:12px Arial,sans-serif;color:var(--muted)">Dikkatlice düşün ve seçimini yap.</span><div class="quiz-footer-actions"><button class="subtle-btn hint-btn hidden" id="atelierHint50Btn" type="button">50:50 ipucu</button><button class="primary-btn hidden" id="atelierNextBtn" type="button">Sonraki soru →</button><button class="primary-btn hidden" id="atelierCheckBtn" type="button">Sıralamayı kontrol et ✓</button></div></div>
       </div>
-      <div class="panel atelier-results hidden" id="atelierResults"><div class="big-icon">🏅</div><div class="eyebrow">Etkinlik tamamlandı</div><h2 id="atelierResultTitle">Harika iş!</h2><p id="atelierResultText"></p><div class="atelier-result-actions"><button class="primary-btn" id="atelierReplayBtn" type="button">Yeniden oyna</button><button class="secondary-btn" id="atelierReturnBtn" type="button">Atölyeye dön</button></div></div>
-      <div class="teacher-note atelier-note">Sınıfta kullanım: Atölye etkinlikleri de tek akıllı tahtadan yürütülebilir. Kronoloji oyununda öğrenciler olay kartlarını sırayla seçer; diğer etkinliklerde cevaplar tahtadan işaretlenir.</div>
+      <div class="panel atelier-results hidden" id="atelierResults"><div class="big-icon">🏅</div><div class="eyebrow">Etkinlik tamamlandı</div><h2 id="atelierResultTitle">Harika iş!</h2><p id="atelierResultText"></p><div class="atelier-team-results hidden" id="atelierTeamResults"></div><div class="atelier-result-actions"><button class="primary-btn" id="atelierReplayBtn" type="button">Yeniden oyna</button><button class="secondary-btn" id="atelierReturnBtn" type="button">Atölyeye dön</button></div></div>
+      <div class="teacher-note atelier-note">Sınıfta kullanım: Her atölye etkinliğinde Tek Kişilik veya Takım Yarışı seçebilirsin. Takım Yarışı’nda 2–4 takım aynı akıllı tahtadan sırayla oynar; öğrencilerin ayrı cihaz kullanması gerekmez.</div>
     </section>
 
     <section class="view" id="collectionView">
@@ -310,6 +438,67 @@ h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight
       <div class="collection-grid" id="collectionGrid"></div>
       <div class="panel achievement-panel"><h3>🏅 Başarıların</h3><div class="achievement-grid" id="achievementGrid"></div></div>
       <div class="panel save-tools"><div><h3>💾 İlerleme yedeği</h3><p>Oyun kayıtların bu tarayıcıda tutulur. Yedeğini indirerek başka bir bilgisayara taşıyabilir veya daha sonra geri yükleyebilirsin.</p></div><div class="save-tool-actions"><button class="secondary-btn" id="exportSaveBtn" type="button">Yedeği indir ↓</button><button class="primary-btn" id="importSaveBtn" type="button">Yedekten geri yükle ↑</button><input id="importSaveFile" type="file" accept=".json,application/json" hidden></div></div>
+    </section>
+
+    <section class="view" id="questLogView">
+      <div class="section-head"><div><div class="eyebrow">Macera defteri</div><h2>Görev Günlüğü</h2><p>İlerlemeni, tamamladığın etkinlikleri ve sıradaki hedeflerini tek yerde takip et.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="quest-metric-grid">
+        <div class="quest-metric"><strong id="questPointsMetric">0</strong><span>TOPLAM PUAN</span></div>
+        <div class="quest-metric"><strong id="questRankMetric">Kâtip Adayı</strong><span>MEVCUT UNVAN</span></div>
+        <div class="quest-metric"><strong id="questChapterMetric">0 / 8</strong><span>TAMAMLANAN BÖLÜM</span></div>
+        <div class="quest-metric"><strong id="questAtelierMetric">0 / 7</strong><span>TAMAMLANAN ATÖLYE</span></div>
+      </div>
+      <div class="panel quest-next-panel">
+        <div><div class="eyebrow">Sıradaki hedefin</div><h3 id="questNextTitle">İlk bölüm seni bekliyor.</h3><p id="questNextDescription">İstanbul haritasından macerana başlayabilirsin.</p></div>
+        <button class="primary-btn" id="questNextButton" type="button">Göreve git →</button>
+      </div>
+      <div class="quest-columns">
+        <section class="panel quest-section"><div class="quest-section-head"><div><h3>📚 Bölüm ilerlemesi</h3><p>Her bölümdeki görevlerini takip et.</p></div><span id="questChapterSummary">0 / 8</span></div><div class="quest-list" id="questChapterList"></div></section>
+        <section class="panel quest-section"><div class="quest-section-head"><div><h3>🎮 Tarih Atölyesi</h3><p>Mini oyunlardaki ilerlemen ve en iyi sonuçların.</p></div><span id="questAtelierSummary">0 / 7</span></div><div class="quest-list" id="questAtelierList"></div><div class="quest-daily-strip"><div><strong>Günlük meydan okuma</strong><span id="questDailyStatus">Bugünün görevi hazır.</span></div><div class="quest-daily-number"><strong id="questDailyStreak">0</strong><span>gün seri</span></div><button class="subtle-btn" id="questDailyButton" type="button">Aç →</button></div></section>
+      </div>
+      <section class="panel quest-section quest-achievements"><div class="quest-section-head"><div><h3>🏅 Kazandığın başarılar</h3><p>Henüz açılmayan başarılar da burada görünür.</p></div><span id="questAchievementSummary">0 / 12</span></div><div class="quest-achievement-grid" id="questAchievementList"></div></section>
+    </section>
+
+    <section class="view" id="teacherDeskView">
+      <div class="section-head"><div><div class="eyebrow">Sınıf yönetimi</div><h2>Öğretmen Masası</h2><p>Akıllı tahtadan oyunu yönetmek ve sınıf etkinliklerini başlatmak için araçlar.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="teacher-metric-grid">
+        <div class="quest-metric"><strong id="teacherChapterMetric">0 / 8</strong><span>TAMAMLANAN BÖLÜM</span></div>
+        <div class="quest-metric"><strong id="teacherAtelierMetric">0 / 7</strong><span>TAMAMLANAN MİNİ OYUN</span></div>
+        <div class="quest-metric"><strong id="teacherDailyMetric">0</strong><span>TAMAMLANAN GÜNLÜK GÖREV</span></div>
+        <div class="quest-metric"><strong id="teacherPointsMetric">0</strong><span>TOPLAM OYUN PUANI</span></div>
+      </div>
+      <div class="teacher-desk-grid">
+        <section class="panel teacher-desk-card"><div class="eyebrow">Akıllı tahta araçları</div><h3>Sunum görünümü</h3><p>Uzak sıralardan okunabilmesi için yazıları büyüt veya tarayıcıyı tam ekrana al.</p>
+          <div class="field"><label for="teacherTextSize">Yazı boyutu</label><select id="teacherTextSize"><option value="normal">Normal</option><option value="large">Büyük</option><option value="xlarge">Çok büyük</option></select></div>
+          <div class="teacher-actions"><button class="secondary-btn" id="teacherFullscreenBtn" type="button">⛶ Tam ekranı aç</button><button class="primary-btn" id="teacherPresentationBtn" type="button" aria-pressed="false">Sunum görünümünü aç</button></div>
+          <p class="teacher-status" id="teacherPresentationStatus">Sunum görünümü kapalı.</p>
+        </section>
+        <section class="panel teacher-desk-card"><div class="eyebrow">Dersi başlat</div><h3>Sınıf etkinlikleri</h3><p>Öğrencilerin ayrı cihaz kullanmasına gerek yok. Takımlar tek akıllı tahtadan sırayla oynayabilir.</p>
+          <div class="teacher-launch-list"><button class="teacher-launch" id="teacherClassLaunchBtn" type="button"><span>🏆</span><span><strong>Sınıf Mücadelesi</strong><small>8 bölümden soru seç ve takım yarışı başlat.</small></span><b>→</b></button><button class="teacher-launch" id="teacherAtelierLaunchBtn" type="button"><span>🧩</span><span><strong>Tarih Atölyesi</strong><small>Yedi mini oyundan birini tek kişi veya takımlarla aç.</small></span><b>→</b></button><button class="teacher-launch" id="teacherDailyLaunchBtn" type="button"><span>⚔</span><span><strong>Günün Meydan Okuması</strong><small>Beş soruluk günlük sınıf görevini başlat.</small></span><b>→</b></button></div>
+        </section>
+      </div>
+      <section class="panel teacher-desk-card teacher-help"><h3>📝 Sınıf için kısa kullanım notları</h3><div class="teacher-help-grid"><div><strong>1. Takımları oluştur</strong><p>Sınıfı 2–4 takıma ayır; takım isimlerini oyun ekranında belirle.</p></div><div><strong>2. Soruyu tahtaya yansıt</strong><p>Takımların cevaplarını sözlü olarak al ve doğru seçeneği tahtadan işaretle.</p></div><div><strong>3. Puanları takip et</strong><p>Takım tablosu her cevap sonrası güncellenir. Gerekirse sınıf modundaki öğretmen puan kontrolünü kullan.</p></div></div>
+      </section>
+      <div class="teacher-note">Not: Tam ekran ve sunum görünümü bu cihazın tarayıcısında uygulanır. Oyunun kayıtları yine bu tarayıcıda saklanır; başka bir cihaza taşımak için Koleksiyon bölümündeki yedekleme araçlarını kullanabilirsin.</div>
+    </section>
+
+    <section class="view" id="glossaryView">
+      <div class="section-head"><div><div class="eyebrow">Başvuru defteri</div><h2>Kavram Rehberi</h2><p>Lale Devri konusundaki tarihî terimleri arayarak öğren. Açıklamalar 7. sınıf seviyesinde hazırlanmıştır.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="panel glossary-tools"><div class="glossary-search"><label for="glossarySearch">Kavram ara</label><input type="search" id="glossarySearch" placeholder="Örn. sefaretname, matbaa, sadrazam…" autocomplete="off"></div><div class="glossary-category"><label for="glossaryCategory">Konuya göre filtrele</label><select id="glossaryCategory"><option value="all">Bütün konular</option><option value="Yönetim">Yönetim</option><option value="Diplomasi">Diplomasi</option><option value="Kültür ve sanat">Kültür ve sanat</option><option value="Şehir hayatı">Şehir hayatı</option><option value="Olaylar ve tarih">Olaylar ve tarih</option></select></div><button class="subtle-btn glossary-clear" id="glossaryClearBtn" type="button">Filtreleri temizle</button></div>
+      <div class="glossary-result-line"><strong id="glossaryResultCount">0 kavram</strong><span>Bir kavrama dokunarak açıklamasını aç.</span></div>
+      <div class="glossary-grid" id="glossaryGrid"></div>
+      <div class="teacher-note">İpucu: Bir kavramı ararken kelimenin tamamını yazman gerekmez. Örneğin “sef” yazdığında “sefaretname” de listelenir.</div>
+    </section>
+
+    <section class="view" id="dailyView">
+      <div class="section-head"><div><div class="eyebrow">Günlük etkinlik</div><h2>Günün Meydan Okuması</h2><p>Her gün beş yeni soru. Bilgini tazele, puanını topla ve günlük serini sürdür.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="daily-banner"><div><div class="eyebrow">Bugünün tarih görevi</div><h2>Beş soruda tarih bilgin</h2><p>Her doğru cevap 20 meydan okuma puanı kazandırır. Beş soruyu tamamladığında 50 genel oyun puanı, hepsini doğru cevaplarsan ayrıca 25 bonus puan kazanırsın.</p><div class="daily-badges"><span id="dailyDateLabel">Bugün</span><span>5 soru</span><span>En yüksek ödül: 75 puan</span></div></div></div>
+      <div class="daily-stat-grid"><div class="daily-stat"><strong id="dailyStreakValue">0</strong><span>GÜNLÜK SERİ</span></div><div class="daily-stat"><strong id="dailyTotalValue">0</strong><span>TAMAMLANAN GÜNLÜK GÖREV</span></div><div class="daily-stat"><strong id="dailyBestValue">0 / 100</strong><span>EN İYİ MEYDAN OKUMA</span></div></div>
+      <div class="panel daily-panel" id="dailyIntroPanel"><div class="eyebrow">Göreve hazır mısın?</div><h3 id="dailyIntroTitle">Bugünün beş sorusu seni bekliyor.</h3><p id="dailyIntroText">Sorular Lale Devri'nin önemli kişileri, yenilikleri, eserleri ve olayları hakkındadır. Tek başına çözebilir veya sınıfı takımlara ayırabilirsin.</p><div class="daily-mode-buttons"><button class="primary-btn" id="dailySoloStartBtn" type="button">🧭 Tek Kişilik</button><button class="secondary-btn" id="dailyTeamModeBtn" type="button">🏆 Takım Yarışı</button></div></div>
+      <div class="panel daily-panel daily-team-setup hidden" id="dailyTeamSetup"><div class="daily-team-setup-top"><div><div class="eyebrow">Sınıf modu</div><h3>Takımları oluştur</h3><p>2–4 takım sırayla günlük soruları cevaplasın.</p></div><button class="back-btn" id="dailyTeamBackBtn" type="button">← Geri</button></div><div class="field"><label for="dailyTeamCount">Takım sayısı</label><select id="dailyTeamCount"><option value="2">2 takım</option><option value="3">3 takım</option><option value="4">4 takım</option></select></div><div class="daily-team-inputs" id="dailyTeamInputs"></div><div class="daily-team-setup-actions"><button class="primary-btn" id="dailyTeamStartBtn" type="button">Takım yarışını başlat →</button></div></div>
+      <div class="panel daily-panel hidden" id="dailyQuizPanel"><div class="daily-team-bar hidden" id="dailyTeamBar"><div class="daily-team-turn" id="dailyTeamTurn"></div><div class="daily-team-scores" id="dailyTeamScores"></div></div><div class="daily-progress"><span id="dailyQuestionCount">SORU 1 / 5</span><div class="progress-track"><div class="progress-fill" id="dailyProgressFill"></div></div><strong id="dailyLiveScore">0 / 100 puan</strong></div><div class="eyebrow">Günlük soru</div><h3 class="daily-question" id="dailyQuestionText"></h3><div class="daily-answers" id="dailyAnswers"></div><div class="feedback" id="dailyFeedback" aria-live="polite"></div><div class="quiz-footer"><span id="dailyHint" style="font:11px Arial,sans-serif;color:var(--muted)">Cevabını seç.</span><button class="primary-btn hidden" id="dailyNextBtn" type="button">Sonraki soru →</button></div></div>
+      <div class="panel daily-panel daily-result hidden" id="dailyResultPanel"><div class="daily-result-icon">🏅</div><div class="eyebrow">Günlük görev tamamlandı</div><h3 id="dailyResultTitle">Harika iş!</h3><p id="dailyResultText"></p><div class="daily-team-results hidden" id="dailyTeamResults"></div><button class="secondary-btn" id="dailyResultHomeBtn" type="button">Ana sayfaya dön</button></div>
+      <div class="teacher-note">Bilgi: Günlük sorular internet bağlantısı olmadan da çalışır. Günlük seri ve sonuçlar bu tarayıcıda saklanır; tarayıcı tarihine göre yeni görev hazırlanır.</div>
     </section>
   </main>
   <footer class="footer"><span>OSMANLI LALE DEVRİ · 7. SINIF TARİH MACERASI</span><span>İlerleme bu tarayıcıda saklanır · Tek dosya, çevrimdışı oynanabilir</span><span class="creator-credit">Bu oyun <strong>SoftArchX</strong> tarafından geliştirildi.</span></footer>
@@ -451,6 +640,18 @@ function answerIsCorrect(q,response){
  return response===q.c;
 }
 function correctAnswerText(q){return correctIndexes(q).map(i=>q.a[i]).join(' + ');}
+function hideTwoWrongOptions(wrap,q,selector='.answer-btn'){
+ const buttons=[...wrap.querySelectorAll(selector)];
+ const wrong=buttons.map((_,i)=>i).filter(i=>!correctIndexes(q).includes(i));
+ if(wrong.length<2)return [];
+ const removed=shuffle(wrong).slice(0,2);
+ removed.forEach(i=>{buttons[i].hidden=true;buttons[i].disabled=true;buttons[i].classList.add('eliminated');});
+ return removed;
+}
+function restoreHiddenOptions(wrap,indices,selector='.answer-btn'){
+ const buttons=[...wrap.querySelectorAll(selector)];
+ (Array.isArray(indices)?indices:[]).forEach(i=>{if(buttons[i]){buttons[i].hidden=true;buttons[i].disabled=true;buttons[i].classList.add('eliminated');}});
+}
 function createQuestionOptions(wrap,q,onAnswer){
  wrap.innerHTML='';const buttons=[];let selected=[];let checkButton=null;
  q.a.forEach((answer,i)=>{
@@ -473,8 +674,8 @@ function createQuestionOptions(wrap,q,onAnswer){
 }
 
 const defaultTeamNames=['Lale Takımı','Matbaa Takımı','Saray Takımı','Tulumbacı Takımı'];
-const defaultState={completed:[],points:0,chapterPoints:{},achievements:[],teams:[],classTurn:0,classQuestion:0,classChapter:0,classAnswers:[],classRunning:false,chapterProgress:{},classQuestionOrder:[],classTeamStreaks:[],atelierBest:{},atelierClaimed:[]};
-let state=loadState(),currentChapter=0,questionIndex=0,questionAnswered=false,classQuestionAnswered=false,toastTimer;
+const defaultState={completed:[],points:0,chapterPoints:{},achievements:[],teams:[],classTurn:0,classQuestion:0,classChapter:0,classAnswers:[],classRunning:false,chapterProgress:{},classQuestionOrder:[],classTeamStreaks:[],atelierBest:{},atelierClaimed:[],dailyChallenge:{date:'',order:[],index:0,score:0,answers:[],started:false,completed:false,reward:0,mode:'solo',teams:[],teamTurn:0},dailyStreak:0,lastDailyCompletedDate:'',dailyCompletedTotal:0,dailyBestScore:0};
+let state=loadState(),currentChapter=0,questionIndex=0,questionAnswered=false,classQuestionAnswered=false,toastTimer,classHintUsed=false,atelierHintUsed=false;
 const collectionCards=[
  {icon:'🕊️',title:'Pasarofça Mührü',date:'1718',text:'Pasarofça Antlaşması, Lale Devri olarak adlandırılan dönemin başlangıç noktası kabul edilir.'},
  {icon:'👑',title:'Sarayın İzleri',date:'III. Ahmet dönemi',text:'III. Ahmet padişah, Nevşehirli Damat İbrahim Paşa ise sadrazamdı.'},
@@ -493,7 +694,11 @@ const achievementInfo=[
  {name:'Koleksiyoncu',desc:'Dört tarih kartı aç.'},
  {name:'Tam Koleksiyon',desc:'Sekiz tarih kartının tamamını aç.'},
  {name:'Arşiv Dedektifi',desc:'Belge Avı etkinliğindeki bütün dosyaları tamamla.'},
- {name:'Atölye Ustası',desc:'Tarih Atölyesi’ndeki altı etkinliğin tamamını bitir.'}
+ {name:'Atölye Ustası',desc:'Tarih Atölyesi’ndeki yedi etkinliğin tamamını bitir.'},
+ {name:'Divan Danışmanı',desc:'Karar Divanı’ndaki bütün tarihî senaryoları tamamla.'},
+ {name:'Günlük Oyuncu',desc:'Bir günlük meydan okumayı tamamla.'},
+ {name:'İstikrarlı Tarihçi',desc:'Üç gün art arda günlük meydan okumayı tamamla.'},
+ {name:'Haftalık Seri',desc:'Yedi gün art arda günlük meydan okumayı tamamla.'}
 ];
 const atelierTimeline=[
  {id:'pasarofca',event:'Pasarofça Antlaşması imzalandı.',note:'Bu antlaşma, Lale Devri’nin başlangıcı kabul edilen gelişmedir.'},
@@ -546,17 +751,93 @@ const atelierCiphers=[
  {word:'PASAROFÇA',clue:'Lale Devri’nin başlangıcı kabul edilen antlaşma.',fact:'Pasarofça Antlaşması 1718’de imzalandı.'}
 ];
 
-let atelierMode='',atelierRound=0,atelierScore=0,atelierAnswered=false,atelierItems=[],atelierOrder=[];
+const atelierCouncil=[
+ {q:'Saray kütüphanesi için daha fazla kitabın çoğaltılması isteniyor. Matbaanın bu konuda sağlayabileceği en doğrudan katkı hangisidir?',a:['Kitapların daha çok nüsha hâlinde basılmasını kolaylaştırmak','Bütün kitapları ücretsiz hâle getirmek','El yazması eserleri yasaklamak','Kütüphaneleri kapatmak'],c:0,kind:'Tarihî durum',e:'Matbaa, eserlerin daha hızlı ve çok sayıda çoğaltılmasını kolaylaştırır. Bu, bilginin daha fazla nüshaya aktarılmasına yardımcı olur.'},
+ {q:'Fransa’ya gönderilen bir elçi, ülkenin kurumlarını ve günlük yaşamını gözlemliyor. Bu gözlemler en çok hangi amaçla değerlendirilebilir?',a:['Başka bir ülkeyi tanımak ve diplomatik ilişkilere bilgi sağlamak','Osmanlı’daki bütün kurumları hemen kaldırmak','Bir savaşın başladığını ilan etmek','Şehirdeki yangınları söndürmek'],c:0,kind:'Diplomasi senaryosu',e:'Elçilik yalnızca görüşme yapmak değildir. Elçinin gözlemleri, başka bir ülkeyi tanımaya ve diplomatik ilişkilere bilgi sağlamaya yardımcı olabilir.'},
+ {q:'İstanbul’da ahşap yapıların bulunduğu bir mahallede yangın çıkıyor. Bu tür olaylarda hangi görevliler yangınla mücadele ederdi?',a:['Tulumbacılar','Elçiler','Şairler','Matbaacılar'],c:0,kind:'Şehir hayatı senaryosu',e:'Tulumbacılar, su tulumbalarıyla yangınları söndürmeye çalışan görevlilerdi.'},
+ {q:'Bir araştırmacı Nedim ile Levni’yi aynı dönemin kültür hayatı içinde inceliyor. Hangi açıklama iki kişiyi doğru ayırt eder?',a:['Nedim şair, Levni minyatür sanatçısıdır.','Nedim elçi, Levni sadrazamdır.','İkisi de matbaayı kurmuştur.','İkisi de 1730 isyanının önderidir.'],c:0,kind:'Kültür ve sanat senaryosu',e:'Nedim şiirleriyle, Levni ise minyatür sanatıyla tanınır. İki isim dönemin farklı sanat alanlarını temsil eder.'},
+ {q:'Saray çevresinde gösterişli eğlenceler düzenlenirken toplumun bazı kesimleri ekonomik sıkıntılar yaşıyor. Bir tarihçi hangi sonuca varırken daha dikkatli davranmış olur?',a:['Saray çevresindeki refahın toplumun tamamını temsil etmediğini belirtmek','Herkesin aynı refah düzeyinde olduğunu söylemek','Dönemde hiçbir toplumsal sorun yaşanmadığını ileri sürmek','İsyanın tek nedeninin sanat faaliyetleri olduğunu iddia etmek'],c:0,kind:'Toplumsal yorum',e:'Dönemin gösterişli yaşamı özellikle saray ve çevresinde öne çıkıyordu. Toplumun bütün kesimleri aynı yaşam koşullarına sahip değildi.'},
+ {q:'1730’daki isyanı araştıran bir öğrenci ekonomik sıkıntıları, vergileri ve yönetimden duyulan hoşnutsuzluğu birlikte inceliyor. Bu yaklaşım neden yerindedir?',a:['Tarihî olayların birden fazla nedeni olabileceği için','Her tarihî olayın mutlaka tek nedeni olduğu için','Olayların sonuçları araştırılmaması gerektiği için','Sözlü anlatımların tek başına yeterli olduğu için'],c:0,kind:'Neden-sonuç analizi',e:'Tarihî olayları anlamak için siyasi, ekonomik ve toplumsal etkenleri birlikte değerlendirmek gerekir.'},
+ {q:'Bir belgede “Lale Devri” ifadesi kullanılıyor. Araştırmacı, bu adın o yıllarda resmî olarak kullanılmadığını biliyor. Nasıl bir not düşmesi en doğrusudur?',a:['Bu adın daha sonraki tarih yazımında yaygınlaştığını açıklamak','Bu adı III. Ahmet’in resmî unvanı olarak göstermek','Dönemde lale yetiştirilmediğini söylemek','Belgedeki bütün bilgileri geçersiz saymak'],c:0,kind:'Tarihsel kaynak yorumu',e:'“Lale Devri” adı dönemin resmî adı değildi; daha sonra tarihçi Ahmet Refik Altınay’ın çalışmalarıyla yaygınlaştı.'}
+];
+
+const dailyQuestionBank=[
+ {q:'Lale Devri’nin başlangıcı olarak kabul edilen antlaşma hangisidir?',a:['Pasarofça Antlaşması','Karlofça Antlaşması','Küçük Kaynarca Antlaşması','Zitvatorok Antlaşması'],c:0,e:'Pasarofça Antlaşması 1718’de imzalandı ve Lale Devri’nin başlangıcı kabul edilir.'},
+ {q:'Lale Devri sırasında Osmanlı tahtında hangi padişah bulunuyordu?',a:['I. Mahmut','III. Ahmet','II. Mahmut','IV. Mehmet'],c:1,e:'Lale Devri’nin padişahı III. Ahmet’tir.'},
+ {q:'Nevşehirli Damat İbrahim Paşa hangi görevdeydi?',a:['Sadrazam','Kaptan-ı derya','Elçi','Minyatür sanatçısı'],c:0,e:'Nevşehirli Damat İbrahim Paşa, dönemin sadrazamıydı.'},
+ {q:'Yirmisekiz Çelebi Mehmed Efendi 1720’de hangi ülkeye elçi gönderildi?',a:['Rusya','Fransa','İran','İngiltere'],c:1,e:'Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya gönderildi.'},
+ {q:'Bir Osmanlı elçisinin gittiği ülkeye dair gözlemlerini anlattığı esere ne ad verilir?',a:['Ferman','Sefaretname','Fetihname','Kanunname'],c:1,e:'Sefaretname, elçilerin gittikleri ülkeye ilişkin gözlem ve izlenimlerini aktardıkları yazıdır.'},
+ {q:'Türkçe eser basan ilk Müslüman matbaası için izin hangi yıl alındı?',a:['1718','1720','1727','1730'],c:2,e:'İbrahim Müteferrika ve Sait Efendi’nin girişimiyle matbaa için 1727’de izin alındı.'},
+ {q:'Matbaada ilk eserlerin yayımlandığı yıl hangisidir?',a:['1720','1727','1729','1730'],c:2,e:'Matbaa için izin 1727’de alındı; ilk eserler 1729’da basıldı.'},
+ {q:'İbrahim Müteferrika matbaa girişiminde kiminle birlikte öncü oldu?',a:['Sait Efendi','Nedim','Levni','Patrona Halil'],c:0,e:'İbrahim Müteferrika ve Sait Efendi, Türkçe eser basan Müslüman matbaasının kurulmasında öncü oldular.'},
+ {q:'Lale Devri’nin tanınmış şairi kimdir?',a:['Levni','Nedim','Piri Reis','Katip Çelebi'],c:1,e:'Nedim, Lale Devri’nin öne çıkan şairidir.'},
+ {q:'Levni hangi sanat dalıyla tanınır?',a:['Minyatür','Şiir','Denizcilik','Hat sanatı'],c:0,e:'Levni, Osmanlı minyatür sanatının tanınmış isimlerindendir.'},
+ {q:'Tulumbacıların temel görevi neydi?',a:['Kitap basmak','Yangınlarla mücadele etmek','Elçilik yapmak','Vergi toplamak'],c:1,e:'Tulumbacılar su tulumbalarıyla yangınları söndürmeye çalışırdı.'},
+ {q:'Sadabad, İstanbul’un hangi bölgesiyle ilişkilidir?',a:['Kâğıthane','Üsküdar','Eyüp','Sultanahmet'],c:0,e:'Sadabad, Kâğıthane çevresinde yer alan tanınmış dinlenme ve eğlence alanıydı.'},
+ {q:'III. Ahmet Çeşmesi hangi alanda verilen eserlere örnektir?',a:['Mimari','Denizcilik','Tıp','Tarım'],c:0,e:'III. Ahmet Çeşmesi, dönemin mimari eserleri arasında sayılır.'},
+ {q:'Lale Devri hangi isyan sonucunda sona erdi?',a:['Celali İsyanları','Patrona Halil İsyanı','Şeyh Bedreddin İsyanı','Kabakçı Mustafa İsyanı'],c:1,e:'1730’daki Patrona Halil İsyanı Lale Devri’nin sona ermesine yol açtı.'},
+ {q:'III. Ahmet’in tahttan çekilmesinden sonra kim padişah oldu?',a:['II. Osman','I. Mahmut','III. Selim','IV. Murat'],c:1,e:'1730’da III. Ahmet’in yerine I. Mahmut tahta çıktı.'},
+ {q:'Osmanlı topraklarında Lale Devri’nden önce matbaa bulunmadığı iddiası neden doğru değildir?',a:['Gayrimüslim toplulukların daha önce matbaaları vardı.','Matbaa yalnızca sarayda kullanılıyordu.','Matbaa 1800’lerde icat edildi.','Kitaplar hiç basılmıyordu.'],c:0,e:'Osmanlı topraklarında gayrimüslim toplulukların matbaaları daha önce de bulunuyordu. Burada söz edilen Türkçe eser basan ilk Müslüman matbaasıdır.'},
+ {q:'Lale Devri’ndeki gösterişli yaşam toplumun tamamı için aynı refahı mı gösterir?',a:['Evet, herkes aynı koşullardaydı.','Hayır, refah toplumun her kesimine eşit yansımadı.','Evet, ekonomik sorun yaşanmadı.','Hayır, İstanbul’da hiç yapı inşa edilmedi.'],c:1,e:'Gösterişli yaşam özellikle saray ve çevresinde öne çıktı; toplumun bütün kesimleri aynı refahı yaşamıyordu.'},
+ {q:'Matbaanın bilgi hayatına katkılarından biri nedir?',a:['Kitapların daha çok nüsha hâlinde çoğaltılmasını kolaylaştırması','Bütün kitapları ücretsiz yapması','El yazısını yasaklaması','Eğitimi sona erdirmesi'],c:0,e:'Matbaa, kitapların daha hızlı ve çok sayıda çoğaltılmasını kolaylaştırdı.'},
+ {q:'“Lale Devri” adıyla ilgili hangi ifade doğrudur?',a:['Dönemin resmî adıydı.','O yıllarda padişah tarafından verilmişti.','Daha sonra tarih yazımında yaygınlaştı.','Bir antlaşmanın adıydı.'],c:2,e:'“Lale Devri” adı dönemin resmî adı değildi; tarihçi Ahmet Refik Altınay’ın çalışmalarıyla 20. yüzyıl başlarında yaygınlaştı.'},
+ {q:'Lale Devri’ni anlamak için hangi yaklaşım daha uygundur?',a:['Sadece saray eğlencelerine bakmak','Yenilikleri ve dönemin toplumsal sorunlarını birlikte değerlendirmek','Bütün gelişmeleri tek nedene bağlamak','Yalnızca sanat eserlerini incelemek'],c:1,e:'Dönemi dengeli anlamak için kültürel gelişmeleri, yönetimi ve toplumsal-ekonomik koşulları birlikte değerlendirmek gerekir.'}
+];
+
+const glossaryTerms=[
+ {term:'Antlaşma',category:'Olaylar ve tarih',definition:'İki veya daha fazla devlet arasında yapılan, tarafların üzerinde anlaştığı konuları belirleyen yazılı anlaşmadır.'},
+ {term:'Pasarofça Antlaşması',category:'Olaylar ve tarih',definition:'1718’de Osmanlı Devleti ile Avusturya ve Venedik arasında imzalanan antlaşmadır. Lale Devri’nin başlangıcı genellikle bu tarihle ilişkilendirilir.'},
+ {term:'Sadrazam',category:'Yönetim',definition:'Osmanlı Devleti’nde padişahtan sonra yönetimde en yetkili görevliydi. Lale Devri’nin sadrazamı Nevşehirli Damat İbrahim Paşa’ydı.'},
+ {term:'Padişah',category:'Yönetim',definition:'Osmanlı Devleti’nin hükümdarına verilen unvandır. Lale Devri sırasında padişah III. Ahmet’ti.'},
+ {term:'Elçi',category:'Diplomasi',definition:'Bir devleti başka bir devletin yanında temsil eden diplomatik görevlidir.'},
+ {term:'Sefaretname',category:'Diplomasi',definition:'Osmanlı elçilerinin gittikleri ülkeler hakkındaki gözlem ve izlenimlerini anlattıkları yazılı eserdir.'},
+ {term:'Yirmisekiz Çelebi Mehmed Efendi',category:'Diplomasi',definition:'1720’de Fransa’ya elçi olarak gönderildi. Fransa’daki yaşamı, kurumları ve yapıları gözlemledi.'},
+ {term:'Matbaa',category:'Kültür ve sanat',definition:'Yazı ve görsellerin çok sayıda nüsha hâlinde basılmasını sağlayan araç ve üretim yöntemidir.'},
+ {term:'İbrahim Müteferrika',category:'Kültür ve sanat',definition:'Sait Efendi ile birlikte Türkçe eser basan ilk Müslüman matbaasının kurulmasında öncü oldu.'},
+ {term:'Minyatür',category:'Kültür ve sanat',definition:'El yazması eserleri süslemek veya anlatımı desteklemek için yapılan, ayrıntılı ve küçük boyutlu resim sanatıdır.'},
+ {term:'Levni',category:'Kültür ve sanat',definition:'Osmanlı minyatür sanatının tanınmış sanatçılarından biridir.'},
+ {term:'Nedim',category:'Kültür ve sanat',definition:'Lale Devri’nin tanınmış şairlerinden biridir.'},
+ {term:'Sadabad',category:'Şehir hayatı',definition:'İstanbul’da Kâğıthane çevresinde, Lale Devri’nde tanınan dinlenme ve eğlence alanıdır.'},
+ {term:'Tulumbacı',category:'Şehir hayatı',definition:'Su tulumbaları kullanarak yangınları söndürmeye çalışan görevlidir.'},
+ {term:'III. Ahmet Çeşmesi',category:'Şehir hayatı',definition:'İstanbul’da bulunan ve Lale Devri’nin mimari eserleri arasında anılan tarihî çeşmedir.'},
+ {term:'İsyan',category:'Olaylar ve tarih',definition:'Bir yönetim veya otoriteye karşı düzenlenen toplu başkaldırıdır.'},
+ {term:'Patrona Halil İsyanı',category:'Olaylar ve tarih',definition:'1730’da İstanbul’da çıkan ve Lale Devri’nin sona ermesine yol açan isyandır. İsyan sonrasında III. Ahmet tahttan çekilmiş, I. Mahmut tahta çıkmıştır.'},
+ {term:'Kronoloji',category:'Olaylar ve tarih',definition:'Tarihî olayları gerçekleşme zamanlarına göre sıralama ve inceleme yöntemidir.'},
+ {term:'Kaynak',category:'Olaylar ve tarih',definition:'Geçmiş hakkında bilgi edinmemizi sağlayan belge, eşya, yapı, yazı veya görsel gibi kanıtlardır.'},
+ {term:'Tarihsel yorum',category:'Olaylar ve tarih',definition:'Tarihî kaynaklardan ve kanıtlardan yararlanarak geçmişteki olayları anlamlandırma çalışmasıdır.'}
+];
+
+let atelierMode='',atelierRound=0,atelierScore=0,atelierAnswered=false,atelierItems=[],atelierOrder=[],atelierOrderTeams=[],atelierPendingMode='',atelierPlayMode='solo',atelierTeams=[],atelierTeamTurn=0;
 let memoryDeck=[],memoryOpen=[],memoryMatched=[],memoryMoves=0,memoryBusy=false;
 let cipherLetters=[],cipherSelected=[],cipherSolved=false;
 
-function loadState(){try{const raw=localStorage.getItem('laleDevriGameV1');if(!raw)return structuredClone(defaultState);const parsed=JSON.parse(raw);return {...structuredClone(defaultState),...parsed,chapterProgress:parsed.chapterProgress||{},classQuestionOrder:parsed.classQuestionOrder||[],classTeamStreaks:parsed.classTeamStreaks||[],atelierBest:parsed.atelierBest||{},atelierClaimed:parsed.atelierClaimed||[]};}catch(e){return structuredClone(defaultState);}}
+function loadState(){try{const raw=localStorage.getItem('laleDevriGameV1');if(!raw)return structuredClone(defaultState);const parsed=JSON.parse(raw);return {...structuredClone(defaultState),...parsed,chapterProgress:parsed.chapterProgress||{},classQuestionOrder:parsed.classQuestionOrder||[],classTeamStreaks:parsed.classTeamStreaks||[],atelierBest:parsed.atelierBest||{},atelierClaimed:parsed.atelierClaimed||[],dailyChallenge:{...structuredClone(defaultState.dailyChallenge),...(parsed.dailyChallenge||{})},dailyStreak:Math.max(0,Number(parsed.dailyStreak)||0),dailyCompletedTotal:Math.max(0,Number(parsed.dailyCompletedTotal)||0),dailyBestScore:Math.max(0,Math.min(100,Number(parsed.dailyBestScore)||0)),lastDailyCompletedDate:typeof parsed.lastDailyCompletedDate==='string'?parsed.lastDailyCompletedDate:''};}catch(e){return structuredClone(defaultState);}}
 function saveState(){try{localStorage.setItem('laleDevriGameV1',JSON.stringify(state));}catch(e){showToast('Tarayıcı kaydı yapılamadı. Tarayıcı depolama alanını kontrol et.');}}
 function showToast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800);}
 function exportSave(){try{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='lale-devri-oyun-yedegi.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showToast('Oyun yedeğin indirildi.');}catch(e){showToast('Yedek oluşturulamadı.');}}
-function importSaveFile(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(String(reader.result||''));if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('Geçersiz yedek');const clean=structuredClone(defaultState);clean.completed=Array.isArray(data.completed)?[...new Set(data.completed.filter(n=>Number.isInteger(n)&&n>=0&&n<chapters.length))].sort((a,b)=>a-b):[];clean.points=Number.isFinite(Number(data.points))?Math.max(0,Math.min(100000000,Number(data.points))):0;clean.chapterPoints={};if(data.chapterPoints&&typeof data.chapterPoints==='object')Object.entries(data.chapterPoints).forEach(([k,v])=>{const i=Number(k),n=Number(v);if(Number.isInteger(i)&&i>=0&&i<chapters.length&&Number.isFinite(n))clean.chapterPoints[i]=Math.max(0,Math.min(100000000,n));});clean.achievements=Array.isArray(data.achievements)?[...new Set(data.achievements.filter(x=>achievementInfo.some(a=>a.name===x)))]:[];clean.teams=Array.isArray(data.teams)?data.teams.slice(0,4).map((t,i)=>({name:String(t?.name||defaultTeamNames[i]).slice(0,24),score:Number.isFinite(Number(t?.score))?Math.max(0,Math.min(100000000,Number(t.score))):0})):[];clean.classTurn=clean.teams.length?Math.max(0,Math.min(clean.teams.length-1,Number(data.classTurn)||0)):0;clean.classQuestion=Math.max(0,Number.isInteger(data.classQuestion)?data.classQuestion:0);clean.classChapter=Math.max(0,Math.min(chapters.length-1,Number(data.classChapter)||0));clean.classAnswers=Array.isArray(data.classAnswers)?data.classAnswers.filter(x=>x&&Number.isInteger(x.chapter)&&x.chapter>=0&&x.chapter<chapters.length&&Number.isInteger(x.question)&&x.question>=0&&x.question<chapters[x.chapter].questions.length&&Number.isInteger(x.team)&&x.team>=0&&x.team<clean.teams.length).slice(-500):[];clean.classRunning=Boolean(data.classRunning);clean.classQuestionOrder=Array.isArray(data.classQuestionOrder)?data.classQuestionOrder.filter(x=>x&&Number.isInteger(x.chapter)&&x.chapter>=0&&x.chapter<chapters.length&&Number.isInteger(x.question)&&x.question>=0&&x.question<chapters[x.chapter].questions.length).slice(0,100):[];clean.classTeamStreaks=clean.teams.map((_,i)=>Math.max(0,Math.min(2,Number(data.classTeamStreaks?.[i])||0)));clean.chapterProgress={};if(data.chapterProgress&&typeof data.chapterProgress==='object')Object.entries(data.chapterProgress).forEach(([k,v])=>{const i=Number(k);if(Number.isInteger(i)&&i>=0&&i<chapters.length&&v&&typeof v==='object'){clean.chapterProgress[i]={index:Math.max(0,Math.min(chapters[i].questions.length-1,Number(v.index)||0)),answered:Boolean(v.answered),selected:Array.isArray(v.selected)?[...new Set(v.selected.filter(n=>Number.isInteger(n)&&n>=0&&n<4))].slice(0,4):(Number.isInteger(v.selected)&&v.selected>=0&&v.selected<4?v.selected:null)};}});clean.atelierBest={};const limits={chronology:100,people:120,truefalse:160,detective:120,memory:150,cipher:120};Object.entries(limits).forEach(([k,max])=>{if(Number.isFinite(Number(data.atelierBest?.[k])))clean.atelierBest[k]=Math.max(0,Math.min(max,Number(data.atelierBest[k])));});clean.atelierClaimed=Array.isArray(data.atelierClaimed)?[...new Set(data.atelierClaimed.filter(k=>Object.hasOwn(limits,k)))]:[];state=clean;updateAchievements();saveState();renderMap();renderCollection();renderAtelierMenu();createTeamInputs();showToast('Yedek başarıyla geri yüklendi.');}catch(e){showToast('Bu dosya geçerli bir Lale Devri oyun yedeği değil.');}document.getElementById('importSaveFile').value='';};reader.onerror=()=>showToast('Yedek dosyası okunamadı.');reader.readAsText(file);}
-function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));window.scrollTo({top:0,behavior:'smooth'});}
-function updateAchievements(){const done=state.completed.length;if(done>=1&&!state.achievements.includes('İlk Adım'))state.achievements.push('İlk Adım');if(done>=4&&!state.achievements.includes('Tarih Meraklısı'))state.achievements.push('Tarih Meraklısı');if(done>=8&&!state.achievements.includes('Lale Devri Uzmanı'))state.achievements.push('Lale Devri Uzmanı');if(state.points>=500&&!state.achievements.includes('Bilgi Avcısı'))state.achievements.push('Bilgi Avcısı');if(done>=4&&!state.achievements.includes('Koleksiyoncu'))state.achievements.push('Koleksiyoncu');if(done>=8&&!state.achievements.includes('Tam Koleksiyon'))state.achievements.push('Tam Koleksiyon');if(state.atelierClaimed.includes('detective')&&!state.achievements.includes('Arşiv Dedektifi'))state.achievements.push('Arşiv Dedektifi');if(['chronology','people','truefalse','detective','memory','cipher'].every(k=>state.atelierClaimed.includes(k))&&!state.achievements.includes('Atölye Ustası'))state.achievements.push('Atölye Ustası');}
+function importSaveFile(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(String(reader.result||''));if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('Geçersiz yedek');const clean=structuredClone(defaultState);clean.completed=Array.isArray(data.completed)?[...new Set(data.completed.filter(n=>Number.isInteger(n)&&n>=0&&n<chapters.length))].sort((a,b)=>a-b):[];clean.points=Number.isFinite(Number(data.points))?Math.max(0,Math.min(100000000,Number(data.points))):0;clean.chapterPoints={};if(data.chapterPoints&&typeof data.chapterPoints==='object')Object.entries(data.chapterPoints).forEach(([k,v])=>{const i=Number(k),n=Number(v);if(Number.isInteger(i)&&i>=0&&i<chapters.length&&Number.isFinite(n))clean.chapterPoints[i]=Math.max(0,Math.min(100000000,n));});clean.achievements=Array.isArray(data.achievements)?[...new Set(data.achievements.filter(x=>achievementInfo.some(a=>a.name===x)))]:[];clean.teams=Array.isArray(data.teams)?data.teams.slice(0,4).map((t,i)=>({name:String(t?.name||defaultTeamNames[i]).slice(0,24),score:Number.isFinite(Number(t?.score))?Math.max(0,Math.min(100000000,Number(t.score))):0})):[];clean.classTurn=clean.teams.length?Math.max(0,Math.min(clean.teams.length-1,Number(data.classTurn)||0)):0;clean.classQuestion=Math.max(0,Number.isInteger(data.classQuestion)?data.classQuestion:0);clean.classChapter=Math.max(0,Math.min(chapters.length-1,Number(data.classChapter)||0));clean.classAnswers=Array.isArray(data.classAnswers)?data.classAnswers.filter(x=>x&&Number.isInteger(x.chapter)&&x.chapter>=0&&x.chapter<chapters.length&&Number.isInteger(x.question)&&x.question>=0&&x.question<chapters[x.chapter].questions.length&&Number.isInteger(x.team)&&x.team>=0&&x.team<clean.teams.length).slice(-500):[];clean.classRunning=Boolean(data.classRunning);clean.classQuestionOrder=Array.isArray(data.classQuestionOrder)?data.classQuestionOrder.filter(x=>x&&Number.isInteger(x.chapter)&&x.chapter>=0&&x.chapter<chapters.length&&Number.isInteger(x.question)&&x.question>=0&&x.question<chapters[x.chapter].questions.length).slice(0,100):[];clean.classTeamStreaks=clean.teams.map((_,i)=>Math.max(0,Math.min(2,Number(data.classTeamStreaks?.[i])||0)));clean.chapterProgress={};if(data.chapterProgress&&typeof data.chapterProgress==='object')Object.entries(data.chapterProgress).forEach(([k,v])=>{const i=Number(k);if(Number.isInteger(i)&&i>=0&&i<chapters.length&&v&&typeof v==='object'){clean.chapterProgress[i]={index:Math.max(0,Math.min(chapters[i].questions.length-1,Number(v.index)||0)),answered:Boolean(v.answered),selected:Array.isArray(v.selected)?[...new Set(v.selected.filter(n=>Number.isInteger(n)&&n>=0&&n<4))].slice(0,4):(Number.isInteger(v.selected)&&v.selected>=0&&v.selected<4?v.selected:null),streak:Math.max(0,Math.min(2,Number(v.streak)||0)),hintUsed:Boolean(v.hintUsed),eliminated:Array.isArray(v.eliminated)?[...new Set(v.eliminated.filter(n=>Number.isInteger(n)&&n>=0&&n<4))].slice(0,2):[]};}});clean.atelierBest={};const limits={chronology:100,people:120,truefalse:160,detective:120,memory:150,cipher:120,council:140};Object.entries(limits).forEach(([k,max])=>{if(Number.isFinite(Number(data.atelierBest?.[k])))clean.atelierBest[k]=Math.max(0,Math.min(max,Number(data.atelierBest[k])));});clean.atelierClaimed=Array.isArray(data.atelierClaimed)?[...new Set(data.atelierClaimed.filter(k=>Object.hasOwn(limits,k)))]:[];const dc=data.dailyChallenge&&typeof data.dailyChallenge==='object'?data.dailyChallenge:{};clean.dailyChallenge={date:/^\d{4}-\d{2}-\d{2}$/.test(dc.date||'')?dc.date:'',order:Array.isArray(dc.order)?dc.order.filter(n=>Number.isInteger(n)&&n>=0&&n<dailyQuestionBank.length).slice(0,5):[],index:Math.max(0,Math.min(4,Number(dc.index)||0)),score:Math.max(0,Math.min(100,Number(dc.score)||0)),answers:Array.isArray(dc.answers)?dc.answers.slice(0,5).map(a=>a&&Number.isInteger(a.selected)?{selected:Math.max(0,Math.min(3,a.selected)),correct:Boolean(a.correct)}:null):[],started:Boolean(dc.started),completed:Boolean(dc.completed),reward:Math.max(0,Math.min(75,Number(dc.reward)||0)),mode:dc.mode==='teams'?'teams':'solo',teams:Array.isArray(dc.teams)?dc.teams.slice(0,4).map((t,i)=>({name:String(t?.name||defaultTeamNames[i]).slice(0,24),score:Math.max(0,Math.min(1000,Number(t?.score)||0))})):[],teamTurn:Math.max(0,Math.min(3,Number(dc.teamTurn)||0))};clean.dailyStreak=Math.max(0,Math.min(10000,Number(data.dailyStreak)||0));clean.lastDailyCompletedDate=typeof data.lastDailyCompletedDate==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(data.lastDailyCompletedDate)?data.lastDailyCompletedDate:'';clean.dailyCompletedTotal=Math.max(0,Math.min(1000000,Number(data.dailyCompletedTotal)||0));clean.dailyBestScore=Math.max(0,Math.min(100,Number(data.dailyBestScore)||0));state=clean;updateAchievements();saveState();renderMap();renderCollection();renderAtelierMenu();createTeamInputs();renderDailyHomeCard();renderQuestLog();renderTeacherDesk();showToast('Yedek başarıyla geri yüklendi.');}catch(e){showToast('Bu dosya geçerli bir Lale Devri oyun yedeği değil.');}document.getElementById('importSaveFile').value='';};reader.onerror=()=>showToast('Yedek dosyası okunamadı.');reader.readAsText(file);}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));if(id==='homeView'&&typeof renderDailyHomeCard==='function')renderDailyHomeCard();if(id==='questLogView')renderQuestLog();if(id==='teacherDeskView')renderTeacherDesk();window.scrollTo({top:0,behavior:'smooth'});}
+function updateAchievements(){const done=state.completed.length;if(done>=1&&!state.achievements.includes('İlk Adım'))state.achievements.push('İlk Adım');if(done>=4&&!state.achievements.includes('Tarih Meraklısı'))state.achievements.push('Tarih Meraklısı');if(done>=8&&!state.achievements.includes('Lale Devri Uzmanı'))state.achievements.push('Lale Devri Uzmanı');if(state.points>=500&&!state.achievements.includes('Bilgi Avcısı'))state.achievements.push('Bilgi Avcısı');if(done>=4&&!state.achievements.includes('Koleksiyoncu'))state.achievements.push('Koleksiyoncu');if(done>=8&&!state.achievements.includes('Tam Koleksiyon'))state.achievements.push('Tam Koleksiyon');if(state.atelierClaimed.includes('detective')&&!state.achievements.includes('Arşiv Dedektifi'))state.achievements.push('Arşiv Dedektifi');if(state.atelierClaimed.includes('council')&&!state.achievements.includes('Divan Danışmanı'))state.achievements.push('Divan Danışmanı');if(['chronology','people','truefalse','detective','memory','cipher','council'].every(k=>state.atelierClaimed.includes(k))&&!state.achievements.includes('Atölye Ustası'))state.achievements.push('Atölye Ustası');if(state.dailyCompletedTotal>=1&&!state.achievements.includes('Günlük Oyuncu'))state.achievements.push('Günlük Oyuncu');if(state.dailyStreak>=3&&!state.achievements.includes('İstikrarlı Tarihçi'))state.achievements.push('İstikrarlı Tarihçi');if(state.dailyStreak>=7&&!state.achievements.includes('Haftalık Seri'))state.achievements.push('Haftalık Seri');}
+function localDateKey(date=new Date()){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`;}
+function offsetDateKey(key,days){const [y,m,d]=key.split('-').map(Number);return localDateKey(new Date(y,m-1,d+days));}
+function seededDailyOrder(dateKey){let seed=Array.from(dateKey).reduce((acc,ch)=>(Math.imul(acc,31)+ch.charCodeAt(0))>>>0,2166136261);const pool=dailyQuestionBank.map((_,i)=>i);for(let i=pool.length-1;i>0;i--){seed=(Math.imul(seed,1664525)+1013904223)>>>0;const j=seed%(i+1);[pool[i],pool[j]]=[pool[j],pool[i]];}return pool.slice(0,5);}
+function ensureDailyChallenge(){const today=localDateKey();const dc=state.dailyChallenge||{};const validOrder=Array.isArray(dc.order)&&dc.order.length===5&&new Set(dc.order).size===5&&dc.order.every(n=>Number.isInteger(n)&&n>=0&&n<dailyQuestionBank.length);if(dc.date!==today||!validOrder){state.dailyChallenge={date:today,order:seededDailyOrder(today),index:0,score:0,answers:[],started:false,completed:false,reward:0,mode:'solo',teams:[],teamTurn:0};saveState();}return state.dailyChallenge;}
+function displayedDailyStreak(){const today=localDateKey(),last=state.lastDailyCompletedDate;if(last===today||last===offsetDateKey(today,-1))return state.dailyStreak;return 0;}
+function renderDailyHomeCard(){const dc=ensureDailyChallenge();const status=document.getElementById('dailyHomeStatus'),button=document.getElementById('dailyHomeBtn');if(!status||!button)return;const completed=dc.completed;status.textContent=completed?'✓ Bugünkü görev tamamlandı':dc.started?`Devam edebilirsin · ${Math.min(dc.index+1,5)}. soru`:'Bugünün 5 sorusu hazır';button.textContent=completed?'Bugünkü sonucu gör':dc.started?(dc.mode==='teams'?'Takım yarışına devam et →':'Göreve devam et →'):'Meydan okumaya başla →';}
+function updateDailyStats(){document.getElementById('dailyStreakValue').textContent=displayedDailyStreak();document.getElementById('dailyTotalValue').textContent=state.dailyCompletedTotal||0;document.getElementById('dailyBestValue').textContent=`${state.dailyBestScore||0} / 100`;const date=new Date();const label=new Intl.DateTimeFormat('tr-TR',{weekday:'long',day:'numeric',month:'long'}).format(date);document.getElementById('dailyDateLabel').textContent=label.charAt(0).toLocaleUpperCase('tr-TR')+label.slice(1);}
+function openDailyChallenge(){const dc=ensureDailyChallenge();renderDailyHomeCard();updateDailyStats();showView('dailyView');if(dc.completed){renderDailyResult();return;}if(dc.started){renderDailyQuestion();return;}document.getElementById('dailyIntroPanel').classList.remove('hidden');document.getElementById('dailyTeamSetup').classList.add('hidden');document.getElementById('dailyQuizPanel').classList.add('hidden');document.getElementById('dailyResultPanel').classList.add('hidden');}
+function buildDailyTeamInputs(){const count=Number(document.getElementById('dailyTeamCount').value)||2,wrap=document.getElementById('dailyTeamInputs');wrap.innerHTML='';for(let i=0;i<count;i++){const field=document.createElement('div');field.className='field';const label=document.createElement('label');label.htmlFor=`dailyTeamName${i}`;label.textContent=`${i+1}. takım adı`;const input=document.createElement('input');input.id=`dailyTeamName${i}`;input.maxLength=24;input.value=defaultTeamNames[i];input.placeholder=defaultTeamNames[i];field.append(label,input);wrap.appendChild(field);}}
+function prepareDailyTeams(){document.getElementById('dailyTeamSetup').classList.remove('hidden');document.getElementById('dailyIntroPanel').classList.add('hidden');buildDailyTeamInputs();}
+function startDailyChallenge(mode='solo',teams=[]){const dc=ensureDailyChallenge();if(dc.completed){renderDailyResult();return;}dc.mode=mode==='teams'&&teams.length>1?'teams':'solo';dc.teams=dc.mode==='teams'?teams.map(t=>({name:String(t.name||'Takım').slice(0,24),score:0})):[];dc.teamTurn=0;dc.started=true;saveState();renderDailyHomeCard();document.getElementById('dailyIntroPanel').classList.add('hidden');document.getElementById('dailyTeamSetup').classList.add('hidden');renderDailyQuestion();}
+function startDailyTeamChallenge(){const count=Number(document.getElementById('dailyTeamCount').value)||2;const teams=Array.from({length:count},(_,i)=>({name:(document.getElementById(`dailyTeamName${i}`)?.value.trim()||defaultTeamNames[i]).slice(0,24),score:0}));startDailyChallenge('teams',teams);}
+function updateDailyTeamBoard(){const dc=ensureDailyChallenge(),bar=document.getElementById('dailyTeamBar'),active=dc.mode==='teams'&&dc.teams.length>1;bar.classList.toggle('hidden',!active);if(!active)return;const current=dc.teams[dc.teamTurn]||dc.teams[0];document.getElementById('dailyTeamTurn').textContent=`Sıradaki takım: ${current.name}`;document.getElementById('dailyTeamScores').innerHTML=dc.teams.map((t,i)=>`<div class="daily-team-score${i===dc.teamTurn?' active':''}"><span>${escapeHtml(t.name)}</span><strong>${t.score} puan</strong></div>`).join('');}
+function renderDailyQuestion(){const dc=ensureDailyChallenge();if(dc.completed){renderDailyResult();return;}const index=dc.index,item=dailyQuestionBank[dc.order[index]];if(!item)return;document.getElementById('dailyIntroPanel').classList.add('hidden');document.getElementById('dailyTeamSetup').classList.add('hidden');document.getElementById('dailyResultPanel').classList.add('hidden');document.getElementById('dailyQuizPanel').classList.remove('hidden');document.getElementById('dailyQuestionCount').textContent=`SORU ${index+1} / 5`;document.getElementById('dailyProgressFill').style.width=`${index/5*100}%`;document.getElementById('dailyLiveScore').textContent=`${dc.score} / 100 puan`;document.getElementById('dailyQuestionText').textContent=item.q;const wrap=document.getElementById('dailyAnswers');wrap.innerHTML='';item.a.forEach((answer,i)=>{const b=document.createElement('button');b.type='button';b.className='daily-answer';b.textContent=`${String.fromCharCode(65+i)}. ${answer}`;b.addEventListener('click',()=>answerDailyQuestion(i));wrap.appendChild(b);});const fb=document.getElementById('dailyFeedback');fb.className='feedback';fb.textContent='';document.getElementById('dailyNextBtn').classList.add('hidden');document.getElementById('dailyHint').textContent=dc.mode==='teams'?`${dc.teams[dc.teamTurn]?.name||'Takım'} cevap versin.`:'Bir seçeneği işaretle.';updateDailyTeamBoard();const prior=dc.answers[index];if(prior){showDailyAnswer(prior.selected,true);}}
+function showDailyAnswer(selected,restored=false){const dc=ensureDailyChallenge(),index=dc.index,item=dailyQuestionBank[dc.order[index]],prior=dc.answers[index];if(!prior)return;const buttons=[...document.querySelectorAll('#dailyAnswers .daily-answer')];buttons.forEach((b,i)=>{b.disabled=true;if(i===item.c)b.classList.add('correct');if(i===selected&&i!==item.c)b.classList.add('wrong');});document.getElementById('dailyProgressFill').style.width=`${Math.min(100,(index+1)/5*100)}%`;const fb=document.getElementById('dailyFeedback');fb.className=`feedback ${prior.correct?'good':'bad'} show`;const teamName=dc.mode==='teams'?`${dc.teams[dc.teamTurn]?.name||'Takım'}: `:'';fb.textContent=teamName+(prior.correct?'Doğru cevap! +20 meydan okuma puanı. ':'Bu kez olmadı. Doğru cevap: '+item.a[item.c]+'. ')+item.e;document.getElementById('dailyHint').textContent=restored?'Cevabın kaydedilmiş.':'Cevabın kaydedildi.';document.getElementById('dailyNextBtn').classList.remove('hidden');document.getElementById('dailyNextBtn').textContent=index===4?'Sonucu gör 🏅':'Sonraki soru →';}
+function answerDailyQuestion(selected){const dc=ensureDailyChallenge();if(dc.answers[dc.index])return;const item=dailyQuestionBank[dc.order[dc.index]],correct=selected===item.c;dc.answers[dc.index]={selected,correct};if(correct){dc.score+=20;if(dc.mode==='teams'&&dc.teams[dc.teamTurn])dc.teams[dc.teamTurn].score+=20;}state.dailyBestScore=Math.max(state.dailyBestScore||0,dc.score);saveState();showDailyAnswer(selected);document.getElementById('dailyLiveScore').textContent=`${dc.score} / 100 puan`;updateDailyStats();updateDailyTeamBoard();}
+function nextDailyQuestion(){const dc=ensureDailyChallenge();if(!dc.answers[dc.index])return;if(dc.index<4){dc.index++;if(dc.mode==='teams'&&dc.teams.length>1)dc.teamTurn=(dc.teamTurn+1)%dc.teams.length;saveState();renderDailyQuestion();}else completeDailyChallenge();}
+function completeDailyChallenge(){const dc=ensureDailyChallenge();if(dc.completed){renderDailyResult();return;}const today=localDateKey(),yesterday=offsetDateKey(today,-1);if(state.lastDailyCompletedDate!==today){state.dailyStreak=state.lastDailyCompletedDate===yesterday?state.dailyStreak+1:1;state.lastDailyCompletedDate=today;state.dailyCompletedTotal=(state.dailyCompletedTotal||0)+1;const reward=50+(dc.score===100?25:0);dc.reward=reward;state.points+=reward;}dc.completed=true;state.dailyBestScore=Math.max(state.dailyBestScore||0,dc.score);updateAchievements();saveState();updateProgress();renderCollection();renderDailyHomeCard();updateDailyStats();renderDailyResult();}
+function renderDailyResult(){const dc=ensureDailyChallenge();document.getElementById('dailyIntroPanel').classList.add('hidden');document.getElementById('dailyTeamSetup').classList.add('hidden');document.getElementById('dailyQuizPanel').classList.add('hidden');document.getElementById('dailyResultPanel').classList.remove('hidden');const perfect=dc.score===100;document.getElementById('dailyResultTitle').textContent=perfect?'Mükemmel sonuç!':'Meydan okuma tamamlandı!';const reward=dc.reward||50+(perfect?25:0);document.getElementById('dailyResultText').textContent=`Beş soruda ${dc.score} / 100 puan kazandın. ${reward} genel oyun puanı bu tarayıcının oyun hesabına eklendi. Günlük serin: ${displayedDailyStreak()} gün. ${perfect?'Bütün soruları doğru cevapladığın için 25 bonus puan kazandın.':'Yarın yeni sorularla tekrar karşılaşabilirsin.'}`;const board=document.getElementById('dailyTeamResults');if(dc.mode==='teams'&&dc.teams.length>1){const ordered=[...dc.teams].sort((a,b)=>b.score-a.score),tie=ordered.length>1&&ordered[0].score===ordered[1].score;board.classList.remove('hidden');board.innerHTML=`<h4>${tie?'Takımlar berabere!':'Günlük takım sıralaması'}</h4><ol>${ordered.map((t,i)=>`<li>${['🥇','🥈','🥉','🏅'][i]||'•'} ${escapeHtml(t.name)} <strong>${t.score} puan</strong></li>`).join('')}</ol>`;}else{board.classList.add('hidden');board.innerHTML='';}document.getElementById('dailyResultHomeBtn').textContent='Ana sayfaya dön';}
+
 function updateProgress(){const done=state.completed.length;document.getElementById('progressLabel').textContent=`${done} / ${chapters.length} bölüm tamamlandı`;document.getElementById('progressSub').textContent=done===chapters.length?'Tebrikler! Bütün bölümleri tamamladın.':done?`${chapters.length-done} bölüm daha seni bekliyor.`:'İlk görevin seni bekliyor.';document.getElementById('progressFill').style.width=`${done/chapters.length*100}%`;document.getElementById('totalPoints').textContent=state.points;const ranks=[{min:0,name:'Kâtip Adayı',next:300},{min:300,name:'Saray Kâtibi',next:700},{min:700,name:'Elçi',next:1200},{min:1200,name:'Saray Bilgesi',next:2000},{min:2000,name:'Tarih Ustası',next:null}];const rank=[...ranks].reverse().find(r=>state.points>=r.min)||ranks[0];const rankEl=document.getElementById('playerRank');if(rankEl)rankEl.textContent=rank.next?`${rank.name} · Sonraki unvana ${rank.next-state.points} puan`:`${rank.name} · En yüksek unvan`;}
 function chapterStars(points){return points>=250?3:points>=150?2:1;}
 function renderMap(){updateAchievements();updateProgress();const grid=document.getElementById('chapterGrid');grid.innerHTML='';chapters.forEach((ch,i)=>{const unlocked=i===0||state.completed.includes(i-1);const done=state.completed.includes(i);const btn=document.createElement('button');btn.type='button';btn.className='chapter-card';btn.disabled=!unlocked;const prog=state.chapterProgress[i];const count=ch.questions.length;const finished=done?count:(prog?Math.min(prog.index+(prog.answered?1:0),count):0);btn.innerHTML=`<span class="chapter-number">BÖLÜM ${String(i+1).padStart(2,'0')}</span><span class="chapter-symbol">${ch.symbol}</span><strong>${ch.title}</strong><small>${ch.place}</small><span class="chapter-extra">${done?`✓ Tamamlandı · ${'★'.repeat(chapterStars(state.chapterPoints[i]||0))}${'☆'.repeat(3-chapterStars(state.chapterPoints[i]||0))}`:unlocked?`${finished}/${count} görev`:'Kilitli'}</span><span class="chapter-status">${done?'✓':unlocked?'↗':'🔒'}</span>`;btn.addEventListener('click',()=>openChapter(i));grid.appendChild(btn);});}
@@ -574,6 +855,11 @@ function renderExploreQuestion(){
  document.getElementById('questionHint').textContent=q.type==='multi'?'Birden fazla doğru seçeneği işaretle, ardından kontrol et.':'Düşün, seç ve öğren.';
  const wrap=document.getElementById('answerButtons');
  const ui=createQuestionOptions(wrap,q,answerExplore);
+ const hintBtn=document.getElementById('exploreHintBtn');
+ hintBtn.classList.toggle('hidden',q.type==='multi');
+ hintBtn.disabled=questionAnswered||!!prog.hintUsed;
+ hintBtn.textContent=prog.hintUsed?'İpucu kullanıldı':'50:50 ipucu';
+ if(prog.hintUsed){restoreHiddenOptions(wrap,prog.eliminated,'.answer-btn');document.getElementById('questionPoints').textContent='+25 PUAN · İPUCU';}
  if(questionAnswered){
   const selected=prog.selected;
   const response=q.type==='multi'?(Array.isArray(selected)?selected:[]):selected;
@@ -586,6 +872,20 @@ function renderExploreQuestion(){
   document.getElementById('nextQuestionBtn').textContent=questionIndex===chapters[currentChapter].questions.length-1?'Bölümü tamamla ✓':'Sonraki görev →';
  }
 }
+function useExploreHint(){
+ const q=chapters[currentChapter].questions[questionIndex];
+ const prog=state.chapterProgress[currentChapter]||{index:questionIndex,answered:false,selected:null};
+ if(questionAnswered||q.type==='multi'||prog.hintUsed)return;
+ const wrap=document.getElementById('answerButtons');
+ const removed=hideTwoWrongOptions(wrap,q,'.answer-btn');
+ if(removed.length!==2){showToast('Bu soruda ipucu kullanılamıyor.');return;}
+ prog.hintUsed=true;prog.eliminated=removed;state.chapterProgress[currentChapter]=prog;
+ document.getElementById('exploreHintBtn').disabled=true;
+ document.getElementById('exploreHintBtn').textContent='İpucu kullanıldı';
+ document.getElementById('questionPoints').textContent='+25 PUAN · İPUCU';
+ document.getElementById('questionHint').textContent='İki yanlış seçenek elendi. Doğru cevapta 25 puan kazanırsın.';
+ saveState();
+}
 function answerExplore(response,button){
  if(questionAnswered)return;questionAnswered=true;
  const q=chapters[currentChapter].questions[questionIndex],good=answerIsCorrect(q,response),chosen=Array.isArray(response)?response:[response];
@@ -594,15 +894,27 @@ function answerExplore(response,button){
  const submit=wrap.querySelector('.multi-submit');if(submit){submit.disabled=true;submit.classList.add('hidden');}
  if(button&&q.type!=='multi'&&!good)button.classList.add('wrong');
  const fb=document.getElementById('feedback'),wasComplete=state.completed.includes(currentChapter);
+ const progress=state.chapterProgress[currentChapter]||{index:questionIndex,answered:false,selected:null};
  if(good){
-  if(!wasComplete){state.points+=50;state.chapterPoints[currentChapter]=(state.chapterPoints[currentChapter]||0)+50;fb.className='feedback good show';fb.textContent='Doğru cevap! '+q.e;document.getElementById('questionHint').textContent='+50 puan kazandın.';}
+  if(!wasComplete){
+   const earned=progress.hintUsed?25:50;
+   state.points+=earned;state.chapterPoints[currentChapter]=(state.chapterPoints[currentChapter]||0)+earned;
+   progress.streak=(Number(progress.streak)||0)+1;
+   let comboText='';
+   if(progress.streak>=3){state.points+=25;state.chapterPoints[currentChapter]+=25;progress.streak=0;comboText=' Üç doğru cevaplık seri! +25 bonus puan.';}
+   fb.className='feedback good show';fb.textContent=`Doğru cevap! +${earned} puan.${comboText} ${q.e}`;
+   document.getElementById('questionHint').textContent=`+${earned} puan kazandın.${comboText}`;
+  }
   else{fb.className='feedback good show';fb.textContent='Doğru cevap! '+q.e+' Bu bölümü daha önce tamamladığın için tekrar oynarken ek puan verilmedi.';document.getElementById('questionHint').textContent='Tekrar oynama · Ek puan yok.';}
- }else{fb.className='feedback bad show';fb.textContent='Bu kez olmadı. Doğru cevap: '+correctAnswerText(q)+'. '+q.e;document.getElementById('questionHint').textContent='Açıklamayı oku ve devam et.';}
- state.chapterProgress[currentChapter]={index:questionIndex,answered:true,selected:q.type==='multi'?chosen:response};
+ }else{
+  progress.streak=0;
+  fb.className='feedback bad show';fb.textContent='Bu kez olmadı. Doğru cevap: '+correctAnswerText(q)+'. '+q.e;document.getElementById('questionHint').textContent='Doğru cevap serisi sıfırlandı. Açıklamayı okuyup devam et.';
+ }
+ state.chapterProgress[currentChapter]={...progress,index:questionIndex,answered:true,selected:q.type==='multi'?chosen:response};
  updateAchievements();saveState();updateChapterStats();document.getElementById('nextQuestionBtn').classList.remove('hidden');
  document.getElementById('nextQuestionBtn').textContent=questionIndex===chapters[currentChapter].questions.length-1?'Bölümü tamamla ✓':'Sonraki görev →';
 }
-function nextExploreQuestion(){if(questionIndex<chapters[currentChapter].questions.length-1){questionIndex++;questionAnswered=false;state.chapterProgress[currentChapter]={index:questionIndex,answered:false,selected:null};saveState();renderExploreQuestion();updateChapterStats();}else{completeChapter();}}
+function nextExploreQuestion(){if(questionIndex<chapters[currentChapter].questions.length-1){const previous=state.chapterProgress[currentChapter]||{};const streak=Number(previous.streak)||0;questionIndex++;questionAnswered=false;state.chapterProgress[currentChapter]={index:questionIndex,answered:false,selected:null,streak};saveState();renderExploreQuestion();updateChapterStats();}else{completeChapter();}}
 function completeChapter(){if(!state.completed.includes(currentChapter))state.completed.push(currentChapter);state.completed.sort((a,b)=>a-b);state.chapterProgress[currentChapter]={index:chapters[currentChapter].questions.length-1,answered:true,selected:state.chapterProgress[currentChapter]?.selected??null};updateAchievements();saveState();document.getElementById('quizArea').classList.add('hidden');document.getElementById('chapterCompletion').classList.remove('hidden');document.getElementById('completionText').textContent=`${chapters[currentChapter].title} bölümünü tamamladın. Bu bölümde ${state.chapterPoints[currentChapter]||0} puan topladın ve ${chapterStars(state.chapterPoints[currentChapter]||0)} yıldız kazandın. ${state.completed.length===8?'Bütün bölümleri bitirdin ve Lale Devri Uzmanı oldun! Tarih koleksiyonunun tamamı açıldı.':'Yeni bilgiler öğrendin ve bu bölümün tarih kartını koleksiyonuna ekledin.'}`;const next=document.getElementById('nextChapterBtn');if(currentChapter===chapters.length-1){next.textContent='Bölüm haritasına dön';next.onclick=()=>{renderMap();showView('mapView');};}else{next.textContent='Sonraki bölüme geç →';next.onclick=()=>openChapter(currentChapter+1);}updateChapterStats();renderCollection();}
 function renderCollection(){updateAchievements();const grid=document.getElementById('collectionGrid');grid.innerHTML='';collectionCards.forEach((card,i)=>{const unlocked=state.completed.includes(i);const el=document.createElement('article');el.className='collection-card'+(unlocked?'':' locked');el.innerHTML=`<div class="collect-icon">${unlocked?card.icon:'🔒'}</div><h3>${unlocked?card.title:'Gizli tarih kartı'}</h3><p>${unlocked?card.text:'Bu kartı açmak için '+(i+1)+'. bölümü tamamla.'}</p><small>${unlocked?card.date:'Henüz keşfedilmedi'}</small>`;grid.appendChild(el);});document.getElementById('collectionCount').textContent=`${state.completed.length} / 8 kart açıldı`;document.getElementById('achievementCount').textContent=`${state.achievements.length} başarı kazanıldı`;const ag=document.getElementById('achievementGrid');ag.innerHTML='';achievementInfo.forEach(a=>{const earned=state.achievements.includes(a.name);const el=document.createElement('div');el.className='achievement'+(earned?' earned':'');el.innerHTML=`<strong>${earned?'🏅':'🔒'} ${a.name}</strong><span>${a.desc}</span>`;ag.appendChild(el);});}
 function createTeamInputs(){const count=Number(document.getElementById('teamCount').value);const wrap=document.getElementById('teamInputs');wrap.innerHTML='';for(let i=0;i<count;i++){const div=document.createElement('div');div.className='field';const label=document.createElement('label');label.textContent=`${i+1}. takım`;label.htmlFor=`teamName${i}`;const input=document.createElement('input');input.id=`teamName${i}`;input.maxLength=24;input.value=state.teams[i]?.name||defaultTeamNames[i];input.placeholder=defaultTeamNames[i];div.append(label,input);wrap.appendChild(div);}}
@@ -615,7 +927,9 @@ function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':
 function currentClassEntry(){return state.classQuestionOrder[state.classQuestion];}
 function renderClassQuestion(){
  const entry=currentClassEntry();if(!entry){showClassResults();return;}
- const ch=chapters[entry.chapter],q=ch.questions[entry.question];state.classChapter=entry.chapter;classQuestionAnswered=false;
+ const ch=chapters[entry.chapter],q=ch.questions[entry.question];state.classChapter=entry.chapter;classQuestionAnswered=false;classHintUsed=false;
+ document.getElementById('classQuestionReward').textContent='+100 PUAN';
+ const classHintBtn=document.getElementById('classHintBtn');classHintBtn.classList.toggle('hidden',q.type==='multi');classHintBtn.disabled=false;classHintBtn.textContent='50:50 ipucu';
  document.getElementById('classQuestionCount').textContent=`SORU ${state.classQuestion+1} / ${state.classQuestionOrder.length}`;
  document.getElementById('classQuestionMeta').textContent=document.getElementById('classChapterSelect').value==='all'?`KARIŞIK TUR · BÖLÜM ${entry.chapter+1}: ${ch.title}`:`BÖLÜM ${entry.chapter+1} · ${ch.title} · ${ch.questions.length} GÖREV`;
  document.getElementById('classQuestionType').textContent=q.kind+(q.type==='multi'?' · Birden fazla doğru cevap':'');
@@ -623,13 +937,24 @@ function renderClassQuestion(){
  document.getElementById('classNextBtn').classList.add('hidden');document.getElementById('classHint').textContent=q.type==='multi'?'Birden fazla seçeneği işaretleyin, ardından öğretmen kontrol etsin.':'Takımınız cevabını söylesin.';
  const wrap=document.getElementById('classAnswers');createQuestionOptions(wrap,q,answerClass);renderScoreboard();
 }
+function useClassHint(){
+ if(classQuestionAnswered||classHintUsed)return;
+ const entry=currentClassEntry();if(!entry)return;
+ const q=chapters[entry.chapter].questions[entry.question];
+ if(q.type==='multi'){showToast('Çoklu seçim sorularında 50:50 ipucu kullanılamaz.');return;}
+ const removed=hideTwoWrongOptions(document.getElementById('classAnswers'),q,'.answer-btn');
+ if(removed.length!==2)return;
+ classHintUsed=true;document.getElementById('classHintBtn').disabled=true;document.getElementById('classHintBtn').textContent='İpucu kullanıldı';
+ document.getElementById('classQuestionReward').textContent='+50 PUAN · İPUCU';
+ document.getElementById('classHint').textContent='İki yanlış seçenek elendi. Doğru cevap 50 puan kazandırır.';
+}
 function answerClass(response,button){
  if(classQuestionAnswered)return;classQuestionAnswered=true;
  const entry=currentClassEntry(),q=chapters[entry.chapter].questions[entry.question],good=answerIsCorrect(q,response),chosen=Array.isArray(response)?response:[response];
  const buttons=[...document.querySelectorAll('#classAnswers .answer-btn')];buttons.forEach((b,i)=>{b.disabled=true;if(correctIndexes(q).includes(i))b.classList.add('correct');if(chosen.includes(i)&&!correctIndexes(q).includes(i))b.classList.add('wrong');});
  const submit=document.querySelector('#classAnswers .multi-submit');if(submit){submit.disabled=true;submit.classList.add('hidden');}
  const fb=document.getElementById('classFeedback'),teamIndex=state.classTurn,team=state.teams[teamIndex];
- if(good){team.score+=100;state.classTeamStreaks[teamIndex]=(state.classTeamStreaks[teamIndex]||0)+1;let bonus='';if(state.classTeamStreaks[teamIndex]===3){team.score+=50;bonus=' Üç doğru cevaplık seri için +50 bonus!';state.classTeamStreaks[teamIndex]=0;}fb.className='feedback good show';fb.textContent=`Doğru cevap! ${team.name} 100 puan kazandı.${bonus} ${q.e}`;}
+ if(good){const earned=classHintUsed?50:100;team.score+=earned;let bonus='';if(classHintUsed){state.classTeamStreaks[teamIndex]=0;}else{state.classTeamStreaks[teamIndex]=(state.classTeamStreaks[teamIndex]||0)+1;if(state.classTeamStreaks[teamIndex]===3){team.score+=50;bonus=' Üç doğru cevaplık seri için +50 bonus!';state.classTeamStreaks[teamIndex]=0;}}fb.className='feedback good show';fb.textContent=`Doğru cevap! ${team.name} ${earned} puan kazandı.${bonus} ${q.e}`;}
  else{state.classTeamStreaks[teamIndex]=0;fb.className='feedback bad show';fb.textContent=`Doğru cevap: ${correctAnswerText(q)}. ${q.e}`;}
  document.getElementById('classHint').textContent='Sıradaki takımın düşünme zamanı.';state.classTurn=(state.classTurn+1)%state.teams.length;
  state.classAnswers.push({chapter:entry.chapter,question:entry.question,team:teamIndex,correct:good});saveState();renderScoreboard();
@@ -639,24 +964,333 @@ function nextClassQuestion(){if(state.classQuestion<state.classQuestionOrder.len
 function showClassResults(){document.getElementById('classPlayPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.remove('hidden');document.getElementById('resultsTab').disabled=false;document.getElementById('playTab').classList.remove('active');document.getElementById('resultsTab').classList.add('active');const ordered=[...state.teams].sort((a,b)=>b.score-a.score);const best=ordered.length?ordered[0].score:0;const winners=ordered.filter(t=>t.score===best);document.getElementById('finalResults').innerHTML=ordered.map((t,i)=>`<div class="score-row" style="max-width:480px;margin:8px auto;text-align:left"><span class="score-name">${['🥇','🥈','🥉','🏅'][i]||'•'} ${escapeHtml(t.name)}</span><strong class="score-points">${t.score} puan</strong></div>`).join('')+`<p style="font:14px Arial,sans-serif;color:var(--muted);margin-top:16px">${winners.length>1?'Yarışma berabere bitti!':`Kazanan: <strong>${escapeHtml(winners[0].name)}</strong> 🎉`}<br>${state.classAnswers.length} soruda ${state.classAnswers.filter(a=>a.correct).length} doğru cevap verildi.</p>`;}
 function openClass(){document.getElementById('classSetupPanel').classList.remove('hidden');document.getElementById('classPlayPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.add('hidden');document.getElementById('setupTab').classList.add('active');document.getElementById('playTab').classList.remove('active');document.getElementById('resultsTab').classList.remove('active');document.getElementById('teamCount').value='2';createTeamInputs();showView('classView');}
 function resetClassScores(){if(!confirm('Bütün takım puanları sıfırlansın ve bu yarışma yeniden başlasın mı?'))return;state.teams.forEach(t=>t.score=0);state.classTurn=0;state.classQuestion=0;state.classAnswers=[];state.classTeamStreaks=state.teams.map(()=>0);buildClassQuestionOrder();renderScoreboard();renderClassQuestion();showToast('Takım puanları ve yarışma sıfırlandı.');}
-function renderAtelierMenu(){const labels={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık'};const ids={chronology:'bestChronology',people:'bestPeople',truefalse:'bestTruefalse',detective:'bestDetective',memory:'bestMemory',cipher:'bestCipher'};Object.keys(labels).forEach(key=>{const el=document.getElementById(ids[key]);if(el)el.textContent=state.atelierBest[key]!==undefined?`En iyi sonuç: ${state.atelierBest[key]} puan`:'Henüz oynanmadı';});document.getElementById('atelierCards').classList.remove('hidden');document.getElementById('atelierPlayPanel').classList.add('hidden');document.getElementById('atelierResults').classList.add('hidden');}
+function isAtelierTeamMode(){return atelierPlayMode==='teams'&&atelierTeams.length>1;}
+function renderAtelierTeamStatus(){
+  const bar=document.getElementById('atelierTeamBar');
+  if(!bar)return;
+  const active=isAtelierTeamMode();
+  bar.classList.toggle('hidden',!active);
+  if(!active)return;
+  const current=atelierTeams[atelierTeamTurn];
+  document.getElementById('atelierTeamTurn').textContent=`Sıradaki takım: ${current?.name||'—'}`;
+  document.getElementById('atelierMiniTeamScores').innerHTML=atelierTeams.map((team,index)=>`<div class="atelier-team-score${index===atelierTeamTurn?' active':''}"><span>${escapeHtml(team.name)}</span><strong>${team.score} puan</strong></div>`).join('');
+}
+function advanceAtelierTeam(){if(!isAtelierTeamMode())return;atelierTeamTurn=(atelierTeamTurn+1)%atelierTeams.length;renderAtelierTeamStatus();}
+function awardAtelierPoints(points,teamIndex=atelierTeamTurn){atelierScore+=points;if(isAtelierTeamMode()&&atelierTeams[teamIndex])atelierTeams[teamIndex].score+=points;document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;renderAtelierTeamStatus();}
+function buildAtelierTeamInputs(){
+  const count=Number(document.getElementById('atelierTeamCount').value)||2;
+  const wrap=document.getElementById('atelierTeamInputs');wrap.innerHTML='';
+  const defaults=['Lale Takımı','Matbaa Takımı','Saray Takımı','Tulumbacı Takımı'];
+  for(let i=0;i<count;i++){
+    const field=document.createElement('div');field.className='field';
+    const label=document.createElement('label');label.htmlFor=`atelierTeamName${i}`;label.textContent=`${i+1}. takım adı`;
+    const input=document.createElement('input');input.id=`atelierTeamName${i}`;input.maxLength=24;input.value=atelierTeams[i]?.name||defaults[i];input.placeholder=defaults[i];
+    field.append(label,input);wrap.appendChild(field);
+  }
+}
+function prepareAtelier(mode){
+  atelierPendingMode=mode;
+  const names={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık',council:'Karar Divanı'};
+  document.getElementById('atelierModeSelectTitle').textContent=`${names[mode]||'Etkinlik'} · Oynama biçimini seç`;
+  document.getElementById('atelierCards').classList.add('hidden');
+  document.getElementById('atelierPlayPanel').classList.add('hidden');
+  document.getElementById('atelierResults').classList.add('hidden');
+  document.getElementById('atelierModeSelect').classList.remove('hidden');
+  document.getElementById('atelierTeamSetup').classList.add('hidden');
+  document.getElementById('atelierModeSelect').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function startAtelierTeams(){
+  const count=Number(document.getElementById('atelierTeamCount').value)||2;
+  const teams=Array.from({length:count},(_,i)=>({name:(document.getElementById(`atelierTeamName${i}`)?.value.trim()||['Lale Takımı','Matbaa Takımı','Saray Takımı','Tulumbacı Takımı'][i]).slice(0,24),score:0}));
+  startAtelier(atelierPendingMode,'teams',teams);
+}
+
+function renderAtelierMenu(){
+  const labels={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık',council:'Karar Divanı'};
+  const ids={chronology:'bestChronology',people:'bestPeople',truefalse:'bestTruefalse',detective:'bestDetective',memory:'bestMemory',cipher:'bestCipher',council:'bestCouncil'};
+  Object.keys(labels).forEach(key=>{const el=document.getElementById(ids[key]);if(el)el.textContent=state.atelierBest[key]!==undefined?`En iyi sonuç: ${state.atelierBest[key]} puan`:'Henüz oynanmadı';});
+  document.getElementById('atelierCards').classList.remove('hidden');
+  document.getElementById('atelierModeSelect').classList.add('hidden');
+  document.getElementById('atelierTeamSetup').classList.add('hidden');
+  document.getElementById('atelierPlayPanel').classList.add('hidden');
+  document.getElementById('atelierResults').classList.add('hidden');
+  document.getElementById('atelierTeamBar').classList.add('hidden');
+}
 function openAtelier(){renderAtelierMenu();showView('atelierView');}
-function startAtelier(mode){atelierMode=mode;atelierRound=0;atelierScore=0;atelierAnswered=false;atelierOrder=[];atelierItems=[];memoryOpen=[];memoryMatched=[];memoryMoves=0;memoryBusy=false;cipherLetters=[];cipherSelected=[];cipherSolved=false;const titles={chronology:['ZAMAN TÜNELİ','Zaman Tüneli','Olayları en eskiden en yeniye doğru sırala.'],people:['KİM KİMDİR?','Kim Kimdir?','Her tarihî kişinin doğru görevini veya alanını seç.'],truefalse:['DOĞRU MU, YANLIŞ MI?','Doğru mu, Yanlış mı?','Her ifadeyi dikkatlice oku ve doğru olup olmadığına karar ver.'],detective:['ARŞİV DOSYALARI','Belge Avı','Üç ipucunu birleştir, tarihî dosyanın cevabını bul. Her doğru çözüm 20 puan.'],memory:['HAFIZA MEYDANI','Hafıza Oyunu','Kartları çevir ve altı tarihî eşleşmeyi bul. Az hamleyle tamamla!'],cipher:['ŞİFRELİ SANDIK','Şifreli Sandık','Karışık harfleri doğru sıraya koyarak altı tarihî kelimeyi çöz.']};if(!titles[mode])return;document.getElementById('atelierModeLabel').textContent=titles[mode][0];document.getElementById('atelierTitle').textContent=titles[mode][1];document.getElementById('atelierInstruction').textContent=titles[mode][2];document.getElementById('atelierCards').classList.add('hidden');document.getElementById('atelierResults').classList.add('hidden');document.getElementById('atelierPlayPanel').classList.remove('hidden');document.getElementById('atelierClues').classList.add('hidden');document.getElementById('atelierClues').innerHTML='';const board=document.getElementById('atelierGameBoard');board.classList.add('hidden');document.getElementById('atelierQuestion').classList.remove('hidden');document.getElementById('atelierAnswers').classList.remove('hidden');document.querySelector('#atelierPlayPanel .quiz-footer').classList.toggle('hidden',['memory','cipher'].includes(mode));if(mode==='chronology'){atelierItems=shuffle(atelierTimeline);renderAtelierChronology();}else if(mode==='memory'){document.getElementById('atelierQuestion').classList.add('hidden');document.getElementById('atelierAnswers').classList.add('hidden');startMemoryGame();}else if(mode==='cipher'){document.getElementById('atelierQuestion').classList.add('hidden');document.getElementById('atelierAnswers').classList.add('hidden');atelierItems=shuffle(atelierCiphers);renderCipherGame();}else{atelierItems=shuffle(mode==='people'?atelierPeople:mode==='detective'?atelierDossiers:atelierFacts);renderAtelierQuestion();}document.getElementById('atelierPlayPanel').scrollIntoView({behavior:'smooth',block:'start'});}
-function updateAtelierProgress(total){const done=atelierMode==='chronology'?atelierOrder.length:atelierMode==='memory'?memoryMatched.length/2:atelierMode==='cipher'?atelierRound+(cipherSolved?1:0):atelierRound+(atelierAnswered?1:0);const label=atelierMode==='chronology'?`${atelierOrder.length} / ${atelierItems.length} olay seçildi`:atelierMode==='memory'?`${memoryMatched.length/2} / ${atelierMemoryPairs.length} eşleşme · ${memoryMoves} hamle`:atelierMode==='cipher'?`${atelierRound+(cipherSolved?1:0)} / ${atelierItems.length} şifre çözüldü`:`${atelierRound+1} / ${atelierItems.length}`;document.getElementById('atelierCounter').textContent=label;document.getElementById('atelierProgressFill').style.width=`${Math.min(100,(atelierMode==='chronology'?atelierOrder.length/atelierItems.length:atelierMode==='memory'?(memoryMatched.length/2)/atelierMemoryPairs.length:done/atelierItems.length)*100)}%`;document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`; }
-function renderAtelierChronology(){document.getElementById('atelierGameBoard').classList.add('hidden');document.getElementById('atelierClues').classList.add('hidden');document.getElementById('atelierClues').innerHTML='';updateAtelierProgress(atelierItems.length);document.getElementById('atelierQuestion').textContent='Önce en eski olayı seç. Ardından olayları tarih sırasına göre diz.';document.getElementById('atelierHint').textContent='Seçtiğin olaylar sırayla numaralanacak.';document.getElementById('atelierFeedback').className='feedback';document.getElementById('atelierFeedback').textContent='';document.getElementById('atelierNextBtn').classList.add('hidden');document.getElementById('atelierCheckBtn').classList.toggle('hidden',atelierOrder.length!==atelierItems.length);const wrap=document.getElementById('atelierAnswers');wrap.innerHTML='';atelierItems.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='atelier-option'+(atelierOrder.includes(item.id)?' selected':'');const pos=atelierOrder.indexOf(item.id);b.textContent=(pos>=0?`${pos+1}. `:'＋ ')+item.event;b.disabled=pos>=0||atelierOrder.length===atelierItems.length;b.addEventListener('click',()=>{if(atelierOrder.length>=atelierItems.length)return;atelierOrder.push(item.id);renderAtelierChronology();});wrap.appendChild(b);});}
-function checkAtelierChronology(){const correct=atelierTimeline.map(x=>x.id);atelierScore=atelierOrder.reduce((sum,id,i)=>sum+(id===correct[i]?20:0),0);const fb=document.getElementById('atelierFeedback');fb.className='feedback '+(atelierScore===100?'good':'bad')+' show';const sequence=atelierTimeline.map(x=>x.event).join(' → ');fb.textContent=`${atelierScore===100?'Mükemmel! Bütün olayları doğru sıraladın.':'Sıralamanı kontrol ettin. Doğru kronoloji şöyle: '+sequence} ${atelierTimeline.map(x=>x.note).join(' ')}`;document.querySelectorAll('#atelierAnswers .atelier-option').forEach(b=>b.disabled=true);document.getElementById('atelierCheckBtn').classList.add('hidden');document.getElementById('atelierHint').textContent='Kronoloji etkinliği tamamlandı.';updateAtelierProgress(atelierItems.length);finishAtelier();}
-function renderAtelierQuestion(){document.getElementById('atelierGameBoard').classList.add('hidden');document.getElementById('atelierQuestion').classList.remove('hidden');document.getElementById('atelierAnswers').classList.remove('hidden');const item=atelierItems[atelierRound];atelierAnswered=false;updateAtelierProgress(atelierItems.length);document.getElementById('atelierQuestion').textContent=item.q;const clueBoard=document.getElementById('atelierClues');clueBoard.innerHTML='';clueBoard.classList.toggle('hidden',atelierMode!=='detective');if(atelierMode==='detective'){const title=document.createElement('div');title.className='clue-board-title';title.textContent='ARŞİVDEN ÇIKAN İPUÇLARI';clueBoard.appendChild(title);item.clues.forEach((clue,i)=>{const card=document.createElement('div');card.className='clue-item';const number=document.createElement('b');number.textContent=String(i+1);const text=document.createElement('span');text.textContent=clue;card.append(number,text);clueBoard.appendChild(card);});}document.getElementById('atelierFeedback').className='feedback';document.getElementById('atelierFeedback').textContent='';document.getElementById('atelierHint').textContent=atelierMode==='detective'?'İpuçlarını birleştirerek doğru dosyayı bul.':'Cevabını seç ve açıklamayı oku.';document.getElementById('atelierNextBtn').classList.add('hidden');document.getElementById('atelierCheckBtn').classList.add('hidden');const wrap=document.getElementById('atelierAnswers');wrap.innerHTML='';const choices=['people','detective'].includes(atelierMode)?item.a:['Doğru','Yanlış'];choices.forEach((choice,i)=>{const b=document.createElement('button');b.type='button';b.className='atelier-option';b.textContent=choice;b.addEventListener('click',()=>answerAtelier(i,b));wrap.appendChild(b);});}
-function answerAtelier(index,button){if(atelierAnswered)return;atelierAnswered=true;const item=atelierItems[atelierRound];const multipleChoice=['people','detective'].includes(atelierMode);const correct=multipleChoice?index===item.c:(index===0)===item.c;const buttons=[...document.querySelectorAll('#atelierAnswers .atelier-option')];buttons.forEach((b,i)=>{b.disabled=true;const isCorrect=multipleChoice?i===item.c:(i===0)===item.c;if(isCorrect)b.classList.add('correct');});if(!correct)button.classList.add('wrong');if(correct)atelierScore+=20;const fb=document.getElementById('atelierFeedback');fb.className=`feedback ${correct?'good':'bad'} show`;fb.textContent=(correct?'Doğru! ':'Bir daha düşün. ')+item.e;document.getElementById('atelierHint').textContent=correct?'+20 puan kazandın.':'Açıklamayı okuyarak yeni bir bilgi öğrendin.';document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;document.getElementById('atelierNextBtn').classList.remove('hidden');document.getElementById('atelierNextBtn').textContent=atelierRound===atelierItems.length-1?'Etkinliği tamamla ✓':'Sonraki soru →';}
-function nextAtelierQuestion(){if(atelierRound<atelierItems.length-1){atelierRound++;renderAtelierQuestion();}else{finishAtelier();}}
+function startAtelier(mode,playMode='solo',teams=[]){
+  atelierMode=mode;atelierPlayMode=playMode;atelierTeams=playMode==='teams'?teams.map(t=>({name:String(t.name||'Takım').slice(0,24),score:0})):[];atelierTeamTurn=0;
+  atelierRound=0;atelierScore=0;atelierAnswered=false;atelierHintUsed=false;atelierOrder=[];atelierOrderTeams=[];atelierItems=[];
+  memoryOpen=[];memoryMatched=[];memoryMoves=0;memoryBusy=false;cipherLetters=[];cipherSelected=[];cipherSolved=false;
+  const titles={chronology:['ZAMAN TÜNELİ','Zaman Tüneli','Olayları en eskiden en yeniye doğru sırala.'],people:['KİM KİMDİR?','Kim Kimdir?','Her tarihî kişinin doğru görevini veya alanını seç.'],truefalse:['DOĞRU MU, YANLIŞ MI?','Doğru mu, Yanlış mı?','Her ifadeyi dikkatlice oku ve doğru olup olmadığına karar ver.'],detective:['ARŞİV DOSYALARI','Belge Avı','Üç ipucunu birleştir, tarihî dosyanın cevabını bul. Her doğru çözüm 20 puan.'],memory:['HAFIZA MEYDANI','Hafıza Oyunu','Kartları çevir ve altı tarihî eşleşmeyi bul. Az hamleyle tamamla!'],cipher:['ŞİFRELİ SANDIK','Şifreli Sandık','Karışık harfleri doğru sıraya koyarak altı tarihî kelimeyi çöz.'],council:['KARAR DİVANI','Karar Divanı','Tarihî durumları incele. Her senaryoda kanıta ve tarihî bilgiye dayanan en uygun değerlendirmeyi seç.']};
+  if(!titles[mode])return;
+  document.getElementById('atelierModeLabel').textContent=titles[mode][0];
+  document.getElementById('atelierTitle').textContent=titles[mode][1]+(isAtelierTeamMode()?' · Takım Yarışı':'');
+  document.getElementById('atelierInstruction').textContent=titles[mode][2];
+  document.getElementById('atelierCards').classList.add('hidden');
+  document.getElementById('atelierModeSelect').classList.add('hidden');
+  document.getElementById('atelierResults').classList.add('hidden');
+  document.getElementById('atelierTeamResults').classList.add('hidden');
+  document.getElementById('atelierPlayPanel').classList.remove('hidden');
+  document.getElementById('atelierClues').classList.add('hidden');document.getElementById('atelierClues').innerHTML='';
+  document.getElementById('atelierTeamBar').classList.toggle('hidden',!isAtelierTeamMode());
+  const board=document.getElementById('atelierGameBoard');board.classList.add('hidden');
+  document.getElementById('atelierQuestion').classList.remove('hidden');document.getElementById('atelierAnswers').classList.remove('hidden');
+  document.querySelector('#atelierPlayPanel .quiz-footer').classList.toggle('hidden',['memory','cipher'].includes(mode));
+  renderAtelierTeamStatus();
+  if(mode==='chronology'){atelierItems=shuffle(atelierTimeline);renderAtelierChronology();}
+  else if(mode==='memory'){document.getElementById('atelierQuestion').classList.add('hidden');document.getElementById('atelierAnswers').classList.add('hidden');startMemoryGame();}
+  else if(mode==='cipher'){document.getElementById('atelierQuestion').classList.add('hidden');document.getElementById('atelierAnswers').classList.add('hidden');atelierItems=shuffle(atelierCiphers);renderCipherGame();}
+  else{atelierItems=shuffle(mode==='people'?atelierPeople:mode==='detective'?atelierDossiers:mode==='council'?atelierCouncil:atelierFacts);renderAtelierQuestion();}
+  document.getElementById('atelierPlayPanel').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function updateAtelierProgress(total){
+  const done=atelierMode==='chronology'?atelierOrder.length:atelierMode==='memory'?memoryMatched.length/2:atelierMode==='cipher'?atelierRound+(cipherSolved?1:0):atelierRound+(atelierAnswered?1:0);
+  const label=atelierMode==='chronology'?`${atelierOrder.length} / ${atelierItems.length} olay seçildi`:atelierMode==='memory'?`${memoryMatched.length/2} / ${atelierMemoryPairs.length} eşleşme · ${memoryMoves} hamle`:atelierMode==='cipher'?`${atelierRound+(cipherSolved?1:0)} / ${atelierItems.length} şifre çözüldü`:`${atelierRound+1} / ${atelierItems.length}`;
+  document.getElementById('atelierCounter').textContent=label;
+  document.getElementById('atelierProgressFill').style.width=`${Math.min(100,(atelierMode==='chronology'?atelierOrder.length/atelierItems.length:atelierMode==='memory'?(memoryMatched.length/2)/atelierMemoryPairs.length:done/atelierItems.length)*100)}%`;
+  document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;
+  renderAtelierTeamStatus();
+}
+function renderAtelierChronology(){
+  document.getElementById('atelierGameBoard').classList.add('hidden');
+  document.getElementById('atelierClues').classList.add('hidden');
+  document.getElementById('atelierClues').innerHTML='';
+  updateAtelierProgress(atelierItems.length);
+  document.getElementById('atelierQuestion').textContent=isAtelierTeamMode()?'Takımlar sırayla bir olay seçsin. Olayları en eskiden en yeniye doğru dizin.':'Önce en eski olayı seç. Ardından olayları tarih sırasına göre diz.';
+  document.getElementById('atelierHint').textContent=isAtelierTeamMode()?'Her takım bir olay seçtiğinde sıra sonraki takıma geçer.':'Seçtiğin olaylar sırayla numaralanacak.';
+  document.getElementById('atelierFeedback').className='feedback';
+  document.getElementById('atelierFeedback').textContent='';
+  document.getElementById('atelierNextBtn').classList.add('hidden');
+  document.getElementById('atelierCheckBtn').classList.toggle('hidden',atelierOrder.length!==atelierItems.length);
+  const wrap=document.getElementById('atelierAnswers');wrap.innerHTML='';
+  atelierItems.forEach(item=>{
+    const b=document.createElement('button');b.type='button';b.className='atelier-option'+(atelierOrder.includes(item.id)?' selected':'');
+    const pos=atelierOrder.indexOf(item.id);b.textContent=(pos>=0?`${pos+1}. `:'＋ ')+item.event;b.disabled=pos>=0||atelierOrder.length===atelierItems.length;
+    b.addEventListener('click',()=>{
+      if(atelierOrder.length>=atelierItems.length)return;
+      atelierOrder.push(item.id);
+      if(isAtelierTeamMode()){atelierOrderTeams.push(atelierTeamTurn);advanceAtelierTeam();}
+      renderAtelierChronology();
+    });
+    wrap.appendChild(b);
+  });
+}
+function checkAtelierChronology(){
+  const correct=atelierTimeline.map(x=>x.id);
+  atelierScore=0;
+  if(isAtelierTeamMode())atelierTeams.forEach(t=>t.score=0);
+  atelierOrder.forEach((id,i)=>{if(id===correct[i]){atelierScore+=20;if(isAtelierTeamMode()&&atelierTeams[atelierOrderTeams[i]])atelierTeams[atelierOrderTeams[i]].score+=20;}});
+  const fb=document.getElementById('atelierFeedback');
+  fb.className='feedback '+(atelierScore===100?'good':'bad')+' show';
+  const sequence=atelierTimeline.map(x=>x.event).join(' → ');
+  fb.textContent=`${atelierScore===100?'Mükemmel! Bütün olayları doğru sıraladın.':'Sıralamanı kontrol ettin. Doğru kronoloji şöyle: '+sequence} ${atelierTimeline.map(x=>x.note).join(' ')}`;
+  document.querySelectorAll('#atelierAnswers .atelier-option').forEach(b=>b.disabled=true);
+  document.getElementById('atelierCheckBtn').classList.add('hidden');
+  document.getElementById('atelierHint').textContent='Kronoloji etkinliği tamamlandı.';
+  updateAtelierProgress(atelierItems.length);finishAtelier();
+}
+
+function renderAtelierQuestion(){document.getElementById('atelierGameBoard').classList.add('hidden');document.getElementById('atelierQuestion').classList.remove('hidden');document.getElementById('atelierAnswers').classList.remove('hidden');const item=atelierItems[atelierRound];atelierAnswered=false;atelierHintUsed=false;const hintBtn=document.getElementById('atelierHint50Btn');hintBtn.classList.toggle('hidden',!['people','detective','council'].includes(atelierMode));hintBtn.disabled=false;hintBtn.textContent='50:50 ipucu';updateAtelierProgress(atelierItems.length);document.getElementById('atelierQuestion').textContent=item.q;const clueBoard=document.getElementById('atelierClues');clueBoard.innerHTML='';clueBoard.classList.toggle('hidden',atelierMode!=='detective');if(atelierMode==='detective'){const title=document.createElement('div');title.className='clue-board-title';title.textContent='ARŞİVDEN ÇIKAN İPUÇLARI';clueBoard.appendChild(title);item.clues.forEach((clue,i)=>{const card=document.createElement('div');card.className='clue-item';const number=document.createElement('b');number.textContent=String(i+1);const text=document.createElement('span');text.textContent=clue;card.append(number,text);clueBoard.appendChild(card);});}document.getElementById('atelierFeedback').className='feedback';document.getElementById('atelierFeedback').textContent='';document.getElementById('atelierHint').textContent=atelierMode==='detective'?'İpuçlarını birleştirerek doğru dosyayı bul.':'Cevabını seç ve açıklamayı oku.';document.getElementById('atelierNextBtn').classList.add('hidden');document.getElementById('atelierCheckBtn').classList.add('hidden');const wrap=document.getElementById('atelierAnswers');wrap.innerHTML='';const choices=['people','detective','council'].includes(atelierMode)?item.a:['Doğru','Yanlış'];choices.forEach((choice,i)=>{const b=document.createElement('button');b.type='button';b.className='atelier-option';b.textContent=choice;b.addEventListener('click',()=>answerAtelier(i,b));wrap.appendChild(b);});}
+function useAtelierFiftyFifty(){
+ if(atelierAnswered||atelierHintUsed||!['people','detective','council'].includes(atelierMode))return;
+ const item=atelierItems[atelierRound],q={a:item.a,c:item.c};
+ const removed=hideTwoWrongOptions(document.getElementById('atelierAnswers'),q,'.atelier-option');
+ if(removed.length!==2)return;
+ atelierHintUsed=true;const btn=document.getElementById('atelierHint50Btn');btn.disabled=true;btn.textContent='İpucu kullanıldı';
+ document.getElementById('atelierHint').textContent='İki yanlış seçenek elendi. Doğru cevap 10 puan kazandırır.';
+}
+function answerAtelier(index,button){
+  if(atelierAnswered)return;
+  atelierAnswered=true;
+  const item=atelierItems[atelierRound];
+  const multipleChoice=['people','detective','council'].includes(atelierMode);
+  const correct=multipleChoice?index===item.c:(index===0)===item.c;
+  const buttons=[...document.querySelectorAll('#atelierAnswers .atelier-option')];
+  buttons.forEach((b,i)=>{b.disabled=true;const isCorrect=multipleChoice?i===item.c:(i===0)===item.c;if(isCorrect)b.classList.add('correct');});
+  if(!correct)button.classList.add('wrong');
+  if(correct)awardAtelierPoints(atelierHintUsed?10:20);
+  const fb=document.getElementById('atelierFeedback');fb.className=`feedback ${correct?'good':'bad'} show`;
+  const teamPrefix=isAtelierTeamMode()?`${atelierTeams[atelierTeamTurn].name}: `:'';
+  fb.textContent=teamPrefix+(correct?'Doğru! ':'Bir daha düşün. ')+item.e;
+  document.getElementById('atelierHint').textContent=correct?`+${atelierHintUsed?10:20} puan kazandın${atelierHintUsed?' (ipucu kullanıldı)':''}.`:'Açıklamayı okuyarak yeni bir bilgi öğrendin.';
+  document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;
+  document.getElementById('atelierNextBtn').classList.remove('hidden');
+  document.getElementById('atelierNextBtn').textContent=atelierRound===atelierItems.length-1?'Etkinliği tamamla ✓':(isAtelierTeamMode()?'Sıradaki takım →':'Sonraki soru →');
+  renderAtelierTeamStatus();
+}
+function nextAtelierQuestion(){
+  if(atelierRound<atelierItems.length-1){atelierRound++;if(isAtelierTeamMode())advanceAtelierTeam();renderAtelierQuestion();}
+  else finishAtelier();
+}
+
 function startMemoryGame(){memoryDeck=shuffle(atelierMemoryPairs.flatMap(pair=>[{id:pair.id,label:pair.left,side:'left'},{id:pair.id,label:pair.right,side:'right'}]));const board=document.getElementById('atelierGameBoard');board.classList.remove('hidden');board.innerHTML='<div class="memory-stats"><span id="memoryMatchedStat">0 / 6 eşleşme</span><span id="memoryMovesStat">0 hamle</span><span>Her eşleşme +20 puan</span></div><div class="memory-grid" id="memoryGrid"></div><p class="teacher-note">Aynı konuya ait iki kartı bul. Örneğin bir tarihî kişiyi, yaptığı işle veya tanındığı alanla eşleştir.</p>';renderMemoryCards();updateAtelierProgress();}
 function renderMemoryCards(){const grid=document.getElementById('memoryGrid');if(!grid)return;grid.innerHTML='';memoryDeck.forEach((card,index)=>{const btn=document.createElement('button');btn.type='button';btn.className='memory-card'+(memoryOpen.includes(index)?' revealed':'')+(memoryMatched.includes(index)?' matched':'');btn.disabled=memoryMatched.includes(index)||memoryOpen.includes(index)||memoryBusy;btn.innerHTML=memoryMatched.includes(index)||memoryOpen.includes(index)?`<span>${escapeHtml(card.label)}</span>`:'<span class="memory-back">?</span><span>Gizli kart</span>';btn.addEventListener('click',()=>flipMemoryCard(index));grid.appendChild(btn);});const matched=document.getElementById('memoryMatchedStat'),moves=document.getElementById('memoryMovesStat');if(matched)matched.textContent=`${memoryMatched.length/2} / ${atelierMemoryPairs.length} eşleşme`;if(moves)moves.textContent=`${memoryMoves} hamle`;}
-function flipMemoryCard(index){if(memoryBusy||memoryMatched.includes(index)||memoryOpen.includes(index))return;memoryOpen.push(index);if(memoryOpen.length===2){memoryMoves++;memoryBusy=true;const a=memoryDeck[memoryOpen[0]],b=memoryDeck[memoryOpen[1]];if(a.id===b.id&&a.side!==b.side){memoryMatched.push(...memoryOpen);memoryOpen=[];memoryBusy=false;atelierScore+=20;renderMemoryCards();updateAtelierProgress();if(memoryMatched.length===atelierMemoryPairs.length*2){const bonus=memoryMoves<=8?30:memoryMoves<=11?15:0;atelierScore+=bonus;showToast(bonus?`Tüm eşleşmeler tamamlandı! +${bonus} hamle bonusu.`:'Tüm eşleşmeler tamamlandı!');setTimeout(finishAtelier,450);}else showToast('Eşleşme bulundu! +20 puan.');}else{renderMemoryCards();setTimeout(()=>{memoryOpen=[];memoryBusy=false;renderMemoryCards();updateAtelierProgress();},850);}}else{renderMemoryCards();}}
+function flipMemoryCard(index){
+  if(memoryBusy||memoryMatched.includes(index)||memoryOpen.includes(index))return;
+  memoryOpen.push(index);
+  if(memoryOpen.length===2){
+    memoryMoves++;memoryBusy=true;
+    const a=memoryDeck[memoryOpen[0]],b=memoryDeck[memoryOpen[1]];
+    if(a.id===b.id&&a.side!==b.side){
+      memoryMatched.push(...memoryOpen);memoryOpen=[];memoryBusy=false;awardAtelierPoints(20);renderMemoryCards();updateAtelierProgress();
+      if(memoryMatched.length===atelierMemoryPairs.length*2){const bonus=memoryMoves<=8?30:memoryMoves<=11?15:0;if(bonus)awardAtelierPoints(bonus);showToast(bonus?`Tüm eşleşmeler tamamlandı! +${bonus} hamle bonusu.`:'Tüm eşleşmeler tamamlandı!');setTimeout(finishAtelier,450);}
+      else showToast(isAtelierTeamMode()?`${atelierTeams[atelierTeamTurn].name} eşleşme buldu! +20 puan, sıra sizde kalıyor.`:'Eşleşme bulundu! +20 puan.');
+    }else{
+      renderMemoryCards();setTimeout(()=>{memoryOpen=[];memoryBusy=false;if(isAtelierTeamMode())advanceAtelierTeam();renderMemoryCards();updateAtelierProgress();},850);
+    }
+  }else{renderMemoryCards();}
+}
 function renderCipherGame(){cipherSolved=false;cipherSelected=[];const item=atelierItems[atelierRound];cipherLetters=shuffle(Array.from(item.word.toLocaleUpperCase('tr-TR')));const board=document.getElementById('atelierGameBoard');board.classList.remove('hidden');board.innerHTML='';const clue=document.createElement('div');clue.className='cipher-clue';clue.textContent=`İPUCU: ${item.clue}`;const slots=document.createElement('div');slots.className='cipher-slots';slots.id='cipherSlots';const letters=document.createElement('div');letters.className='cipher-letters';letters.id='cipherLetters';const feedback=document.createElement('div');feedback.className='feedback';feedback.id='cipherFeedback';const actions=document.createElement('div');actions.className='cipher-actions';const undo=document.createElement('button');undo.type='button';undo.className='subtle-btn';undo.textContent='Son harfi sil';undo.addEventListener('click',()=>{if(cipherSolved)return;cipherSelected.pop();renderCipherSlots();});const check=document.createElement('button');check.type='button';check.className='primary-btn';check.textContent='Şifreyi kontrol et';check.addEventListener('click',checkCipherAnswer);const next=document.createElement('button');next.type='button';next.className='secondary-btn hidden';next.id='cipherNextBtn';next.textContent=atelierRound===atelierItems.length-1?'Sandığı aç ✓':'Sonraki şifre →';next.addEventListener('click',nextCipherRound);actions.append(undo,check,next);board.append(clue,slots,letters,feedback,actions);renderCipherSlots();}
 function renderCipherSlots(){const slots=document.getElementById('cipherSlots'),letters=document.getElementById('cipherLetters');if(!slots||!letters)return;slots.innerHTML='';Array.from(atelierItems[atelierRound].word.toLocaleUpperCase('tr-TR')).forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.className='cipher-slot'+(cipherSelected[i]!==undefined?' filled':'');b.textContent=cipherSelected[i]!==undefined?cipherLetters[cipherSelected[i]]:'';b.title='Bu harfi kaldır';b.addEventListener('click',()=>{if(cipherSolved)return;cipherSelected.splice(i,1);renderCipherSlots();});slots.appendChild(b);});letters.innerHTML='';cipherLetters.forEach((letter,i)=>{const b=document.createElement('button');b.type='button';b.className='cipher-letter'+(cipherSelected.includes(i)?' used':'');b.textContent=letter;b.disabled=cipherSolved||cipherSelected.includes(i)||cipherSelected.length>=cipherLetters.length;b.addEventListener('click',()=>{cipherSelected.push(i);renderCipherSlots();});letters.appendChild(b);});}
-function checkCipherAnswer(){if(cipherSolved)return;const target=atelierItems[atelierRound].word.toLocaleUpperCase('tr-TR');if(cipherSelected.length!==cipherLetters.length){showToast('Önce bütün harfleri yerleştir.');return;}const answer=cipherSelected.map(i=>cipherLetters[i]).join('');const feedback=document.getElementById('cipherFeedback');if(answer===target){cipherSolved=true;atelierScore+=20;feedback.className='feedback good show';feedback.textContent=`Doğru! ${atelierItems[atelierRound].fact} +20 puan kazandın.`;document.querySelectorAll('#cipherLetters button,#cipherSlots button').forEach(b=>b.disabled=true);document.querySelector('.cipher-actions .primary-btn').classList.add('hidden');document.getElementById('cipherNextBtn').classList.remove('hidden');document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;updateAtelierProgress();}else{feedback.className='feedback bad show';feedback.textContent='Harfler doğru sırada değil. Son harfi silebilir veya kutucuklardan birine dokunarak harfi geri alabilirsin.';}}
-function nextCipherRound(){if(!cipherSolved)return;if(atelierRound<atelierItems.length-1){atelierRound++;renderCipherGame();updateAtelierProgress();}else finishAtelier();}
-function finishAtelier(){const max=atelierMode==='chronology'?100:atelierMode==='memory'?150:atelierMode==='cipher'?atelierItems.length*20:atelierItems.length*20;const firstTime=!state.atelierClaimed.includes(atelierMode);if(state.atelierBest[atelierMode]===undefined||atelierScore>state.atelierBest[atelierMode])state.atelierBest[atelierMode]=atelierScore;if(firstTime){state.atelierClaimed.push(atelierMode);state.points+=100;}updateAchievements();saveState();renderCollection();document.getElementById('atelierPlayPanel').classList.add('hidden');document.getElementById('atelierResults').classList.remove('hidden');const names={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık'};document.getElementById('atelierResultTitle').textContent=atelierScore===max?'Harika iş!':'Etkinlik tamamlandı!';document.getElementById('atelierResultText').textContent=`${names[atelierMode]} etkinliğinde ${max?Math.round(atelierScore/max*100):0}% başarı elde ettin (${atelierScore}/${max} puan). ${firstTime?'İlk tamamlaman için +100 genel puan kazandın. ':''}${state.atelierClaimed.length===6?'Tebrikler! Altı atölye etkinliğini de tamamladın ve Atölye Ustası başarısını kazandın.':''}`;document.getElementById('atelierReplayBtn').textContent='Tekrar oyna';}
-function resetAll(){if(!confirm('Keşif ilerlemesi, puanlar, koleksiyon ve başarılar silinsin mi? Bu işlem geri alınamaz.'))return;state=structuredClone(defaultState);saveState();renderMap();renderCollection();renderAtelierMenu();showToast('Oyun ilerlemesi sıfırlandı.');showView('homeView');}
+function checkCipherAnswer(){
+  if(cipherSolved)return;
+  const target=atelierItems[atelierRound].word.toLocaleUpperCase('tr-TR');
+  if(cipherSelected.length!==cipherLetters.length){showToast('Önce bütün harfleri yerleştir.');return;}
+  const answer=cipherSelected.map(i=>cipherLetters[i]).join('');
+  const feedback=document.getElementById('cipherFeedback');
+  if(answer===target){cipherSolved=true;awardAtelierPoints(20);feedback.className='feedback good show';feedback.textContent=`${isAtelierTeamMode()?atelierTeams[atelierTeamTurn].name+': ':''}Doğru! ${atelierItems[atelierRound].fact} +20 puan kazandın.`;}
+  else if(isAtelierTeamMode()){
+    cipherSolved=true;feedback.className='feedback bad show';feedback.textContent=`Yanlış cevap. Doğru kelime: ${target}. Bu tur puan kazandırmadı; sıra sonraki takıma geçiyor.`;
+  }else{feedback.className='feedback bad show';feedback.textContent='Harfler doğru sırada değil. Son harfi silebilir veya kutucuklardan birine dokunarak harfi geri alabilirsin.';return;}
+  document.querySelectorAll('#cipherLetters button,#cipherSlots button').forEach(b=>b.disabled=true);
+  document.querySelector('.cipher-actions .primary-btn').classList.add('hidden');
+  document.getElementById('cipherNextBtn').classList.remove('hidden');
+  document.getElementById('cipherNextBtn').textContent=atelierRound===atelierItems.length-1?'Sandığı aç ✓':(isAtelierTeamMode()?'Sonraki takımın şifresi →':'Sonraki şifre →');
+  updateAtelierProgress();
+}
+function nextCipherRound(){
+  if(!cipherSolved)return;
+  if(atelierRound<atelierItems.length-1){atelierRound++;if(isAtelierTeamMode())advanceAtelierTeam();renderCipherGame();updateAtelierProgress();}
+  else finishAtelier();
+}
+
+function finishAtelier(){
+  const max=atelierMode==='chronology'?100:atelierMode==='memory'?150:atelierItems.length*20;
+  const firstTime=!state.atelierClaimed.includes(atelierMode);
+  if(state.atelierBest[atelierMode]===undefined||atelierScore>state.atelierBest[atelierMode])state.atelierBest[atelierMode]=atelierScore;
+  if(firstTime){state.atelierClaimed.push(atelierMode);state.points+=100;}
+  updateAchievements();saveState();renderCollection();
+  document.getElementById('atelierPlayPanel').classList.add('hidden');
+  document.getElementById('atelierResults').classList.remove('hidden');
+  const names={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık',council:'Karar Divanı'};
+  document.getElementById('atelierResultTitle').textContent=atelierScore===max?'Harika iş!':'Etkinlik tamamlandı!';
+  const teamMode=isAtelierTeamMode();
+  document.getElementById('atelierResultText').textContent=teamMode
+    ?`${names[atelierMode]} takım yarışı tamamlandı. Takımlar toplam ${atelierScore} puan topladı. ${firstTime?'Bu etkinliğin ilk tamamlanışı için +100 genel oyun puanı eklendi.':''}`
+    :`${names[atelierMode]} etkinliğinde ${max?Math.round(atelierScore/max*100):0}% başarı elde ettin (${atelierScore}/${max} puan). ${firstTime?'İlk tamamlaman için +100 genel puan kazandın. ':''}${state.atelierClaimed.length===7?'Tebrikler! Yedi atölye etkinliğini de tamamladın ve Atölye Ustası başarısını kazandın.':''}`;
+  const teamResults=document.getElementById('atelierTeamResults');
+  if(teamMode){
+    const sorted=atelierTeams.map((t,i)=>({...t,originalIndex:i})).sort((a,b)=>b.score-a.score);
+    const tied=sorted.length>1&&sorted[0].score===sorted[1].score;
+    teamResults.classList.remove('hidden');
+    teamResults.innerHTML=`<h3>${tied?'🤝 Berabere!':'🏆 Takım sıralaması'}</h3><ol>${sorted.map((t,i)=>`<li>${i===0?(tied?'🥇':'🥇'):i===1?'🥈':i===2?'🥉':'•'} ${escapeHtml(t.name)} <strong>${t.score} puan</strong></li>`).join('')}</ol>`;
+  }else{teamResults.classList.add('hidden');teamResults.innerHTML='';}
+  document.getElementById('atelierReplayBtn').textContent='Tekrar oyna';
+}
+function currentRankInfo(points=state.points){
+  const ranks=[{min:0,name:'Kâtip Adayı',next:300},{min:300,name:'Saray Kâtibi',next:700},{min:700,name:'Elçi',next:1200},{min:1200,name:'Saray Bilgesi',next:2000},{min:2000,name:'Tarih Ustası',next:null}];
+  return [...ranks].reverse().find(r=>points>=r.min)||ranks[0];
+}
+function chapterDoneCount(index){
+  if(state.completed.includes(index))return chapters[index].questions.length;
+  const progress=state.chapterProgress?.[index];
+  if(!progress)return 0;
+  return Math.min(chapters[index].questions.length,Math.max(0,Number(progress.index)||0)+(progress.answered?1:0));
+}
+function renderQuestLog(){
+  if(!document.getElementById('questLogView'))return;
+  const oldAchievementCount=state.achievements.length;updateAchievements();if(state.achievements.length!==oldAchievementCount)saveState();
+  const rank=currentRankInfo();
+  document.getElementById('questPointsMetric').textContent=state.points.toLocaleString('tr-TR');
+  document.getElementById('questRankMetric').textContent=rank.name;
+  document.getElementById('questChapterMetric').textContent=`${state.completed.length} / ${chapters.length}`;
+  document.getElementById('questAtelierMetric').textContent=`${state.atelierClaimed.length} / 7`;
+  document.getElementById('questChapterSummary').textContent=`${state.completed.length} / ${chapters.length}`;
+  document.getElementById('questAtelierSummary').textContent=`${state.atelierClaimed.length} / 7`;
+  const chapterList=document.getElementById('questChapterList');
+  chapterList.innerHTML=chapters.map((ch,i)=>{
+    const done=state.completed.includes(i),unlocked=i===0||state.completed.includes(i-1),count=chapterDoneCount(i),total=ch.questions.length,pct=Math.round(count/total*100);
+    const status=done?'Tamamlandı':unlocked?(count?`${count}/${total} görev`:'Açık'):'Kilitli';
+    return `<div class="quest-row"><div class="quest-row-main"><strong>${String(i+1).padStart(2,'0')} · ${escapeHtml(ch.title)}</strong><small>${status} · ${pct}%</small><div class="quest-row-bar"><span style="width:${pct}%"></span></div></div><button type="button" data-quest-chapter="${i}" ${unlocked?'':'disabled'}>${done?'Yeniden aç':count?'Devam et':'Başla'}</button></div>`;
+  }).join('');
+  chapterList.querySelectorAll('[data-quest-chapter]').forEach(btn=>btn.addEventListener('click',()=>openChapter(Number(btn.dataset.questChapter))));
+  const workshop=[
+    ['chronology','Zaman Tüneli'],['people','Kim Kimdir?'],['truefalse','Doğru mu, Yanlış mı?'],['detective','Belge Avı'],['memory','Hafıza Oyunu'],['cipher','Şifreli Sandık'],['council','Karar Divanı']
+  ];
+  const atelierList=document.getElementById('questAtelierList');
+  atelierList.innerHTML=workshop.map(([key,label])=>{
+    const done=state.atelierClaimed.includes(key),played=Object.prototype.hasOwnProperty.call(state.atelierBest,key),best=played?`En iyi sonuç: ${state.atelierBest[key]} puan`:'Henüz oynanmadı';
+    return `<div class="quest-row"><div class="quest-row-main"><strong>${label}</strong><small>${done?'İlk tamamlama ödülü alındı':best}</small></div><button type="button" data-quest-atelier="${key}">${done?'Tekrar oyna':'Oyna'}</button></div>`;
+  }).join('');
+  atelierList.querySelectorAll('[data-quest-atelier]').forEach(btn=>btn.addEventListener('click',()=>{prepareAtelier(btn.dataset.questAtelier);showView('atelierView');}));
+  const daily=ensureDailyChallenge();
+  document.getElementById('questDailyStreak').textContent=displayedDailyStreak();
+  document.getElementById('questDailyStatus').textContent=daily.completed?'Bugünün görevi tamamlandı':daily.started?`${Math.min(daily.index+1,5)}. sorudan devam edebilirsin`:'Bugünün beş sorusu hazır';
+  document.getElementById('questDailyButton').textContent=daily.completed?'Sonucu gör':'Görevi aç';
+  document.getElementById('questDailyButton').onclick=openDailyChallenge;
+  document.getElementById('questAchievementSummary').textContent=`${state.achievements.length} / ${achievementInfo.length}`;
+  document.getElementById('questAchievementList').innerHTML=achievementInfo.map(a=>{
+    const earned=state.achievements.includes(a.name);
+    return `<div class="quest-achievement ${earned?'earned':''}"><strong>${earned?'🏅':'🔒'} ${escapeHtml(a.name)}</strong><span>${escapeHtml(a.desc)}</span></div>`;
+  }).join('');
+  const nextTitle=document.getElementById('questNextTitle'),nextDesc=document.getElementById('questNextDescription'),nextBtn=document.getElementById('questNextButton');
+  const firstMissing=chapters.findIndex((_,i)=>!state.completed.includes(i));
+  if(firstMissing>=0){
+    const count=chapterDoneCount(firstMissing),ch=chapters[firstMissing];
+    nextTitle.textContent=count?`${ch.title} bölümüne devam et`:`${ch.title} bölümünü keşfet`;
+    nextDesc.textContent=count?`${count} görevi tamamladın. Kaldığın yerden devam edebilirsin.`:'Sıradaki hikâye bölümünü aç ve görevleri tamamla.';
+    nextBtn.textContent=count?'Bölüme devam et →':'Bölüme başla →';nextBtn.onclick=()=>openChapter(firstMissing);
+  }else{
+    const nextAtelier=workshop.find(([key])=>!state.atelierClaimed.includes(key));
+    if(nextAtelier){nextTitle.textContent='Tarih Atölyesi seni bekliyor';nextDesc.textContent=`Ana hikâyeyi tamamladın. Sıradaki mini oyun: ${nextAtelier[1]}.`;nextBtn.textContent='Mini oyuna git →';nextBtn.onclick=()=>{prepareAtelier(nextAtelier[0]);showView('atelierView');};}
+    else if(!daily.completed){nextTitle.textContent='Günün Meydan Okumasını tamamla';nextDesc.textContent='Bölümleri ve atölyeyi bitirdin. Günlük serini sürdürmek için beş soruyu çöz.';nextBtn.textContent='Günlük göreve git →';nextBtn.onclick=openDailyChallenge;}
+    else{nextTitle.textContent='Bütün görevleri tamamladın!';nextDesc.textContent='Tarih koleksiyonunu inceleyebilir, başarılarını görebilir veya etkinlikleri yeniden oynayabilirsin.';nextBtn.textContent='Koleksiyonu aç →';nextBtn.onclick=()=>{renderCollection();showView('collectionView');};}
+  }
+}
+function renderGlossary(){
+  const search=(document.getElementById('glossarySearch')?.value||'').trim().toLocaleLowerCase('tr-TR');
+  const category=document.getElementById('glossaryCategory')?.value||'all';
+  const filtered=glossaryTerms.filter(item=>{
+    const matchesCategory=category==='all'||item.category===category;
+    const haystack=`${item.term} ${item.category} ${item.definition}`.toLocaleLowerCase('tr-TR');
+    return matchesCategory&&(!search||haystack.includes(search));
+  });
+  const grid=document.getElementById('glossaryGrid');
+  if(!grid)return;
+  document.getElementById('glossaryResultCount').textContent=`${filtered.length} / ${glossaryTerms.length} kavram`;
+  if(!filtered.length){grid.innerHTML='<div class="glossary-empty"><strong>Aradığın kavram bulunamadı.</strong><br>Yazımını değiştirebilir veya konu filtresini temizleyebilirsin.</div>';return;}
+  grid.innerHTML=filtered.map((item,index)=>`<details class="glossary-card" ${search?'open':''}><summary><strong>${escapeHtml(item.term)}</strong><span class="glossary-tag">${escapeHtml(item.category)}</span></summary><div class="glossary-definition">${escapeHtml(item.definition)}</div></details>`).join('');
+}
+function renderTeacherDesk(){
+  if(!document.getElementById('teacherDeskView'))return;
+  document.getElementById('teacherChapterMetric').textContent=`${state.completed.length} / ${chapters.length}`;
+  document.getElementById('teacherAtelierMetric').textContent=`${state.atelierClaimed.length} / 7`;
+  document.getElementById('teacherDailyMetric').textContent=state.dailyCompletedTotal||0;
+  document.getElementById('teacherPointsMetric').textContent=(state.points||0).toLocaleString('tr-TR');
+  const status=document.getElementById('teacherPresentationStatus');
+  status.textContent=document.body.classList.contains('board-presentation')?'Sunum görünümü açık.':'Sunum görünümü kapalı.';
+  const btn=document.getElementById('teacherPresentationBtn');
+  btn.textContent=document.body.classList.contains('board-presentation')?'Sunum görünümünü kapat':'Sunum görünümünü aç';
+  btn.setAttribute('aria-pressed',String(document.body.classList.contains('board-presentation')));
+}
+function applyTeacherTextSize(value){
+  document.body.classList.toggle('board-large',value==='large');
+  document.body.classList.toggle('board-xlarge',value==='xlarge');
+  showToast(value==='normal'?'Yazı boyutu normale döndü':value==='large'?'Büyük yazı görünümü açıldı':'Çok büyük yazı görünümü açıldı');
+}
+async function toggleTeacherFullscreen(){
+  try{
+    if(!document.fullscreenElement){
+      if(!document.documentElement.requestFullscreen){showToast('Bu tarayıcı tam ekran özelliğini desteklemiyor.');return;}
+      await document.documentElement.requestFullscreen();
+    }else if(document.exitFullscreen){await document.exitFullscreen();}
+  }catch(error){showToast('Tam ekran açılamadı. Tarayıcının izinlerini kontrol et.');}
+}
+function updateTeacherFullscreenLabel(){
+  const btn=document.getElementById('teacherFullscreenBtn');
+  if(btn)btn.textContent=document.fullscreenElement?'⛶ Tam ekrandan çık':'⛶ Tam ekranı aç';
+}
+function resetAll(){if(!confirm('Keşif ilerlemesi, puanlar, koleksiyon ve başarılar silinsin mi? Bu işlem geri alınamaz.'))return;state=structuredClone(defaultState);saveState();renderMap();renderCollection();renderAtelierMenu();renderQuestLog();renderTeacherDesk();showToast('Oyun ilerlemesi sıfırlandı.');showView('homeView');}
 // Navigation
 ['homeBtn'].forEach(id=>document.getElementById(id).addEventListener('click',()=>showView('homeView')));
 document.getElementById('exploreBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
@@ -664,14 +1298,42 @@ document.getElementById('continueBtn').addEventListener('click',()=>{renderMap()
 document.getElementById('classBtn').addEventListener('click',openClass);
 document.getElementById('resetBtn').addEventListener('click',resetAll);
 document.getElementById('summaryBtn').addEventListener('click',()=>showView('summaryView'));
+document.getElementById('glossaryBtn').addEventListener('click',()=>{renderGlossary();showView('glossaryView');});
+document.getElementById('homeGlossaryBtn').addEventListener('click',()=>{renderGlossary();showView('glossaryView');});
+document.getElementById('glossarySearch').addEventListener('input',renderGlossary);
+document.getElementById('glossaryCategory').addEventListener('change',renderGlossary);
+document.getElementById('glossaryClearBtn').addEventListener('click',()=>{document.getElementById('glossarySearch').value='';document.getElementById('glossaryCategory').value='all';renderGlossary();});
 document.getElementById('collectionBtn').addEventListener('click',()=>{renderCollection();showView('collectionView');});
+document.getElementById('questLogBtn').addEventListener('click',()=>showView('questLogView'));
+document.getElementById('teacherDeskBtn').addEventListener('click',()=>showView('teacherDeskView'));
+document.getElementById('teacherTextSize').addEventListener('change',e=>applyTeacherTextSize(e.target.value));
+document.getElementById('teacherPresentationBtn').addEventListener('click',()=>{document.body.classList.toggle('board-presentation');renderTeacherDesk();});
+document.getElementById('teacherFullscreenBtn').addEventListener('click',toggleTeacherFullscreen);
+document.addEventListener('fullscreenchange',updateTeacherFullscreenLabel);
+document.getElementById('teacherClassLaunchBtn').addEventListener('click',openClass);
+document.getElementById('teacherAtelierLaunchBtn').addEventListener('click',openAtelier);
+document.getElementById('teacherDailyLaunchBtn').addEventListener('click',openDailyChallenge);
+document.getElementById('dailyBtn').addEventListener('click',openDailyChallenge);
+document.getElementById('dailyHomeBtn').addEventListener('click',openDailyChallenge);
+document.getElementById('dailySoloStartBtn').addEventListener('click',()=>startDailyChallenge('solo'));
+document.getElementById('dailyTeamModeBtn').addEventListener('click',prepareDailyTeams);
+document.getElementById('dailyTeamCount').addEventListener('change',buildDailyTeamInputs);
+document.getElementById('dailyTeamBackBtn').addEventListener('click',()=>{document.getElementById('dailyTeamSetup').classList.add('hidden');document.getElementById('dailyIntroPanel').classList.remove('hidden');});
+document.getElementById('dailyTeamStartBtn').addEventListener('click',startDailyTeamChallenge);
+document.getElementById('dailyNextBtn').addEventListener('click',nextDailyQuestion);
+document.getElementById('dailyResultHomeBtn').addEventListener('click',()=>showView('homeView'));
 document.getElementById('atelierBtn').addEventListener('click',openAtelier);
 document.getElementById('homeAtelierBtn').addEventListener('click',openAtelier);
-document.querySelectorAll('[data-atelier-mode]').forEach(b=>b.addEventListener('click',()=>startAtelier(b.dataset.atelierMode)));
+document.querySelectorAll('[data-atelier-mode]').forEach(b=>b.addEventListener('click',()=>prepareAtelier(b.dataset.atelierMode)));
+document.getElementById('atelierSoloStartBtn').addEventListener('click',()=>startAtelier(atelierPendingMode,'solo'));
+document.getElementById('atelierTeamModeBtn').addEventListener('click',()=>{document.getElementById('atelierTeamSetup').classList.remove('hidden');buildAtelierTeamInputs();});
+document.getElementById('atelierTeamCount').addEventListener('change',buildAtelierTeamInputs);
+document.getElementById('atelierTeamStartBtn').addEventListener('click',startAtelierTeams);
+document.getElementById('atelierModeBackBtn').addEventListener('click',renderAtelierMenu);
 document.getElementById('atelierBackBtn').addEventListener('click',renderAtelierMenu);
 document.getElementById('atelierNextBtn').addEventListener('click',nextAtelierQuestion);
 document.getElementById('atelierCheckBtn').addEventListener('click',checkAtelierChronology);
-document.getElementById('atelierReplayBtn').addEventListener('click',()=>startAtelier(atelierMode));
+document.getElementById('atelierReplayBtn').addEventListener('click',()=>startAtelier(atelierMode,atelierPlayMode,atelierTeams.map(t=>({name:t.name,score:0}))));
 document.getElementById('atelierReturnBtn').addEventListener('click',renderAtelierMenu);
 document.getElementById('addTeamPointsBtn').addEventListener('click',()=>adjustTeamScore(50));
 document.getElementById('removeTeamPointsBtn').addEventListener('click',()=>adjustTeamScore(-50));
@@ -681,6 +1343,9 @@ document.getElementById('importSaveFile').addEventListener('change',e=>importSav
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
 document.getElementById('mapBackBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
 document.getElementById('nextQuestionBtn').addEventListener('click',nextExploreQuestion);
+document.getElementById('exploreHintBtn').addEventListener('click',useExploreHint);
+document.getElementById('classHintBtn').addEventListener('click',useClassHint);
+document.getElementById('atelierHint50Btn').addEventListener('click',useAtelierFiftyFifty);
 document.getElementById('completionMapBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
 document.getElementById('teamCount').addEventListener('change',createTeamInputs);
 document.getElementById('startClassBtn').addEventListener('click',enterClass);
@@ -695,7 +1360,7 @@ document.getElementById('playTab').addEventListener('click',()=>{if(state.teams.
 document.getElementById('resultsTab').addEventListener('click',()=>{if(state.teams.length)showClassResults();});
 // Utility menu: reset by keyboard shortcut for teacher, intentionally confirmed.
 document.addEventListener('keydown',e=>{if(e.altKey&&e.shiftKey&&e.key.toLowerCase()==='r')resetAll();});
-renderMap();renderCollection();renderAtelierMenu();createTeamInputs();
+renderMap();renderCollection();renderAtelierMenu();createTeamInputs();renderDailyHomeCard();renderQuestLog();renderTeacherDesk();renderGlossary();updateTeacherFullscreenLabel();
 </script>
 </body>
 </html>
