@@ -1,0 +1,1 @@
+# Sosyal_Bilgiler_Lale_Devri
