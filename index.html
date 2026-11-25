@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#172b3b">
+<meta name="description" content="7. sınıflar için Osmanlı Lale Devri konulu hikâyeli tarih oyunu.">
+<meta name="author" content="SoftArchX">
+<title>Osmanlı Lale Devri</title>
+<style>
+:root{
+  --ink:#172b3b;--ink-2:#294456;--cream:#f6f0e4;--paper:#fffaf0;--paper-2:#efe5d2;
+  --red:#8b3341;--red-dark:#672532;--gold:#c69a45;--gold-light:#e6ca87;
+  --green:#47745f;--muted:#71808a;--line:#dfd2bb;--shadow:0 16px 38px rgba(23,43,59,.12);
+  --radius:20px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Georgia,"Times New Roman",serif;min-height:100vh}
+button,input,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.app-shell{max-width:1180px;margin:0 auto;padding:18px 22px 50px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 2px 18px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-weight:bold;letter-spacing:.04em}
+.brand small{display:block;font:600 10px/1.4 Arial,sans-serif;color:var(--muted);letter-spacing:.18em;margin-top:2px}
+.top-actions{display:flex;gap:8px;flex-wrap:wrap}
+.icon-btn,.subtle-btn{border:1px solid var(--line);background:rgba(255,250,240,.72);color:var(--ink);border-radius:999px;padding:9px 13px;font:600 12px Arial,sans-serif;transition:.2s}
+.icon-btn:hover,.subtle-btn:hover{border-color:var(--gold);transform:translateY(-1px)}
+main{padding-top:22px}
+.view{display:none;animation:fade .28s ease}.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hero{position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(120deg,rgba(20,42,57,.97),rgba(42,65,76,.94));color:#fffaf0;padding:clamp(28px,5vw,62px);box-shadow:var(--shadow);min-height:330px}
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid rgba(230,202,135,.25);border-radius:50%}
+.hero:before{width:360px;height:360px;right:-75px;top:-130px;box-shadow:0 0 0 18px rgba(230,202,135,.035),0 0 0 38px rgba(230,202,135,.03)}
+.hero:after{width:190px;height:190px;right:55px;bottom:-115px}
+.hero-content{position:relative;z-index:1;max-width:700px}
+.eyebrow{font:700 11px Arial,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(38px,6vw,66px);line-height:.98;margin:15px 0 16px;font-weight:700;letter-spacing:-.04em}
+.hero p{font:16px/1.75 Arial,sans-serif;color:#e6e9e7;max-width:580px;margin-bottom:26px}
+.hero-stamp{position:absolute;right:9%;top:50%;transform:translateY(-50%);font-size:clamp(110px,20vw,210px);opacity:.17;color:var(--gold-light);user-select:none}
+.primary-btn,.secondary-btn,.danger-btn{border:0;border-radius:12px;padding:13px 19px;font:700 13px Arial,sans-serif;letter-spacing:.03em;transition:.2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.primary-btn{background:var(--gold-light);color:var(--ink)}.primary-btn:hover{background:#f0d99e;transform:translateY(-2px)}
+.secondary-btn{background:var(--ink);color:#fffaf0}.secondary-btn:hover{background:var(--ink-2);transform:translateY(-2px)}
+.danger-btn{background:#f5e4e2;color:var(--red-dark)}
+.text-btn{border:0;background:none;color:var(--red);font:700 13px Arial,sans-serif;padding:9px 0;text-decoration:underline;text-underline-offset:4px}
+.home-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+.mode-card,.info-card,.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 8px 24px rgba(23,43,59,.055)}
+.mode-card{padding:25px;display:flex;flex-direction:column;min-height:205px;position:relative;overflow:hidden}
+.mode-card .mode-icon{font-size:28px;margin-bottom:15px}.mode-card h2{font-size:25px;margin-bottom:8px}.mode-card p{font:14px/1.65 Arial,sans-serif;color:var(--muted);max-width:460px;margin-bottom:18px}.mode-card .primary-btn,.mode-card .secondary-btn{align-self:flex-start;margin-top:auto}
+.mode-card.featured{background:#f1e5d0}
+.home-lower{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.info-card{padding:19px}.info-card strong{display:block;font-size:14px;margin-bottom:7px}.info-card p{font:12px/1.6 Arial,sans-serif;color:var(--muted);margin:0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:12px 0 20px}.section-head h2{font-size:clamp(28px,4vw,39px);margin:6px 0 4px}.section-head p{font:14px/1.6 Arial,sans-serif;color:var(--muted);margin:0}
+.back-btn{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:10px 14px;color:var(--ink);font:700 12px Arial,sans-serif;white-space:nowrap}
+.progress-panel{background:var(--ink);color:#fffaf0;border-radius:18px;padding:18px 20px;margin-bottom:18px;display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.progress-copy{min-width:160px;flex:1}.progress-copy strong{font-size:18px}.progress-copy span{display:block;color:#c6d0d1;font:12px Arial,sans-serif;margin-top:5px}
+.progress-track{height:9px;background:rgba(255,255,255,.15);border-radius:99px;overflow:hidden;flex:2;min-width:130px}.progress-fill{height:100%;background:var(--gold-light);border-radius:99px;width:0;transition:width .35s}
+.chapter-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.chapter-card{border:1px solid var(--line);border-radius:17px;background:var(--paper);padding:17px;text-align:left;min-height:176px;display:flex;flex-direction:column;position:relative;transition:.2s;color:var(--ink)}
+.chapter-card:not(:disabled):hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:var(--shadow)}
+.chapter-card:disabled{opacity:.55;cursor:not-allowed;filter:grayscale(.35)}
+.chapter-number{font:700 10px Arial,sans-serif;letter-spacing:.16em;color:var(--red);text-transform:uppercase}.chapter-symbol{font-size:25px;margin:9px 0}.chapter-card strong{font-size:17px;line-height:1.2}.chapter-card small{font:11px/1.5 Arial,sans-serif;color:var(--muted);margin-top:8px}.chapter-status{position:absolute;right:13px;top:12px;font-size:16px}
+.chapter-layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,.75fr);gap:18px;align-items:start}
+.story-panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.story-banner{background:linear-gradient(110deg,var(--ink),var(--ink-2));color:#fffaf0;padding:clamp(22px,4vw,34px);position:relative;overflow:hidden}.story-banner>*{position:relative;z-index:1}.story-banner h2{font-size:clamp(28px,4vw,40px);margin:9px 0}.story-banner p{font:13px/1.6 Arial,sans-serif;color:#d7dfdc;margin:0;max-width:600px}
+.story-body{padding:clamp(20px,4vw,34px)}.story-text{font:15px/1.85 Arial,sans-serif;color:#354957}.story-text p{margin-bottom:13px}.mission-box{background:#f3ead9;border-left:4px solid var(--gold);padding:15px 17px;border-radius:0 12px 12px 0;margin:20px 0}.mission-box strong{display:block;font-size:14px;margin-bottom:6px}.mission-box p{font:13px/1.6 Arial,sans-serif;margin:0;color:#53616a}
+.side-panel{display:grid;gap:14px}.side-panel .panel{padding:19px}.panel h3{font-size:17px;margin-bottom:10px}.panel p,.panel li{font:12px/1.7 Arial,sans-serif;color:var(--muted)}.fact-list{padding-left:18px;margin:0}.fact-list li{margin:7px 0}
+.quiz-area{margin-top:20px;border-top:1px solid var(--line);padding-top:22px}.quiz-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}.quiz-top span{font:700 10px Arial,sans-serif;text-transform:uppercase;letter-spacing:.15em;color:var(--red)}.quiz-top strong{font:12px Arial,sans-serif;color:var(--muted)}
+.question{font-size:21px;line-height:1.35;margin-bottom:18px}.answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.answer-btn{border:1px solid var(--line);background:#fffdf8;border-radius:12px;text-align:left;padding:13px 14px;color:var(--ink);font:13px/1.5 Arial,sans-serif;min-height:54px;transition:.15s}.answer-btn:hover:not(:disabled){border-color:var(--gold);background:#f8f0df}.answer-btn.correct{border-color:#6d9d82;background:#e8f2eb;color:#244d38}.answer-btn.wrong{border-color:#c47d7d;background:#f8e9e7;color:#7c3038}.answer-btn:disabled{cursor:default}
+.feedback{margin-top:14px;padding:14px 15px;border-radius:12px;font:13px/1.65 Arial,sans-serif;display:none}.feedback.show{display:block}.feedback.good{background:#e8f2eb;color:#28533d}.feedback.bad{background:#f8e9e7;color:#74343b}.quiz-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:17px;flex-wrap:wrap}
+.chapter-side-stat{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mini-stat{background:#f5eddf;border-radius:12px;padding:12px}.mini-stat strong{font-size:21px;display:block}.mini-stat span{font:10px Arial,sans-serif;color:var(--muted)}
+.completion{text-align:center;padding:34px 20px}.completion .big-icon{font-size:56px}.completion h2{font-size:32px;margin:12px 0}.completion p{font:14px/1.7 Arial,sans-serif;color:var(--muted);max-width:550px;margin:0 auto 20px}
+.mode-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 18px}.tab-btn{border:1px solid var(--line);background:var(--paper);padding:10px 14px;border-radius:999px;font:700 12px Arial,sans-serif;color:var(--ink)}.tab-btn.active{background:var(--ink);border-color:var(--ink);color:#fffaf0}
+.class-setup{display:grid;grid-template-columns:1fr 1fr;gap:18px}.setup-panel{padding:22px}.field{display:grid;gap:7px;margin:12px 0}.field label{font:700 12px Arial,sans-serif;color:var(--ink-2)}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:10px;background:#fffdf8;padding:12px;color:var(--ink);font:14px Arial,sans-serif}.team-inputs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.class-board{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(250px,.8fr);gap:18px}.class-question-panel{padding:24px}.turn-pill{display:inline-flex;padding:7px 11px;background:#f2e6d0;color:var(--red-dark);border-radius:99px;font:700 11px Arial,sans-serif;margin-bottom:12px}.class-score-panel{padding:20px}.score-list{list-style:none;padding:0;margin:0;display:grid;gap:9px}.score-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#f6efe2;border-radius:12px;padding:12px}.score-row.current{outline:2px solid var(--gold)}.score-name{font:700 13px Arial,sans-serif}.score-points{font:bold 18px Georgia,serif;color:var(--red)}
+.teacher-note{background:#edf1ef;border:1px solid #d7e0da;border-radius:13px;padding:14px 16px;font:12px/1.6 Arial,sans-serif;color:#476052;margin-top:16px}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.summary-card{padding:21px}.summary-card h3{font-size:20px;margin-bottom:12px}.summary-card p{font:13px/1.7 Arial,sans-serif;color:#53616a}.timeline{border-left:2px solid var(--gold);padding-left:18px;margin:18px 0}.timeline-item{position:relative;margin:0 0 17px}.timeline-item:before{content:"";position:absolute;left:-24px;top:4px;width:9px;height:9px;background:var(--red);border:3px solid var(--paper);border-radius:50%}.timeline-item strong{font:700 13px Arial,sans-serif}.timeline-item p{font:12px/1.6 Arial,sans-serif;color:var(--muted);margin:4px 0 0}
+.footer{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:32px;padding-top:16px;color:var(--muted);font:11px Arial,sans-serif}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:#fffaf0;border-radius:999px;padding:12px 18px;font:12px Arial,sans-serif;box-shadow:var(--shadow);transition:.25s;z-index:20;max-width:calc(100vw - 32px);text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
+.hidden{display:none!important}
+@media(max-width:850px){.chapter-grid{grid-template-columns:repeat(2,1fr)}.home-grid,.chapter-layout,.class-board{grid-template-columns:1fr}.hero-stamp{right:1%;opacity:.11}.class-setup{grid-template-columns:1fr}}
+@media(max-width:560px){.app-shell{padding:10px 12px 34px}.topbar{align-items:flex-start}.brand{font-size:13px}.top-actions{justify-content:flex-end}.icon-btn{padding:8px 10px;font-size:11px}.hero{border-radius:20px;min-height:300px}.hero p{font-size:14px}.home-lower,.summary-grid{grid-template-columns:1fr}.chapter-grid{grid-template-columns:1fr 1fr;gap:9px}.chapter-card{min-height:160px;padding:13px}.chapter-card strong{font-size:15px}.chapter-card small{font-size:10px}.answers{grid-template-columns:1fr}.section-head{align-items:flex-start}.progress-panel{gap:12px}.progress-track{flex-basis:100%}.team-inputs{grid-template-columns:1fr}.quiz-footer{align-items:stretch}.quiz-footer button{flex:1}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Genişletilmiş oyun arayüzü */
+.class-selects{display:grid;grid-template-columns:1.4fr .8fr;gap:12px}.class-selects.single{grid-template-columns:1fr}.class-question-meta{font:700 11px Arial,sans-serif;letter-spacing:.08em;color:var(--red);text-transform:uppercase;margin:0 0 12px;padding:9px 12px;background:#f4ead8;border-radius:9px}
+.collection-progress{display:flex;justify-content:space-between;gap:12px;align-items:center;background:var(--ink);color:#fffaf0;border-radius:14px;padding:15px 18px;margin-bottom:16px;font:13px Arial,sans-serif}.collection-progress span{color:#d7dfdc;font-size:12px}
+.collection-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.collection-card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:17px;min-height:178px;position:relative}.collection-card.locked{opacity:.62;background:#eee8dd}.collection-card .collect-icon{font-size:30px;margin-bottom:10px}.collection-card h3{font-size:17px;margin:0 0 7px}.collection-card p{font:12px/1.65 Arial,sans-serif;color:var(--muted);margin:0}.collection-card small{display:block;font:700 10px Arial,sans-serif;letter-spacing:.12em;color:var(--red);margin-top:12px;text-transform:uppercase}.achievement-panel{padding:20px;margin-top:18px}.achievement-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.achievement{border:1px solid var(--line);border-radius:12px;padding:13px;background:#fffdf8}.achievement.earned{background:#f2e8d5;border-color:var(--gold)}.achievement strong{display:block;font-size:13px;margin-bottom:5px}.achievement span{font:11px/1.5 Arial,sans-serif;color:var(--muted)}.creator-credit{letter-spacing:.02em}.creator-credit strong{color:var(--red);letter-spacing:.05em}
+.chapter-card small{min-height:30px}.chapter-card .chapter-extra{font:700 10px Arial,sans-serif;color:var(--green);margin-top:auto;padding-top:7px}
+.answer-btn{font-size:14px;min-height:62px;padding:16px}.primary-btn,.secondary-btn,.danger-btn,.back-btn,.icon-btn,.subtle-btn{min-height:42px}
+@media(max-width:850px){.collection-grid{grid-template-columns:repeat(2,1fr)}.achievement-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.class-selects{grid-template-columns:1fr}.collection-grid,.achievement-grid{grid-template-columns:1fr}.collection-progress{align-items:flex-start;flex-direction:column}.creator-credit{width:100%}}
+@media(min-width:1000px){.class-question-panel .question{font-size:27px}.class-question-panel .answer-btn{font-size:17px;min-height:70px;padding:18px}}
+.atelier-teaser{margin-top:18px;padding:22px 25px;display:flex;align-items:center;justify-content:space-between;gap:18px;background:linear-gradient(110deg,#f0e5d1,#fffaf0)}.atelier-teaser h2{font-size:25px;margin:7px 0}.atelier-teaser p{font:13px/1.65 Arial,sans-serif;color:var(--muted);margin:0;max-width:720px}
+.atelier-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.atelier-card{display:flex;flex-direction:column;text-align:left;gap:9px;padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--paper);color:var(--ink);min-height:235px;box-shadow:0 8px 24px rgba(23,43,59,.055);transition:.2s}.atelier-card:hover{transform:translateY(-3px);border-color:var(--gold);box-shadow:var(--shadow)}.atelier-card .atelier-icon{font-size:33px}.atelier-card strong{font-size:23px}.atelier-card>span:not(.atelier-icon):not(.eyebrow){font:13px/1.6 Arial,sans-serif;color:var(--muted)}.atelier-card small{font:700 11px Arial,sans-serif;color:var(--green);margin-top:auto}.atelier-card b{font:700 12px Arial,sans-serif;color:var(--red)}
+.atelier-play{padding:clamp(20px,4vw,30px);margin-top:18px}.atelier-play-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px}.atelier-play-head h2{font-size:30px;margin:7px 0}.atelier-play-head p{font:13px/1.6 Arial,sans-serif;color:var(--muted)}.atelier-progress{display:flex;align-items:center;gap:14px;margin:18px 0 24px;font:700 12px Arial,sans-serif}.atelier-progress .progress-track{min-width:80px}.atelier-progress strong{white-space:nowrap;color:var(--red)}.atelier-answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}.atelier-option{border:1px solid var(--line);border-radius:12px;background:#fffdf8;color:var(--ink);padding:15px;text-align:left;font:14px/1.55 Arial,sans-serif;min-height:58px}.atelier-option:hover:not(:disabled){border-color:var(--gold);background:#f8f0df}.atelier-option.selected{background:#f2e6d0;border-color:var(--gold);font-weight:bold}.atelier-option.correct{background:#e8f2eb;border-color:#6d9d82}.atelier-option.wrong{background:#f8e9e7;border-color:#c47d7d}.atelier-option:disabled{cursor:default}.atelier-play .quiz-footer{justify-content:flex-end}.atelier-results{margin-top:18px;padding:32px;text-align:center}.atelier-results .big-icon{font-size:52px}.atelier-results h2{font-size:30px;margin:10px 0}.atelier-results p{font:14px/1.7 Arial,sans-serif;color:var(--muted);max-width:650px;margin:0 auto 20px}.atelier-result-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.manual-score-box{margin-top:18px;padding:14px;background:#f5eddf;border-radius:13px}.manual-score-box strong{font-size:13px}.manual-score-box p{font:11px/1.5 Arial,sans-serif;color:var(--muted);margin:5px 0 10px}.manual-score-box label{display:block;font:700 11px Arial,sans-serif;margin-bottom:6px}.manual-score-box select{width:100%;border:1px solid var(--line);border-radius:9px;padding:10px;background:#fffdf8;color:var(--ink)}.manual-score-actions{display:flex;gap:8px;margin-top:8px}.manual-score-actions button{flex:1;padding:9px 5px}
+@media(max-width:850px){.atelier-cards{grid-template-columns:1fr}.atelier-teaser{align-items:flex-start;flex-direction:column}.atelier-play-head{flex-direction:column}.atelier-answers{grid-template-columns:1fr}}
+@media(max-width:560px){.atelier-progress{flex-wrap:wrap}.atelier-progress .progress-track{flex-basis:100%;order:3}.atelier-result-actions{flex-direction:column}.atelier-result-actions button{width:100%}}
+.save-tools{margin-top:18px;padding:20px;display:flex;justify-content:space-between;align-items:center;gap:18px}.save-tools h3{margin:0 0 7px}.save-tools p{font:12px/1.6 Arial,sans-serif;color:var(--muted);margin:0;max-width:680px}.save-tool-actions{display:flex;gap:8px;flex-wrap:wrap}.save-tool-actions button{white-space:nowrap}
+@media(max-width:700px){.save-tools{align-items:flex-start;flex-direction:column}.save-tool-actions{width:100%}.save-tool-actions button{flex:1}}
+
+
+/* Sade hazırlayan notu: marka oyunun önüne geçmez. */
+.creator-note{display:flex;justify-content:flex-end;align-items:center;gap:5px;margin:9px 3px 0;color:var(--muted);font:11px/1.5 Arial,sans-serif}
+.creator-note strong{color:var(--red-dark);font-weight:700;letter-spacing:.01em}
+.creator-credit{color:var(--muted);font:10px Arial,sans-serif;letter-spacing:0;white-space:nowrap}
+.creator-credit strong{color:var(--red-dark);font-weight:700}
+.clue-board{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:0 0 20px}.clue-board-title{grid-column:1/-1;color:var(--red);font:800 10px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase}.clue-item{display:flex;align-items:flex-start;gap:9px;min-height:76px;padding:12px;border:1px solid #e2d1ad;border-radius:12px;background:linear-gradient(145deg,#fff9ec,#f3ead9);color:#4a5a61;font:12px/1.55 Arial,sans-serif}.clue-item b{flex:0 0 23px;width:23px;height:23px;display:grid;place-items:center;border-radius:50%;background:var(--ink);color:#f6e3b4;font:800 10px Arial,sans-serif}
+.atelier-cards{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.atelier-cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:850px){.clue-board{grid-template-columns:1fr}}
+@media(max-width:560px){.creator-credit{width:auto}.atelier-cards{grid-template-columns:1fr}}
+
+/* GitHub profil kutusu */
+.github-card{margin-top:16px;padding:17px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;background:linear-gradient(115deg,#fffaf0,#f1e8d8);border:1px solid var(--line);border-radius:17px;box-shadow:0 7px 20px rgba(23,43,59,.045)}
+.github-card-copy{display:flex;align-items:center;gap:13px;min-width:0}
+.github-card-icon{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:13px;background:var(--ink);color:var(--gold-light);font:700 18px Arial,sans-serif}
+.github-card h2{font-size:18px;margin:0 0 4px}
+.github-card p{font:12px/1.55 Arial,sans-serif;color:var(--muted);margin:0}
+.github-link{flex:0 0 auto;text-decoration:none}
+@media(max-width:600px){.github-card{align-items:flex-start;flex-direction:column}.github-link{width:100%}.github-link .secondary-btn{width:100%}}
+
+
+.question-type-pill{display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;padding:7px 10px;border-radius:999px;background:#edf0ee;color:#405b60;font:700 10px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+.question-type-pill:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.answer-btn.selected{border-color:var(--gold);background:#f2e6d0;box-shadow:inset 0 0 0 1px var(--gold);font-weight:700}
+.multi-submit{grid-column:1/-1;justify-self:start;margin-top:4px}
+@media(max-width:560px){.multi-submit{width:100%}}
+
+
+/* Yeni mini oyunlar */
+.atelier-game-board{margin:18px 0 8px}
+.memory-stats{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
+.memory-stats span{background:#f1e7d5;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font:700 11px Arial,sans-serif;color:var(--ink-2)}
+.memory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.memory-card{min-height:112px;border:1px solid #d8c7a6;border-radius:14px;background:linear-gradient(145deg,#294456,#172b3b);color:#f6e6bd;font:700 14px/1.35 Arial,sans-serif;padding:12px;box-shadow:0 5px 12px rgba(23,43,59,.1);transition:transform .15s,background .15s}
+.memory-card:hover:not(:disabled){transform:translateY(-2px)}
+.memory-card .memory-back{font-size:27px;display:block;margin-bottom:5px;color:#e6ca87}
+.memory-card.revealed{background:#fffaf0;color:var(--ink);border-color:var(--gold)}
+.memory-card.matched{background:#e8f2eb;color:#28533d;border-color:#6d9d82;opacity:.85}
+.memory-card:disabled{cursor:default}
+.cipher-clue{background:#f3ead9;border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 16px;margin:10px 0 16px;font:13px/1.6 Arial,sans-serif;color:#485a63}
+.cipher-slots{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:16px 0}
+.cipher-slot{width:42px;height:48px;border:1px dashed #b9a783;border-radius:9px;background:#fffdf8;color:var(--ink);font:700 20px Arial,sans-serif}
+.cipher-slot.filled{border-style:solid;border-color:var(--gold);background:#f2e6d0}
+.cipher-letters{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin:12px 0 18px}
+.cipher-letter{width:42px;height:46px;border:1px solid var(--line);border-radius:10px;background:#fffdf8;color:var(--ink);font:700 18px Arial,sans-serif}
+.cipher-letter.used{opacity:.25;cursor:default}
+.cipher-actions{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.cipher-actions button{min-width:125px}
+@media(max-width:650px){.memory-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.memory-card{min-height:100px;font-size:12px}.cipher-slot,.cipher-letter{width:36px;height:42px}}
+
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><div>OSMANLI LALE DEVRİ<small>1718 — 1730 · TARİH MACERASI</small></div></div>
+    <div class="top-actions">
+      <button class="icon-btn" id="summaryBtn" type="button">Konu anlatımı</button>
+      <button class="icon-btn" id="atelierBtn" type="button">Tarih Atölyesi</button>
+      <button class="icon-btn" id="collectionBtn" type="button">Koleksiyon</button>
+      <button class="icon-btn" id="homeBtn" type="button">Ana sayfa</button>
+      <button class="icon-btn" id="resetBtn" type="button" title="Oyun ilerlemesini sıfırla">Sıfırla</button>
+    </div>
+  </header>
+  <main>
+    <section class="view active" id="homeView">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="eyebrow">Osmanlı tarihini keşfet · 7. sınıf</div>
+          <h1>Osmanlı<br>Lale Devri</h1>
+          <p>1718 yılında İstanbul'dasın. Sarayın kapıları, matbaanın sesi ve şehrin değişen sokakları seni bekliyor. Tarihin akışını keşfet, görevleri tamamla ve bu dönemin öyküsünü öğren.</p>
+          <button class="primary-btn" id="continueBtn" type="button">Maceraya devam et <span>↗</span></button>
+        </div>
+      </div>
+      <div class="creator-note">Bu oyun <strong>SoftArchX</strong> tarafından geliştirildi.</div>
+      <div class="home-grid">
+        <article class="mode-card featured">
+          <div class="mode-icon">🧭</div><h2>Keşif Modu</h2>
+          <p>Hikâyeyi kendi hızında ilerlet. İstanbul'un farklı noktalarını ziyaret et, görevleri çöz ve sekiz bölüm boyunca dönemin izini sür.</p>
+          <button class="primary-btn" id="exploreBtn" type="button">Keşfe başla</button>
+        </article>
+        <article class="mode-card">
+          <div class="mode-icon">🏆</div><h2>Sınıf Mücadelesi</h2>
+          <p>Akıllı tahtayı aç, sınıfı takımlara ayır ve tarih bilgini yarıştır. Öğrencilerin telefon veya bilgisayara ihtiyacı yok.</p>
+          <button class="secondary-btn" id="classBtn" type="button">Sınıf oyununu aç</button>
+        </article>
+      </div>
+      <div class="home-lower">
+        <div class="info-card"><strong>📚 8 bölüm, uzun soluklu macera</strong><p>Her bölümde hikâye, tarihî bilgiler ve yedi farklı görev bulunur.</p></div>
+        <div class="info-card"><strong>💾 Otomatik kayıt</strong><p>Keşif ilerlemesi ve sınıf puanları bu tarayıcıda saklanır.</p></div>
+        <div class="info-card"><strong>🖥️ Akıllı tahta dostu</strong><p>Büyük düğmeler ve tek ekrandan yönetilebilen sınıf modu.</p></div>
+        <div class="info-card"><strong>🏺 Tarih koleksiyonu</strong><p>Bölümleri tamamladıkça döneme ait bilgi kartlarını aç.</p></div>
+      </div>
+      <div class="atelier-teaser panel"><div><span class="eyebrow">Yeni etkinlik alanı</span><h2>🧩 Tarih Atölyesi</h2><p>Kronolojiyi sırala, tarihî kişileri tanı, ifadeleri değerlendir ve arşiv ipuçlarını çöz. Altı farklı mini oyunla öğrendiklerini pekiştir.</p></div><button class="secondary-btn" id="homeAtelierBtn" type="button">Atölyeye git →</button></div>
+      <div class="github-card" aria-label="GitHub profili">
+        <div class="github-card-copy">
+          <div class="github-card-icon" aria-hidden="true">&lt;/&gt;</div>
+          <div><h2>GitHub sayfam</h2><p>Projelerimi, çalışmalarımı ve yeni güncellemeleri GitHub üzerinden inceleyebilirsin.</p></div>
+        </div>
+        <!-- Kendi GitHub profil adresini aşağıdaki href alanına yaz. Örnek: https://github.com/kullaniciadi -->
+        <a class="github-link" href="https://github.com/KULLANICI_ADIN" target="_blank" rel="noopener noreferrer" aria-label="GitHub profilini yeni sekmede aç">
+          <span class="secondary-btn">GitHub profilini ziyaret et ↗</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="view" id="mapView">
+      <div class="section-head"><div><div class="eyebrow">Keşif modu</div><h2>İstanbul Haritası</h2><p>Her bölüm yeni bir tarih kapısı açıyor. Sırayla ilerle!</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="progress-panel"><div class="progress-copy"><strong id="progressLabel">0 / 8 bölüm tamamlandı</strong><span id="progressSub">İlk görevin seni bekliyor.</span></div><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><div><strong id="totalPoints">0</strong><div style="font:10px Arial,sans-serif;color:#c6d0d1">TOPLAM PUAN</div><div id="playerRank" style="font:700 11px Arial,sans-serif;color:var(--gold-light);margin-top:5px">Kâtip Adayı</div></div></div>
+      <div class="chapter-grid" id="chapterGrid"></div>
+    </section>
+
+    <section class="view" id="chapterView">
+      <div class="section-head"><div><div class="eyebrow" id="chapterEyebrow">Bölüm 1</div><h2 id="chapterHeading">Yeni Bir Dönem</h2><p id="chapterSubheading">İstanbul'da yeni bir sayfa açılıyor.</p></div><button class="back-btn" id="mapBackBtn" type="button">← Bölüm haritası</button></div>
+      <div class="chapter-layout">
+        <article class="story-panel" id="storyPanel">
+          <div class="story-banner"><div class="eyebrow" id="storyKicker">1718 · İstanbul</div><h2 id="storyTitle">Yeni Bir Dönem</h2><p id="storyLead">Yeni bir dönemin başlangıcına tanıklık et.</p></div>
+          <div class="story-body">
+            <div class="story-text" id="storyText"></div>
+            <div class="mission-box"><strong>Görevin</strong><p id="missionText"></p></div>
+            <div class="quiz-area" id="quizArea">
+              <div class="quiz-top"><span id="questionCounter">Görev 1 / 5</span><strong id="questionPoints">+50 PUAN</strong></div>
+              <div class="question-type-pill" id="questionTypeLabel">Bilgi sorusu</div><h3 class="question" id="questionText"></h3>
+              <div class="answers" id="answerButtons"></div>
+              <div class="feedback" id="feedback" aria-live="polite"></div>
+              <div class="quiz-footer"><span id="questionHint" style="font:11px Arial,sans-serif;color:var(--muted)">Düşün, seç ve öğren.</span><button class="primary-btn hidden" id="nextQuestionBtn" type="button">Devam et →</button></div>
+            </div>
+            <div class="completion hidden" id="chapterCompletion"><div class="big-icon">🏅</div><h2>Bölüm tamamlandı!</h2><p id="completionText"></p><button class="primary-btn" id="nextChapterBtn" type="button">Sonraki bölüme geç →</button><br><button class="text-btn" id="completionMapBtn" type="button">Bölüm haritasına dön</button></div>
+          </div>
+        </article>
+        <aside class="side-panel">
+          <div class="panel"><h3>📜 Tarih defterin</h3><p>Bu bölümde aklında tutman gerekenler:</p><ul class="fact-list" id="chapterFacts"></ul></div>
+          <div class="panel"><h3>⭐ Yolculuğun</h3><div class="chapter-side-stat"><div class="mini-stat"><strong id="chapterScore">0</strong><span>BU BÖLÜMDE PUAN</span></div><div class="mini-stat"><strong id="chapterDone">0/7</strong><span>TAMAMLANAN GÖREV</span></div></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="view" id="classView">
+      <div class="section-head"><div><div class="eyebrow">Akıllı tahta modu</div><h2>Sınıf Mücadelesi</h2><p>Tek ekran, sınıfça oynanan takım yarışı.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="mode-tabs"><button class="tab-btn active" id="setupTab" type="button">1 · Takımları kur</button><button class="tab-btn" id="playTab" type="button" disabled>2 · Yarışmayı oyna</button><button class="tab-btn" id="resultsTab" type="button" disabled>3 · Sonuçlar</button></div>
+      <div id="classSetupPanel" class="class-setup">
+        <div class="panel setup-panel"><h3>Takım sayısı</h3><p>2, 3 veya 4 takım oluşturabilirsin.</p><div class="field"><label for="teamCount">Kaç takım oynayacak?</label><select id="teamCount"><option value="2">2 takım</option><option value="3">3 takım</option><option value="4">4 takım</option></select></div><div class="teacher-note">Öneri: Sınıfı dengeli takımlara ayır. Bazı sorularda birden fazla doğru seçenek bulunabilir; takım arkadaşlarınla birlikte karar verin.</div></div>
+        <div class="panel setup-panel"><h3>Takım isimleri</h3><p>İstersen hazır isimleri değiştirebilirsin.</p><div class="team-inputs" id="teamInputs"></div><button class="primary-btn" id="startClassBtn" type="button" style="margin-top:12px">Yarışmayı başlat →</button></div>
+      </div>
+      <div id="classPlayPanel" class="class-board hidden">
+        <div class="panel class-question-panel">
+          <div class="turn-pill" id="classTurn">Sıra: Lale Takımı</div>
+          <div class="class-selects"><div class="field"><label for="classChapterSelect">Oynanacak içerik</label><select id="classChapterSelect"><option value="all">Tüm bölümler · Karışık</option></select></div><div class="field"><label for="classLengthSelect">Soru sayısı</label><select id="classLengthSelect"><option value="10">10 soru</option><option value="20">20 soru</option><option value="all">Tüm sorular</option></select></div></div>
+          <div class="class-question-meta" id="classQuestionMeta">Karışık tarih turu</div>
+          <div class="quiz-top"><span id="classQuestionCount">SORU 1 / 10</span><strong>+100 PUAN</strong></div>
+          <div class="question-type-pill" id="classQuestionType">Bilgi sorusu</div><h3 class="question" id="classQuestionText">Hazır mısınız?</h3>
+          <div class="answers" id="classAnswers"></div>
+          <div class="feedback" id="classFeedback" aria-live="polite"></div>
+          <div class="quiz-footer"><span id="classHint" style="font:11px Arial,sans-serif;color:var(--muted)">Takımınız cevabını söylesin.</span><button class="primary-btn hidden" id="classNextBtn" type="button">Sıradaki soru →</button></div>
+          <div class="teacher-note">Öğretmen için: Takım cevabını söyledikten sonra seçeneğe dokun. Doğru cevap 100 puan kazandırır. Bir takım üç doğru cevabı art arda verirse 50 puan seri bonusu kazanır. Her soruda sıra bir sonraki takıma geçer.</div>
+        </div>
+        <aside class="panel class-score-panel"><h3>🏆 Takım tablosu</h3><ol class="score-list" id="scoreList"></ol>
+          <div class="manual-score-box"><strong>Öğretmen puan kontrolü</strong><p>Bir takıma katılım veya ek görev puanı verebilirsin.</p><label for="scoreAdjustTeam">Takım seç</label><select id="scoreAdjustTeam"></select><div class="manual-score-actions"><button class="subtle-btn" id="addTeamPointsBtn" type="button">+50 puan</button><button class="subtle-btn" id="removeTeamPointsBtn" type="button">−50 puan</button></div></div>
+          <button class="subtle-btn" id="finishClassBtn" type="button" style="margin-top:15px;width:100%">Yarışmayı bitir</button><button class="text-btn" id="resetClassBtn" type="button">Puanları sıfırla</button></aside>
+      </div>
+      <div id="classResultsPanel" class="panel hidden" style="padding:28px;text-align:center"><div style="font-size:48px">🏆</div><div class="eyebrow">Yarışma sona erdi</div><h2 style="font-size:34px;margin:10px 0 20px">Tebrikler!</h2><div id="finalResults"></div><button class="primary-btn" id="playAgainBtn" type="button" style="margin-top:20px">Yeni yarışma başlat</button></div>
+    </section>
+
+    <section class="view" id="summaryView">
+      <div class="section-head"><div><div class="eyebrow">Kısa konu anlatımı</div><h2>Lale Devri'ni Tanıyalım</h2><p>Oyuna başlamadan önce dönemin önemli olaylarını hatırla.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="summary-grid">
+        <article class="panel summary-card"><h3>📜 Lale Devri nedir?</h3><p>Lale Devri, Osmanlı tarihinde genellikle 1718 Pasarofça Antlaşması ile 1730 Patrona Halil İsyanı arasındaki dönem için kullanılan addır. Dönemin padişahı III. Ahmet, sadrazamı ise Nevşehirli Damat İbrahim Paşa'dır. Bu yıllarda kültür, sanat, mimari ve Avrupa ile ilişkiler alanlarında dikkat çeken gelişmeler yaşanmıştır.</p></article>
+        <article class="panel summary-card"><h3>🖨️ Matbaanın önemi</h3><p>İbrahim Müteferrika ve Sait Efendi'nin girişimiyle 1727'de Osmanlı'da Türkçe eser basan ilk Müslüman matbaası için izin alınmış, ilk kitaplar 1729'da basılmıştır. Osmanlı topraklarında gayrimüslim toplulukların matbaaları daha önce de bulunuyordu.</p></article>
+        <article class="panel summary-card"><h3>🇫🇷 Avrupa ile ilişkiler</h3><p>Yirmisekiz Çelebi Mehmed Efendi, 1720'de Fransa'ya elçi olarak gönderildi. Gözlemleri ve hazırladığı sefaretname, Osmanlı yöneticilerinin Avrupa'yı daha yakından tanımasına katkı sağladı.</p></article>
+        <article class="panel summary-card"><h3>🎨 Sanat ve şehir hayatı</h3><p>İstanbul'da köşkler, çeşmeler, bahçeler ve kütüphaneler yapıldı. Kâğıthane'deki Sadabad çevresi dönemin tanınan eğlence ve dinlenme yerlerinden biri oldu. Şair Nedim ve minyatür sanatçısı Levni bu dönemin öne çıkan sanatçılarındandır.</p></article>
+      </div>
+      <article class="panel summary-card" style="margin-top:14px"><h3>🕰️ Zaman çizelgesi</h3><div class="timeline">
+        <div class="timeline-item"><strong>1718 · Pasarofça Antlaşması</strong><p>Avusturya ve Venedik ile yapılan antlaşmaların ardından savaş dönemi sona erdi; Lale Devri'nin başlangıcı olarak kabul edilen tarih budur.</p></div>
+        <div class="timeline-item"><strong>1720 · Fransa elçiliği</strong><p>Yirmisekiz Çelebi Mehmed Efendi Fransa'ya elçi olarak gönderildi.</p></div>
+        <div class="timeline-item"><strong>1727–1729 · Matbaa</strong><p>İbrahim Müteferrika ve Sait Efendi'nin matbaası kuruldu; ilk basılı eserler yayımlandı.</p></div>
+        <div class="timeline-item"><strong>1730 · Patrona Halil İsyanı</strong><p>İsyan sonucunda Lale Devri sona erdi; III. Ahmet tahttan çekildi ve I. Mahmut tahta çıktı.</p></div>
+      </div><p><strong>Bir tarih notu:</strong> “Lale Devri” adı, dönemin insanlarının kullandığı resmî bir dönem adı değildir. Bu ad, tarihçi Ahmet Refik Altınay'ın 20. yüzyıl başındaki çalışmalarıyla yaygınlaşmıştır.</p></article>
+    </section>
+    <section class="view" id="atelierView">
+      <div class="section-head"><div><div class="eyebrow">Ek etkinlikler</div><h2>Tarih Atölyesi</h2><p>Ana hikâyenin dışında, öğrendiklerini farklı yollarla dene. Her etkinlik ilk tamamlandığında 100 ek puan kazandırır.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="atelier-cards" id="atelierCards">
+        <button class="atelier-card" type="button" data-atelier-mode="chronology"><span class="atelier-icon">⏳</span><span class="eyebrow">Zaman ve sıralama</span><strong>Zaman Tüneli</strong><span>Lale Devri boyunca yaşanan önemli olayları doğru sıraya yerleştir.</span><small id="bestChronology">Henüz oynanmadı</small><b>Etkinliği başlat →</b></button>
+        <button class="atelier-card" type="button" data-atelier-mode="people"><span class="atelier-icon">👥</span><span class="eyebrow">Kişiler ve görevler</span><strong>Kim Kimdir?</strong><span>Nedim, Levni, İbrahim Müteferrika ve dönemin diğer önemli kişilerini tanı.</span><small id="bestPeople">Henüz oynanmadı</small><b>Etkinliği başlat →</b></button>
+        <button class="atelier-card" type="button" data-atelier-mode="truefalse"><span class="atelier-icon">⚖️</span><span class="eyebrow">Bilgi kontrolü</span><strong>Doğru mu, Yanlış mı?</strong><span>Lale Devri hakkındaki sekiz ifadeyi dikkatlice değerlendir.</span><small id="bestTruefalse">Henüz oynanmadı</small><b>Etkinliği başlat →</b></button>
+        <button class="atelier-card" type="button" data-atelier-mode="detective"><span class="atelier-icon">🕵️</span><span class="eyebrow">İpuçları ve çıkarım</span><strong>Belge Avı</strong><span>Arşivden çıkan tarihî ipuçlarını birleştir ve gizemli olay ya da kişiyi bul.</span><small id="bestDetective">Henüz oynanmadı</small><b>Dosyayı aç →</b></button>
+        <button class="atelier-card" type="button" data-atelier-mode="memory"><span class="atelier-icon">🧠</span><span class="eyebrow">Hafıza ve eşleştirme</span><strong>Hafıza Oyunu</strong><span>Kapalı kartları çevir; tarihî kişi, olay ve kavram çiftlerini bul.</span><small id="bestMemory">Henüz oynanmadı</small><b>Kartları aç →</b></button>
+        <button class="atelier-card" type="button" data-atelier-mode="cipher"><span class="atelier-icon">🔐</span><span class="eyebrow">Harf ve kelime bulmacası</span><strong>Şifreli Sandık</strong><span>Karışık harfleri doğru sıraya koyarak Lale Devri'nin anahtar kelimelerini çöz.</span><small id="bestCipher">Henüz oynanmadı</small><b>Şifreyi çöz →</b></button>
+      </div>
+      <div class="panel atelier-play hidden" id="atelierPlayPanel">
+        <div class="atelier-play-head"><div><div class="eyebrow" id="atelierModeLabel">Etkinlik</div><h2 id="atelierTitle">Zaman Tüneli</h2><p id="atelierInstruction">Olayları doğru sıraya yerleştir.</p></div><button class="back-btn" id="atelierBackBtn" type="button">← Atölye menüsü</button></div>
+        <div class="atelier-progress"><span id="atelierCounter">1 / 5</span><div class="progress-track"><div class="progress-fill" id="atelierProgressFill"></div></div><strong id="atelierLiveScore">0 puan</strong></div>
+        <div class="clue-board hidden" id="atelierClues" aria-live="polite"></div>
+        <div class="atelier-game-board hidden" id="atelierGameBoard" aria-live="polite"></div>
+        <h3 class="question" id="atelierQuestion">Etkinlik yükleniyor…</h3>
+        <div class="atelier-answers" id="atelierAnswers"></div>
+        <div class="feedback" id="atelierFeedback" aria-live="polite"></div>
+        <div class="quiz-footer"><span id="atelierHint" style="font:12px Arial,sans-serif;color:var(--muted)">Dikkatlice düşün ve seçimini yap.</span><button class="primary-btn hidden" id="atelierNextBtn" type="button">Sonraki soru →</button><button class="primary-btn hidden" id="atelierCheckBtn" type="button">Sıralamayı kontrol et ✓</button></div>
+      </div>
+      <div class="panel atelier-results hidden" id="atelierResults"><div class="big-icon">🏅</div><div class="eyebrow">Etkinlik tamamlandı</div><h2 id="atelierResultTitle">Harika iş!</h2><p id="atelierResultText"></p><div class="atelier-result-actions"><button class="primary-btn" id="atelierReplayBtn" type="button">Yeniden oyna</button><button class="secondary-btn" id="atelierReturnBtn" type="button">Atölyeye dön</button></div></div>
+      <div class="teacher-note atelier-note">Sınıfta kullanım: Atölye etkinlikleri de tek akıllı tahtadan yürütülebilir. Kronoloji oyununda öğrenciler olay kartlarını sırayla seçer; diğer etkinliklerde cevaplar tahtadan işaretlenir.</div>
+    </section>
+
+    <section class="view" id="collectionView">
+      <div class="section-head"><div><div class="eyebrow">Keşif defteri</div><h2>Tarih Koleksiyonun</h2><p>Bölümleri tamamladıkça tarihî bilgi kartları açılır. Henüz açılmayan kartlar keşfedilmeyi bekliyor.</p></div><button class="back-btn" data-go="homeView" type="button">← Ana sayfa</button></div>
+      <div class="collection-progress"><strong id="collectionCount">0 / 8 kart açıldı</strong><span id="achievementCount">0 başarı kazanıldı</span></div>
+      <div class="collection-grid" id="collectionGrid"></div>
+      <div class="panel achievement-panel"><h3>🏅 Başarıların</h3><div class="achievement-grid" id="achievementGrid"></div></div>
+      <div class="panel save-tools"><div><h3>💾 İlerleme yedeği</h3><p>Oyun kayıtların bu tarayıcıda tutulur. Yedeğini indirerek başka bir bilgisayara taşıyabilir veya daha sonra geri yükleyebilirsin.</p></div><div class="save-tool-actions"><button class="secondary-btn" id="exportSaveBtn" type="button">Yedeği indir ↓</button><button class="primary-btn" id="importSaveBtn" type="button">Yedekten geri yükle ↑</button><input id="importSaveFile" type="file" accept=".json,application/json" hidden></div></div>
+    </section>
+  </main>
+  <footer class="footer"><span>OSMANLI LALE DEVRİ · 7. SINIF TARİH MACERASI</span><span>İlerleme bu tarayıcıda saklanır · Tek dosya, çevrimdışı oynanabilir</span><span class="creator-credit">Bu oyun <strong>SoftArchX</strong> tarafından geliştirildi.</span></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+'use strict';
+const chapters = [
+ {title:'Yeni Bir Dönem',place:'İstanbul · 1718',symbol:'🕊️',subtitle:'Savaşların ardından İstanbul’da yeni bir dönem başlıyor.',lead:'Bir barış haberi İstanbul’a ulaşıyor. Şimdi tarih sahnesine çıkma zamanı.',story:[`Yıl 1718. Uzun süren savaşların ardından Osmanlı Devleti ile Avusturya ve Venedik arasında Pasarofça Antlaşması imzalandı. İstanbul’da yeni bir dönemin kapısı aralanıyordu.`,`Padişah III. Ahmet’ti. Devlet yönetiminde önemli rol oynayan sadrazam ise Nevşehirli Damat İbrahim Paşa’ydı. Bu dönemde savaşların yanında kültür, sanat, mimari ve Avrupa’yla ilişkiler de daha fazla gündeme gelecekti.`],mission:'Dönemin başlangıcını, padişahını ve yönetimdeki önemli kişiyi tanı.',facts:['Lale Devri genellikle 1718–1730 yılları arasına tarihlenir.','Başlangıç tarihi olarak Pasarofça Antlaşması kabul edilir.','Dönemin padişahı III. Ahmet’tir.'],questions:[
+  {q:'Lale Devri’nin başlangıcı olarak hangi antlaşma kabul edilir?',a:['Karlofça Antlaşması','Pasarofça Antlaşması','Küçük Kaynarca Antlaşması','Zitvatorok Antlaşması'],c:1,e:'Lale Devri, 1718’de imzalanan Pasarofça Antlaşması sonrasıyla başlatılır.'},
+  {q:'Lale Devri sırasında Osmanlı tahtında hangi padişah vardı?',a:['II. Mahmut','I. Mahmut','III. Ahmet','IV. Mehmet'],c:2,e:'Lale Devri’nin padişahı III. Ahmet’tir.'},
+  {q:'Dönemin güçlü sadrazamı kimdir?',a:['Köprülü Mehmet Paşa','Nevşehirli Damat İbrahim Paşa','Sokullu Mehmet Paşa','Pargalı İbrahim Paşa'],c:1,e:'Nevşehirli Damat İbrahim Paşa, III. Ahmet döneminde sadrazamlık yaptı ve yeniliklerde etkili oldu.'}
+ ]},
+ {title:'Sarayda Hayat',place:'Topkapı Sarayı',symbol:'🏰',subtitle:'Padişahın çevresinde kararlar alınıyor, yeni projeler konuşuluyor.',lead:'Sarayda görevli bir haberci olarak önemli kişileri ve görevlerini öğreniyorsun.',story:[`Topkapı Sarayı, Osmanlı padişahlarının yaşadığı ve devlet işlerinin yürütüldüğü önemli merkezlerden biriydi. III. Ahmet döneminde saray çevresinde sanat, edebiyat ve mimariye ilgi arttı.`,`Sadrazam Damat İbrahim Paşa, padişahın en önemli devlet görevlisiydi. Dönemin gelişmelerini anlamak için padişah ile sadrazamın görevlerini birbirinden ayırmak gerekir.`],mission:'Osmanlı yönetiminde padişah ve sadrazamın rollerini ayırt et.',facts:['Padişah devletin hükümdarıydı.','Sadrazam, padişah adına devlet yönetiminde en yetkili görevlilerden biriydi.','III. Ahmet sanat ve mimariye ilgi gösterdi.'],questions:[
+  {q:'Lale Devri’nin padişahı kimdir?',a:['III. Ahmet','II. Osman','I. Abdülhamit','IV. Murat'],c:0,e:'Dönemin padişahı III. Ahmet’tir.'},
+  {q:'Sadrazamın temel görevi aşağıdakilerden hangisidir?',a:['Yalnızca donanmayı yönetmek','Padişah adına devlet yönetiminde görev almak','Şehir pazarlarını işletmek','Elçilik yapmak'],c:1,e:'Sadrazam, padişah adına devlet işlerinin yürütülmesinde en yetkili yöneticiydi.'},
+  {q:'Nevşehirli Damat İbrahim Paşa, devlet yönetiminde hangi görevdeydi?',a:['Kaptan-ı derya','Şeyhülislam','Sadrazam','Yeniçeri ağası'],c:2,e:'Nevşehirli Damat İbrahim Paşa Lale Devri’nin sadrazamıdır.'}
+ ]},
+ {title:'Avrupa’ya Yolculuk',place:'Fransa · 1720',symbol:'🇫🇷',subtitle:'Bir Osmanlı elçisi Avrupa’yı tanımak için yola çıkıyor.',lead:'Elçilik heyetine katıl ve seyahatin neden önemli olduğunu keşfet.',story:[`1720 yılında Yirmisekiz Çelebi Mehmed Efendi, Fransa’ya Osmanlı elçisi olarak gönderildi. Görevi yalnızca diplomatik görüşmeler yapmak değildi; Fransa’daki yaşamı, kurumları, yapıları ve gelişmeleri de gözlemledi.`,`Yolculuğunun ardından hazırladığı sefaretname, Fransa hakkında izlenimler içeriyordu. Elçilikler, devletlerin birbirini tanıması ve diplomatik ilişkiler kurması açısından önemliydi.`],mission:'Yirmisekiz Çelebi Mehmed Efendi’nin elçilik görevini ve sefaretnameyi öğren.',facts:['Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya gönderildi.','Sefaretname, elçinin gözlem ve izlenimlerini anlattığı yazıdır.','Elçilikler devletler arası ilişkileri geliştirmeye yardımcı olur.'],questions:[
+  {q:'Yirmisekiz Çelebi Mehmed Efendi hangi ülkeye elçi gönderildi?',a:['İngiltere','Fransa','Rusya','İran'],c:1,e:'Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya gönderildi.'},
+  {q:'Elçinin ülkesine döndükten sonra hazırladığı gözlem yazısına ne denir?',a:['Ferman','Sefaretname','Fetihname','Salname'],c:1,e:'Sefaretname, elçilerin gittikleri ülke hakkındaki gözlem ve izlenimlerini aktardıkları eserdir.'},
+  {q:'Elçilik heyetlerinin temel amaçlarından biri nedir?',a:['Başka ülkeleri tanımak ve diplomatik ilişki kurmak','Vergi toplamak','Yeniçeri ocağına asker almak','Ülke sınırlarını tek başına değiştirmek'],c:0,e:'Elçiler diplomatik ilişkileri yürütür, başka ülkeleri tanır ve bilgi aktarır.'}
+ ]},
+ {title:'Bilginin Gücü',place:'İstanbul · Matbaa',symbol:'🖨️',subtitle:'Kitapların daha hızlı çoğaltılmasını sağlayacak bir yenilik geliyor.',lead:'Mürekkep ve kâğıt kokuları arasında matbaanın öyküsünü öğren.',story:[`İbrahim Müteferrika ve Sait Efendi’nin girişimleriyle 1727’de Türkçe eser basacak Müslüman matbaası için izin alındı. Matbaanın kurulması, kitapların çoğaltılmasında yeni bir dönem başlattı.`,`İlk basılı eserler 1729’da yayımlandı. Bu gelişme bilginin daha fazla nüshaya aktarılmasını kolaylaştırdı. Ancak Osmanlı topraklarında gayrimüslim toplulukların matbaaları daha önce de vardı. Bu nedenle burada söz edilen, Türkçe eser basan ilk Müslüman matbaasıdır.`],mission:'Matbaanın kimler tarafından ve hangi yıllarda kurulduğunu doğru öğren.',facts:['İbrahim Müteferrika ve Sait Efendi matbaanın kurulmasında öncü oldu.','Matbaa için izin 1727’de alındı.','İlk eserler 1729’da basıldı.'],questions:[
+  {q:'Osmanlı’da Türkçe eser basan ilk Müslüman matbaasının kurulmasında kimler öncü oldu?',a:['Nedim ve Levni','İbrahim Müteferrika ve Sait Efendi','III. Ahmet ve Patrona Halil','Yirmisekiz Çelebi ve Evliya Çelebi'],c:1,e:'Matbaanın kurulmasında İbrahim Müteferrika ve Sait Efendi öncü oldu.'},
+  {q:'Matbaanın kurulması için izin hangi yıl alındı?',a:['1718','1720','1727','1730'],c:2,e:'Matbaa için izin 1727’de alındı. İlk eserler 1729’da basıldı.'},
+  {q:'Matbaanın önemli yararlarından biri nedir?',a:['Kitapların daha hızlı ve çok sayıda çoğaltılmasını sağlamak','Bütün kitapları ücretsiz yapmak','Eğitimi tamamen sona erdirmek','El yazısını yasaklamak'],c:0,e:'Matbaa, kitapların daha hızlı ve çok sayıda çoğaltılmasına imkân verdi.'}
+ ]},
+ {title:'İstanbul’da Yenilikler',place:'İstanbul sokakları',symbol:'🚒',subtitle:'Şehirde yeni yapılar ve yangınlarla mücadele için örgütlenmeler dikkat çekiyor.',lead:'Şehrin sokaklarında dolaş; mimariyi ve tulumbacıları tanı.',story:[`Lale Devri’nde İstanbul’da çeşmeler, köşkler, bahçeler ve başka yapılar inşa edildi. III. Ahmet Çeşmesi, dönemin mimari anlayışını yansıtan tanınmış eserlerden biridir.`,`Yangınlar ahşap yapıların yoğun olduğu İstanbul için büyük tehlikeydi. Tulumbacılar, su tulumbalarıyla yangınları söndürmeye çalışan görevlilerdi. Şehir hayatında yangınlarla mücadele önemli bir ihtiyaçtı.`],mission:'Dönemin mimari eserleri ile şehirdeki yangınla mücadele çalışmalarını tanı.',facts:['III. Ahmet Çeşmesi dönemin tanınan eserlerindendir.','Tulumbacılar yangınları söndürmek için çalışırdı.','İstanbul’da yangınlar büyük şehir sorunlarından biriydi.'],questions:[
+  {q:'III. Ahmet Çeşmesi hangi alana ait bir eserdir?',a:['Denizcilik','Mimari','Tıp','Tarım'],c:1,e:'III. Ahmet Çeşmesi, Lale Devri’nin mimari eserleri arasında yer alır.'},
+  {q:'Tulumbacıların temel görevi neydi?',a:['Yangınları söndürmeye çalışmak','Kitap basmak','Elçilik yapmak','Vergi toplamak'],c:0,e:'Tulumbacılar, su tulumbaları kullanarak yangınlarla mücadele ederdi.'},
+  {q:'Tulumbacıların faaliyet göstermesi hangi şehir ihtiyacına cevap veriyordu?',a:['Deprem ölçümü','Yangınlarla mücadele','Deniz ticareti','Tarım üretimi'],c:1,e:'Özellikle ahşap yapıların çok olduğu İstanbul’da yangınlar önemli bir tehlikeydi.'}
+ ]},
+ {title:'Lale Bahçeleri',place:'Kâğıthane · Sadabad',symbol:'🎨',subtitle:'Şiir, minyatür, bahçeler ve mimari dönemin kültür hayatını renklendiriyor.',lead:'Sanatçıların izini sür ve Lale Devri’nin kültürel dünyasına gir.',story:[`Lale Devri’nde özellikle saray ve çevresinde eğlenceye, bahçelere, şiire ve süslemeye ilgi gösterildi. Kâğıthane’deki Sadabad, dönemin tanınan dinlenme ve eğlence alanlarından biriydi.`,`Şair Nedim, dönemin edebiyatıyla; Levni ise minyatür sanatıyla tanınır. Lale yetiştiriciliğine duyulan ilgi de dönemin adıyla özdeşleşmiştir. “Lale Devri” adı ise o yıllarda resmî olarak kullanılmıyordu; daha sonra yaygınlaştı.`],mission:'Nedim, Levni, Sadabad ve dönemin sanat anlayışını eşleştir.',facts:['Nedim, Lale Devri’nin tanınmış şairidir.','Levni, minyatür sanatçısıdır.','Sadabad, Kâğıthane’de dönemin tanınan eğlence ve dinlenme alanıdır.'],questions:[
+  {q:'Lale Devri’nin tanınmış şairi kimdir?',a:['Nedim','Fuzuli','Yunus Emre','Karacaoğlan'],c:0,e:'Nedim, Lale Devri’nin öne çıkan şairlerinden biridir.'},
+  {q:'Levni hangi sanat dalıyla tanınır?',a:['Minyatür','Heykel','Opera','Fotoğraf'],c:0,e:'Levni, Osmanlı minyatür sanatının tanınmış sanatçılarındandır.'},
+  {q:'Sadabad hangi bölgede kurulmuş tanınmış bir dinlenme ve eğlence alanıydı?',a:['Kâğıthane','Üsküdar’ın dışında Anadolu’da','Edirne Sarayı’nın bahçesinde','Bursa Uludağ’da'],c:0,e:'Sadabad, İstanbul’da Kâğıthane çevresinde yer alıyordu.'}
+ ]},
+ {title:'Huzursuzluk',place:'İstanbul · 1720’lerin sonu',symbol:'⚖️',subtitle:'Yeniliklerin yanında toplumda rahatsızlıklar ve ekonomik sıkıntılar da var.',lead:'Dönemin yalnızca parlak yönlerini değil, sorunlarını da anlamalısın.',story:[`Lale Devri’nde saray çevresinde gösterişli eğlenceler ve yeni yapılar dikkat çekiyordu. Ancak toplumun her kesimi bu refahı aynı ölçüde yaşamıyordu. Ekonomik sıkıntılar, vergiler ve yönetimden duyulan hoşnutsuzluklar farklı kesimlerde rahatsızlık oluşturdu.`,`Tarihî olayların genellikle tek bir nedeni olmaz. 1730’daki isyanı anlayabilmek için dönemin ekonomik ve toplumsal koşullarına, yönetimden duyulan tepkilere birlikte bakmak gerekir.`],mission:'Tarihî olayları tek bir nedene bağlamadan, birden fazla etkenle açıklamayı dene.',facts:['Dönemin refahı toplumun bütün kesimlerine eşit biçimde yansımadı.','Ekonomik sıkıntılar ve yönetimden hoşnutsuzluk tepkileri artırdı.','1730’daki isyanın birden fazla nedeni vardı.'],questions:[
+  {q:'Lale Devri’ndeki gösterişli yaşamla ilgili hangi ifade daha doğrudur?',a:['Toplumun tamamı aynı refahı yaşadı.','Gösterişli yaşam özellikle saray ve çevresinde öne çıktı.','Hiçbir ekonomik sorun yaşanmadı.','Bütün halk sarayda yaşadı.'],c:1,e:'Dönemin gösterişli yaşamı özellikle saray ve çevresinde görülüyordu; toplumun tüm kesimleri aynı koşullara sahip değildi.'},
+  {q:'1730’daki isyanın nedenlerini değerlendirirken nasıl düşünmeliyiz?',a:['Tek bir sebep yeterlidir.','Ekonomik ve toplumsal etkenleri birlikte değerlendirmeliyiz.','Yalnızca hava durumuna bakmalıyız.','Hiçbir tarihî kaynak kullanmamalıyız.'],c:1,e:'Büyük tarihî olayların genellikle birden fazla siyasi, ekonomik ve toplumsal nedeni bulunur.'},
+  {q:'Yönetimden duyulan hoşnutsuzluk hangi sonuca katkıda bulunabilir?',a:['Toplumsal tepkilerin artmasına','Bütün sorunların kendiliğinden bitmesine','Kitap basımının durmasına kesin olarak','Yeni bir kıtanın keşfine'],c:0,e:'Yönetimden duyulan hoşnutsuzluk, başka sorunlarla birleşerek toplumsal tepkileri artırabilir.'}
+ ]},
+ {title:'Bir Dönemin Sonu',place:'İstanbul · 1730',symbol:'📜',subtitle:'Patrona Halil İsyanı Lale Devri’ni sona erdiriyor.',lead:'Son bölüme geldin. Olayları sıraya koy ve dönemin nasıl sona erdiğini öğren.',story:[`1730 yılında Patrona Halil’in öncülük ettiği isyan İstanbul’da etkili oldu. İsyan sonucunda Nevşehirli Damat İbrahim Paşa öldürüldü ve III. Ahmet tahttan çekildi.`,`III. Ahmet’in yerine I. Mahmut tahta çıktı. Böylece Lale Devri olarak adlandırılan dönem sona erdi. Bir dönemi anlamak, yalnızca başlangıcını değil, bitişine yol açan olayları da öğrenmek demektir.`],mission:'1730 isyanının sonuçlarını ve Lale Devri’nin bitişini öğrenerek yolculuğunu tamamla.',facts:['Patrona Halil İsyanı 1730’da çıktı.','Nevşehirli Damat İbrahim Paşa isyan sırasında öldürüldü.','III. Ahmet’in yerine I. Mahmut tahta çıktı.'],questions:[
+  {q:'Lale Devri hangi olay sonucunda sona erdi?',a:['Patrona Halil İsyanı','İstanbul’un Fethi','Pasarofça Antlaşması','Ankara Savaşı'],c:0,e:'1730’daki Patrona Halil İsyanı Lale Devri’nin sona ermesine yol açtı.'},
+  {q:'Patrona Halil İsyanı sırasında öldürülen sadrazam kimdir?',a:['Sokullu Mehmet Paşa','Nevşehirli Damat İbrahim Paşa','Köprülü Fazıl Ahmet Paşa','Pargalı İbrahim Paşa'],c:1,e:'Nevşehirli Damat İbrahim Paşa isyan sırasında öldürüldü.'},
+  {q:'III. Ahmet’ten sonra Osmanlı tahtına kim çıktı?',a:['II. Osman','I. Mahmut','III. Selim','I. Abdülhamit'],c:1,e:'III. Ahmet’in ardından I. Mahmut tahta çıktı.'}
+ ]}
+];
+
+// Her bölümdeki görevleri beş soruya çıkaran ek tarih görevleri.
+chapters[0].questions.push(
+ {q:'Pasarofça Antlaşması 1718 yılında Osmanlı Devleti ile hangi devletler arasında imzalandı?',a:['Avusturya ve Venedik','İngiltere ve Fransa','Rusya ve İran','İspanya ve Portekiz'],c:0,e:'Pasarofça Antlaşması, Osmanlı Devleti ile Avusturya ve Venedik arasında imzalandı.'},
+ {q:'Lale Devri için tarih kitaplarında genellikle hangi yıllar kullanılır?',a:['1453–1481','1603–1617','1718–1730','1839–1876'],c:2,e:'Lale Devri genellikle 1718 ile 1730 arasındaki dönem olarak ele alınır.'}
+);
+chapters[1].questions.push(
+ {q:'Nevşehirli Damat İbrahim Paşa’nın Lale Devri’ndeki görevi neydi?',a:['Sadrazam','Donanma komutanı','Elçi','Defterdar çırağı'],c:0,e:'Nevşehirli Damat İbrahim Paşa, III. Ahmet döneminin sadrazamıydı.'},
+ {q:'Osmanlı Devleti’nde padişahın devlet yönetimindeki konumu hangisidir?',a:['Devletin hükümdarı','Yalnızca şehir kadısı','Yalnızca elçilik görevlisi','Matbaanın ustası'],c:0,e:'Padişah Osmanlı Devleti’nin hükümdarıydı; sadrazam devlet işlerinin yürütülmesinde başlıca yardımcıydı.'}
+);
+chapters[2].questions.push(
+ {q:'Yirmisekiz Çelebi Mehmed Efendi’nin Fransa seyahatinin önemli amaçlarından biri neydi?',a:['Fransa’yı ve kurumlarını gözlemlemek','Yeni bir padişah seçmek','İstanbul’da matbaa açmak','Bir isyan başlatmak'],c:0,e:'Elçilik görevi diplomatik ilişkilerin yanında gidilen ülkeyi ve kurumlarını tanımayı da içeriyordu.'},
+ {q:'Yirmisekiz Çelebi Mehmed Efendi Fransa’ya hangi yıl gönderildi?',a:['1718','1720','1727','1730'],c:1,e:'Fransa elçiliği 1720 yılında gerçekleşti.'}
+);
+chapters[3].questions.push(
+ {q:'Matbaanın kurulması için izin alınması ile ilk eserlerin basılması hangi sırayla gerçekleşti?',a:['Önce 1729’da basıldı, sonra 1727’de izin alındı.','1727’de izin alındı, 1729’da ilk eserler basıldı.','İkisi de 1730’da gerçekleşti.','Önce 1718’de basıldı, sonra 1720’de izin alındı.'],c:1,e:'Matbaa için izin 1727’de alındı; ilk eserler 1729’da yayımlandı.'},
+ {q:'Osmanlı topraklarında matbaa konusunda hangi bilgi doğrudur?',a:['Matbaa ilk kez 1727’de bütün Osmanlı topraklarında görüldü.','Gayrimüslim toplulukların daha önce matbaaları vardı.','Matbaa yalnızca gazete basmak için kullanıldı.','Matbaa el yazması kitapları yasakladı.'],c:1,e:'Osmanlı topraklarında gayrimüslim toplulukların matbaaları daha önce bulunuyordu. Burada söz edilen ilk Türkçe eser basan Müslüman matbaasıdır.'}
+);
+chapters[4].questions.push(
+ {q:'İstanbul’da yangınların büyük tehlike oluşturmasının nedenlerinden biri neydi?',a:['Ahşap yapıların yaygın olması','Şehirde hiç su bulunmaması','Bütün evlerin taşınabilir olması','Kışların hiç yaşanmaması'],c:0,e:'Ahşap yapıların yoğunluğu yangınların hızla yayılmasına neden olabiliyordu.'},
+ {q:'III. Ahmet Çeşmesi hangi padişahın adıyla anılır?',a:['III. Ahmet','I. Mahmut','II. Mehmet','IV. Murat'],c:0,e:'Çeşme, Lale Devri’nin padişahı III. Ahmet’in adıyla anılır.'}
+);
+chapters[5].questions.push(
+ {q:'Lale Devri’nde minyatür sanatıyla tanınan sanatçı kimdir?',a:['Levni','Nedim','İbrahim Müteferrika','Patrona Halil'],c:0,e:'Levni, dönemin tanınmış minyatür sanatçısıdır.'},
+ {q:'“Lale Devri” adıyla ilgili hangi ifade doğrudur?',a:['Dönemin resmî devlet adıydı.','O yıllarda herkes aynı adı kullanıyordu.','Dönemden sonra tarih yazımında yaygınlaştı.','Padişahın unvanıydı.'],c:2,e:'“Lale Devri” adı dönemin resmî adı değildi; daha sonra tarihçi Ahmet Refik Altınay’ın çalışmalarıyla yaygınlaştı.'}
+);
+chapters[6].questions.push(
+ {q:'Dönemin ekonomik ve toplumsal koşulları için hangi değerlendirme daha uygundur?',a:['Herkes aynı refah düzeyindeydi.','Saray çevresindeki gösteriş tüm toplumu temsil etmiyordu.','Ekonomik sorunlar hiç yaşanmadı.','Toplumsal farklılıklar yoktu.'],c:1,e:'Saray çevresindeki gösterişli yaşam, toplumun tamamının aynı refahı yaşadığı anlamına gelmez.'},
+ {q:'Tarihî bir isyanın nedenlerini araştırırken ne yapmak gerekir?',a:['Yalnızca tek bir kişiyi suçlamak','Farklı siyasi, ekonomik ve toplumsal etkenleri birlikte incelemek','Olayları tarihlerinden bağımsız düşünmek','Kaynakları dikkate almamak'],c:1,e:'Tarihî olayların nedenleri çoğu zaman birden fazladır; farklı etkenleri birlikte değerlendirmek gerekir.'}
+);
+chapters[7].questions.push(
+ {q:'Patrona Halil İsyanı hangi yılda gerçekleşti?',a:['1718','1720','1727','1730'],c:3,e:'Patrona Halil İsyanı 1730 yılında gerçekleşti.'},
+ {q:'III. Ahmet’in tahttan çekilmesinden sonra kim padişah oldu?',a:['I. Mahmut','II. Osman','III. Selim','II. Bayezid'],c:0,e:'III. Ahmet’ten sonra I. Mahmut tahta çıktı.'}
+);
+
+
+// Soru çeşitliliği: her bölümde çoklu seçim ve yorum/çıkarım soruları.
+chapters[0].questions.push(
+ {q:'Pasarofça Antlaşması hakkında doğru olan bilgileri seç.',a:['1718 yılında imzalanmıştır.','Osmanlı Devleti ile Avusturya ve Venedik arasında yapılmıştır.','1730’daki isyanın ardından imzalanmıştır.','Lale Devri’nin bitiş tarihi kabul edilir.'],c:[0,1],type:'multi',kind:'Çoklu seçim',e:'Pasarofça Antlaşması 1718’de Osmanlı Devleti ile Avusturya ve Venedik arasında imzalandı. Bu tarih, Lale Devri’nin başlangıcı olarak kabul edilir.'},
+ {q:'Bir tarihçi notunda “1718’de yapılan antlaşmanın ardından İstanbul’da savaşların yanında kültür ve sanat konuları da daha fazla gündeme geldi.” yazıyor. Bu not hangi dönemi anlatır?',a:['Lale Devri’ni','Tanzimat Dönemi’ni','Kurtuluş Savaşı’nı','Islahat Fermanı sonrasını'],c:0,kind:'Kaynak yorumlama',e:'Notta 1718 Pasarofça Antlaşması sonrasında başlayan dönem anlatılıyor. Bu dönem Lale Devri olarak adlandırılır.'}
+);
+chapters[1].questions.push(
+ {q:'Padişah ve sadrazamla ilgili doğru bilgileri seç.',a:['III. Ahmet dönemin padişahıdır.','Nevşehirli Damat İbrahim Paşa sadrazamdır.','Yirmisekiz Çelebi Mehmed Efendi sadrazamdır.','Patrona Halil dönemin padişahıdır.'],c:[0,1],type:'multi',kind:'Çoklu seçim',e:'III. Ahmet padişah, Nevşehirli Damat İbrahim Paşa ise sadrazamdı. Yirmisekiz Çelebi Mehmed Efendi elçi olarak görev yaptı.'},
+ {q:'Devlet işlerinin padişah adına yürütülmesinde en yetkili yardımcı görevli kimdir?',a:['Sadrazam','Minyatür sanatçısı','Elçi','Tulumbacı'],c:0,kind:'Görev ve rol',e:'Sadrazam, padişah adına devlet yönetiminde en yetkili görevlilerden biriydi.'}
+);
+chapters[2].questions.push(
+ {q:'Yirmisekiz Çelebi Mehmed Efendi’nin Fransa elçiliğiyle ilgili doğru bilgileri seç.',a:['1720 yılında Fransa’ya gönderilmiştir.','Fransa’daki yaşamı ve kurumları gözlemlemiştir.','1730’da Patrona Halil İsyanı’nı yönetmiştir.','Türkçe eser basan matbaayı tek başına kurmuştur.'],c:[0,1],type:'multi',kind:'Çoklu seçim',e:'Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya gönderildi ve oradaki yaşamı, kurumları ve yapıları gözlemledi.'},
+ {q:'Bir elçi, gittiği ülkedeki kurumları, yapıları ve günlük yaşamı anlatan gözlemlerini ülkesine dönünce yazıya geçiriyor. Bu yazının adı nedir?',a:['Sefaretname','Ferman','Antlaşma','Minyatür'],c:0,kind:'Durum yorumu',e:'Elçilerin gittikleri ülkeler hakkındaki gözlem ve izlenimlerini aktardıkları yazılara sefaretname denir.'}
+);
+chapters[3].questions.push(
+ {q:'Matbaanın kuruluş süreciyle ilgili doğru bilgileri seç.',a:['Kuruluş izni 1727’de alındı.','İlk basılı eserler 1729’da yayımlandı.','Matbaayı Patrona Halil kurdu.','Matbaa için izin 1730’da alındı.'],c:[0,1],type:'multi',kind:'Çoklu seçim',e:'İbrahim Müteferrika ve Sait Efendi’nin girişimiyle matbaa için izin 1727’de alındı; ilk eserler 1729’da basıldı.'},
+ {q:'Matbaanın kitapları daha fazla nüsha hâlinde çoğaltabilmesi hangi sonucu desteklemiştir?',a:['Bilginin daha çok kopyaya aktarılmasını','Bütün kitapların ücretsiz olmasını','El yazısının tamamen yasaklanmasını','Eğitimin sona ermesini'],c:0,kind:'Neden-sonuç',e:'Matbaa, kitapların daha hızlı ve çok sayıda çoğaltılmasını kolaylaştırarak bilginin daha fazla nüshaya aktarılmasına yardımcı oldu.'}
+);
+chapters[4].questions.push(
+ {q:'İstanbul’daki şehir hayatı ve yeniliklerle ilgili doğru bilgileri seç.',a:['III. Ahmet Çeşmesi dönemin mimari eserlerindendir.','Tulumbacılar yangınlarla mücadele ederdi.','Tulumbacılar Fransa’ya elçi gönderilirdi.','III. Ahmet Çeşmesi bir matbaadır.'],c:[0,1],type:'multi',kind:'Çoklu seçim',e:'III. Ahmet Çeşmesi mimari bir eserdir. Tulumbacılar ise su tulumbalarıyla yangınları söndürmeye çalışırdı.'},
+ {q:'Ahşap yapıların yoğun olduğu İstanbul’da yangınlar önemli bir tehlikeydi. Bu soruna karşı görev yapan grup hangisidir?',a:['Tulumbacılar','Elçiler','Şairler','Matbaacılar'],c:0,kind:'Sorun ve çözüm',e:'Tulumbacılar, su tulumbaları kullanarak yangınlarla mücadele eden görevlilerdi.'}
+);
+chapters[5].questions.push(
+ {q:'Nedim ve Levni ile ilgili doğru eşleştirmeleri seç.',a:['Nedim — Şair','Levni — Minyatür sanatçısı','Nedim — Sadrazam','Levni — Fransa elçisi'],c:[0,1],type:'multi',kind:'Eşleştirme',e:'Nedim Lale Devri’nin tanınmış şairidir. Levni ise minyatür sanatıyla tanınır.'},
+ {q:'“Lale Devri” adının o yıllarda resmî olarak kullanılmadığı, daha sonra tarih yazımında yaygınlaştığı bilgisi bize neyi gösterir?',a:['Bazı tarihî dönem adlarının olaylardan sonra verilebildiğini','Dönemde hiç lale yetiştirilmediğini','Dönemin 1730’dan sonra başladığını','III. Ahmet’in bu adı taşıdığını'],c:0,kind:'Tarihsel yorum',e:'“Lale Devri” adı dönemin resmî adı değildi; tarihçi Ahmet Refik Altınay’ın 20. yüzyıl başındaki çalışmalarıyla yaygınlaştı.'}
+);
+chapters[6].questions.push(
+ {q:'Dönemin toplumsal koşullarıyla ilgili doğru değerlendirmeleri seç.',a:['Saray çevresindeki gösterişli yaşam bütün halkın aynı refahı yaşadığını göstermez.','Ekonomik sıkıntılar ve yönetimden hoşnutsuzluklar vardı.','Toplumun bütün kesimleri aynı yaşam koşullarına sahipti.','1730’daki isyanı tek bir nedenle açıklamak yeterlidir.'],c:[0,1],type:'multi',kind:'Çoklu seçim',e:'Gösterişli yaşam daha çok saray ve çevresinde öne çıkıyordu. Ekonomik sıkıntılar ve yönetimden hoşnutsuzluklar da toplumsal tepkileri artırdı.'},
+ {q:'Bir araştırmacı 1730’daki isyanı incelerken ekonomik sıkıntıları, vergileri ve yönetimden duyulan rahatsızlığı birlikte ele alıyor. Bu yaklaşım neden uygundur?',a:['Tarihî olayların birden fazla nedeni olabileceği için','Her olayın yalnızca tek nedeni olduğu için','Olayların tarihinin önemsiz olması nedeniyle','Kaynak incelemesine gerek olmadığı için'],c:0,kind:'Neden-sonuç analizi',e:'Tarihî olayları anlamak için siyasi, ekonomik ve toplumsal etkenleri birlikte değerlendirmek gerekir.'}
+);
+chapters[7].questions.push(
+ {q:'Patrona Halil İsyanı’nın sonuçları arasında bulunanları seç.',a:['Nevşehirli Damat İbrahim Paşa öldürüldü.','III. Ahmet tahttan çekildi.','I. Mahmut tahta çıktı.','Yirmisekiz Çelebi Mehmed Efendi padişah oldu.'],c:[0,1,2],type:'multi',kind:'Çoklu seçim',e:'İsyan sırasında Nevşehirli Damat İbrahim Paşa öldürüldü; III. Ahmet tahttan çekildi ve yerine I. Mahmut tahta çıktı.'},
+ {q:'Aşağıdaki olayların hangisi Lale Devri’nin sonunu gösterir?',a:['1720’de Fransa elçiliği','1727’de matbaa izni','1729’da ilk basılı eserler','1730’da Patrona Halil İsyanı'],c:3,kind:'Kronoloji',e:'1730’da çıkan Patrona Halil İsyanı, Lale Devri’nin sona ermesine yol açtı.'}
+);
+
+
+
+function inferQuestionKind(q){
+ if(q.kind)return q.kind;
+ const text=q.q.toLocaleLowerCase('tr-TR');
+ if(/hangi yıl|hangi tarihte|hangi sırayla|önce|sonra/.test(text))return 'Zaman ve kronoloji';
+ if(/neden|sonuç|amaç|yarar|katkı/.test(text))return 'Neden-sonuç';
+ if(/hangisi daha|hangi ifade|doğru|yanlış/.test(text))return 'Dikkat ve yorum';
+ if(/görev|kimdir|hangi sanat|hangi alana/.test(text))return 'Kişi ve görev';
+ return 'Bilgi sorusu';
+}
+chapters.forEach(ch=>ch.questions.forEach(q=>{q.kind=inferQuestionKind(q);if(!q.type)q.type='single';}));
+function correctIndexes(q){return Array.isArray(q.c)?q.c:[q.c];}
+function answerIsCorrect(q,response){
+ if(q.type==='multi'){
+  if(!Array.isArray(response))return false;
+  const a=[...new Set(response)].sort((x,y)=>x-y),b=[...new Set(correctIndexes(q))].sort((x,y)=>x-y);
+  return a.length===b.length&&a.every((v,i)=>v===b[i]);
+ }
+ return response===q.c;
+}
+function correctAnswerText(q){return correctIndexes(q).map(i=>q.a[i]).join(' + ');}
+function createQuestionOptions(wrap,q,onAnswer){
+ wrap.innerHTML='';const buttons=[];let selected=[];let checkButton=null;
+ q.a.forEach((answer,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='answer-btn';b.textContent=`${String.fromCharCode(65+i)}. ${answer}`;
+  if(q.type==='multi'){
+   b.setAttribute('aria-pressed','false');
+   b.addEventListener('click',()=>{if(b.disabled)return;const pos=selected.indexOf(i);if(pos>=0){selected.splice(pos,1);b.classList.remove('selected');b.setAttribute('aria-pressed','false');}else{selected.push(i);b.classList.add('selected');b.setAttribute('aria-pressed','true');}checkButton.disabled=selected.length===0;});
+  }else b.addEventListener('click',()=>onAnswer(i,b));
+  buttons.push(b);wrap.appendChild(b);
+ });
+ if(q.type==='multi'){
+  checkButton=document.createElement('button');checkButton.type='button';checkButton.className='primary-btn multi-submit';checkButton.textContent='Seçimi kontrol et ✓';checkButton.disabled=true;
+  checkButton.addEventListener('click',()=>onAnswer([...selected],checkButton));wrap.appendChild(checkButton);
+ }
+ return {
+  setSelected(values){selected=Array.isArray(values)?[...values]:[];buttons.forEach((b,i)=>{const yes=selected.includes(i);b.classList.toggle('selected',yes);b.setAttribute('aria-pressed',String(yes));});if(checkButton)checkButton.disabled=selected.length===0;},
+  lock(response){const chosen=Array.isArray(response)?response:[response];const correct=correctIndexes(q);buttons.forEach((b,i)=>{b.disabled=true;if(correct.includes(i))b.classList.add('correct');if(chosen.includes(i)&&!correct.includes(i))b.classList.add('wrong');});if(checkButton){checkButton.disabled=true;checkButton.classList.add('hidden');}},
+  getButtons(){return buttons;}
+ };
+}
+
+const defaultTeamNames=['Lale Takımı','Matbaa Takımı','Saray Takımı','Tulumbacı Takımı'];
+const defaultState={completed:[],points:0,chapterPoints:{},achievements:[],teams:[],classTurn:0,classQuestion:0,classChapter:0,classAnswers:[],classRunning:false,chapterProgress:{},classQuestionOrder:[],classTeamStreaks:[],atelierBest:{},atelierClaimed:[]};
+let state=loadState(),currentChapter=0,questionIndex=0,questionAnswered=false,classQuestionAnswered=false,toastTimer;
+const collectionCards=[
+ {icon:'🕊️',title:'Pasarofça Mührü',date:'1718',text:'Pasarofça Antlaşması, Lale Devri olarak adlandırılan dönemin başlangıç noktası kabul edilir.'},
+ {icon:'👑',title:'Sarayın İzleri',date:'III. Ahmet dönemi',text:'III. Ahmet padişah, Nevşehirli Damat İbrahim Paşa ise sadrazamdı.'},
+ {icon:'🇫🇷',title:'Elçilikname',date:'1720',text:'Yirmisekiz Çelebi Mehmed Efendi’nin Fransa gözlemleri ve sefaretname geleneği.'},
+ {icon:'🖨️',title:'Matbaa Harfleri',date:'1727–1729',text:'İbrahim Müteferrika ve Sait Efendi’nin öncülüğünde Türkçe eser basan Müslüman matbaası.'},
+ {icon:'🚒',title:'Tulumbacı Rozeti',date:'Şehir hayatı',text:'Tulumbacılar, İstanbul’da yangınları söndürmek için çalışan görevlilerdi.'},
+ {icon:'🎨',title:'Sanat Defteri',date:'Nedim ve Levni',text:'Nedim şiirleriyle, Levni ise minyatür sanatıyla tanınır.'},
+ {icon:'⚖️',title:'İstanbul’un Terazisi',date:'1720’lerin sonu',text:'Dönemin gösterişli yaşamı toplumun tüm kesimlerinin aynı refahı yaşadığı anlamına gelmiyordu.'},
+ {icon:'📜',title:'1730 Kroniği',date:'1730',text:'Patrona Halil İsyanı sonrasında III. Ahmet tahttan çekildi ve I. Mahmut tahta çıktı.'}
+];
+const achievementInfo=[
+ {name:'İlk Adım',desc:'İlk bölümünü tamamla.'},
+ {name:'Tarih Meraklısı',desc:'Dört bölümü tamamla.'},
+ {name:'Lale Devri Uzmanı',desc:'Sekiz bölümün tamamını bitir.'},
+ {name:'Bilgi Avcısı',desc:'Keşif modunda 500 puana ulaş.'},
+ {name:'Koleksiyoncu',desc:'Dört tarih kartı aç.'},
+ {name:'Tam Koleksiyon',desc:'Sekiz tarih kartının tamamını aç.'},
+ {name:'Arşiv Dedektifi',desc:'Belge Avı etkinliğindeki bütün dosyaları tamamla.'},
+ {name:'Atölye Ustası',desc:'Tarih Atölyesi’ndeki altı etkinliğin tamamını bitir.'}
+];
+const atelierTimeline=[
+ {id:'pasarofca',event:'Pasarofça Antlaşması imzalandı.',note:'Bu antlaşma, Lale Devri’nin başlangıcı kabul edilen gelişmedir.'},
+ {id:'france-mission',event:'Yirmisekiz Çelebi Mehmed Efendi Fransa’ya elçi gönderildi.',note:'Elçi, Fransa’daki kurumları ve günlük yaşamı gözlemledi.'},
+ {id:'printing-permit',event:'Türkçe eser basacak Müslüman matbaası için izin alındı.',note:'İbrahim Müteferrika ve Sait Efendi bu girişimde öncüydü.'},
+ {id:'first-books',event:'Matbaada ilk eserler yayımlandı.',note:'Basım, kitapların daha fazla nüshaya aktarılmasını kolaylaştırdı.'},
+ {id:'patrona-revolt',event:'Patrona Halil İsyanı çıktı ve dönem sona erdi.',note:'III. Ahmet tahttan çekildi; I. Mahmut tahta çıktı.'}
+];
+const atelierPeople=[
+ {q:'Nedim hangi alanda tanınmıştır?',a:['Şair','Minyatür sanatçısı','Sadrazam','Elçi'],c:0,e:'Nedim, Lale Devri’nin tanınmış şairlerinden biridir.'},
+ {q:'Levni hangi sanat dalıyla tanınır?',a:['Mimarlık','Minyatür','Denizcilik','Matbaacılık'],c:1,e:'Levni, Osmanlı minyatür sanatının önemli isimlerindendir.'},
+ {q:'İbrahim Müteferrika hangi yenilikle ilişkilidir?',a:['Tulumbacı teşkilatı','Matbaa','Sadabad Sarayı','Fransa elçiliği'],c:1,e:'İbrahim Müteferrika, Sait Efendi ile birlikte Türkçe eser basan Müslüman matbaasının kurulmasında öncü oldu.'},
+ {q:'Yirmisekiz Çelebi Mehmed Efendi 1720’de nereye elçi gönderildi?',a:['Fransa','İran','Rusya','Avusturya'],c:0,e:'Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya elçi gönderildi.'},
+ {q:'Lale Devri’nin padişahı kimdir?',a:['I. Mahmut','III. Ahmet','II. Osman','III. Selim'],c:1,e:'Dönemin padişahı III. Ahmet’tir.'},
+ {q:'Patrona Halil hangi olayla anılır?',a:['Matbaanın kurulması','Fransa elçiliği','1730 İsyanı','Pasarofça Antlaşması'],c:2,e:'Patrona Halil, 1730’da Lale Devri’ni sona erdiren isyana öncülük etti.'}
+];
+const atelierFacts=[
+ {q:'Lale Devri’nin başlangıcı olarak 1718 Pasarofça Antlaşması kabul edilir.',c:true,e:'Doğru. Dönemin başlangıcı genellikle 1718 Pasarofça Antlaşması sonrasına tarihlenir.'},
+ {q:'Lale Devri’nin padişahı I. Mahmut’tur.',c:false,e:'Yanlış. Lale Devri’nin padişahı III. Ahmet’tir. I. Mahmut, 1730’da onun yerine tahta çıktı.'},
+ {q:'Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya elçi gönderildi.',c:true,e:'Doğru. Elçinin Fransa gözlemleri sefaretnameyle tanınır.'},
+ {q:'İbrahim Müteferrika matbaası için izin 1727’de alındı.',c:true,e:'Doğru. İlk eserler 1729’da basıldı.'},
+ {q:'Osmanlı topraklarında Lale Devri’nden önce hiçbir matbaa yoktu.',c:false,e:'Yanlış. Gayrimüslim toplulukların matbaaları daha önce de bulunuyordu.'},
+ {q:'Tulumbacılar yangınları söndürmek için görev yapardı.',c:true,e:'Doğru. Su tulumbalarıyla yangınlara müdahale ederlerdi.'},
+ {q:'Levni, Lale Devri’nin tanınmış şairidir.',c:false,e:'Yanlış. Levni minyatür sanatçısıdır; Nedim ise tanınmış şairdir.'},
+ {q:'Patrona Halil İsyanı 1730 yılında gerçekleşti.',c:true,e:'Doğru. İsyan Lale Devri’nin sona ermesine yol açtı.'}
+];
+
+const atelierDossiers=[
+ {q:'Bu dosyada anlatılan antlaşma hangisidir?',clues:['1718 yılında imzalandı.','Osmanlı Devleti, Avusturya ve Venedik ile antlaşma yaptı.','Lale Devri’nin başlangıcı kabul edilen tarihî gelişmedir.'],a:['Pasarofça Antlaşması','Karlofça Antlaşması','Küçük Kaynarca Antlaşması','Zitvatorok Antlaşması'],c:0,e:'Pasarofça Antlaşması 1718’de Osmanlı Devleti ile Avusturya ve Venedik arasında imzalandı. Lale Devri’nin başlangıcı bu tarihle ilişkilendirilir.'},
+ {q:'İpuçları hangi Osmanlı elçisini işaret ediyor?',clues:['1720 yılında Fransa’ya gönderildi.','Fransa’daki yaşamı ve kurumları gözlemledi.','Dönüşünde gözlemlerini sefaretnameyle aktardı.'],a:['Evliya Çelebi','Yirmisekiz Çelebi Mehmed Efendi','Piri Reis','İbrahim Müteferrika'],c:1,e:'Yirmisekiz Çelebi Mehmed Efendi 1720’de Fransa’ya elçi gönderildi. Gözlemlerini sefaretname geleneği içinde aktardı.'},
+ {q:'Arşiv kayıtlarında anlatılan yenilik nedir?',clues:['Kuruluş izni 1727’de alındı.','İbrahim Müteferrika ve Sait Efendi öncü oldu.','İlk eserleri 1729’da yayımlandı.'],a:['Tulumbacı teşkilatı','Türkçe eser basan ilk Müslüman matbaası','Sadabad Sarayı','Fransa elçiliği'],c:1,e:'İbrahim Müteferrika ve Sait Efendi’nin girişimiyle Türkçe eser basan Müslüman matbaası kuruldu; izin 1727’de alındı, ilk eserler 1729’da basıldı.'},
+ {q:'Bu dosyada anlatılan görevliler kimlerdir?',clues:['İstanbul’da yangınlarla mücadele ettiler.','Su tulumbaları kullanarak alevleri söndürmeye çalışırlardı.','Ahşap yapıların yaygın olduğu şehirde önemli bir görev üstlendiler.'],a:['Müezzinler','Tulumbacılar','Elçiler','Müderrisler'],c:1,e:'Tulumbacılar su tulumbalarıyla yangınlara müdahale eden görevlilerdi.'},
+ {q:'İpuçlarında adı geçen minyatür sanatçısı kimdir?',clues:['Osmanlı minyatür sanatıyla tanınır.','Lale Devri’nin öne çıkan sanatçılarındandır.','Dönemin tanınmış şairi Nedim’den farklı bir sanat alanında çalışmıştır.'],a:['Nedim','Levni','Sait Efendi','Patrona Halil'],c:1,e:'Levni minyatür sanatçısıdır. Nedim ise Lale Devri’nin tanınmış şairlerinden biridir.'},
+ {q:'Son dosya hangi olayın izlerini taşıyor?',clues:['1730 yılında İstanbul’da gerçekleşti.','Patrona Halil’in öncülüğünde başladı.','III. Ahmet tahttan çekildi, yerine I. Mahmut geçti.'],a:['Pasarofça Antlaşması','Matbaanın kurulması','Patrona Halil İsyanı','Fransa elçiliği'],c:2,e:'Patrona Halil İsyanı 1730’da Lale Devri’nin sona ermesine yol açtı. III. Ahmet’in yerine I. Mahmut tahta çıktı.'}
+];
+const atelierMemoryPairs=[
+ {id:'pasarofca',left:'Pasarofça',right:'1718 barış antlaşması'},
+ {id:'elci',left:'Yirmisekiz Çelebi Mehmed Efendi',right:'Fransa elçisi'},
+ {id:'matbaa',left:'İbrahim Müteferrika',right:'Matbaa girişimi'},
+ {id:'nedim',left:'Nedim',right:'Şair'},
+ {id:'levni',left:'Levni',right:'Minyatür sanatçısı'},
+ {id:'tulumbaci',left:'Tulumbacılar',right:'Yangınla mücadele'}
+];
+const atelierCiphers=[
+ {word:'MATBAA',clue:'Kitapların daha hızlı ve çok sayıda basılmasını sağlayan yenilik.',fact:'Matbaa, bilginin çoğaltılmasını kolaylaştırdı.'},
+ {word:'NEDİM',clue:'Lale Devri’nin tanınmış şairi.',fact:'Nedim, dönemin edebiyatıyla tanınır.'},
+ {word:'LEVNİ',clue:'Osmanlı minyatür sanatının tanınmış ismi.',fact:'Levni, minyatür sanatçısıdır.'},
+ {word:'SADABAD',clue:'Kâğıthane’de dönemin tanınan dinlenme ve eğlence alanı.',fact:'Sadabad, Kâğıthane çevresindeydi.'},
+ {word:'TULUMBACI',clue:'İstanbul’da yangınları söndürmek için çalışan görevli.',fact:'Tulumbacılar su tulumbalarıyla yangınlara müdahale ederdi.'},
+ {word:'PASAROFÇA',clue:'Lale Devri’nin başlangıcı kabul edilen antlaşma.',fact:'Pasarofça Antlaşması 1718’de imzalandı.'}
+];
+
+let atelierMode='',atelierRound=0,atelierScore=0,atelierAnswered=false,atelierItems=[],atelierOrder=[];
+let memoryDeck=[],memoryOpen=[],memoryMatched=[],memoryMoves=0,memoryBusy=false;
+let cipherLetters=[],cipherSelected=[],cipherSolved=false;
+
+function loadState(){try{const raw=localStorage.getItem('laleDevriGameV1');if(!raw)return structuredClone(defaultState);const parsed=JSON.parse(raw);return {...structuredClone(defaultState),...parsed,chapterProgress:parsed.chapterProgress||{},classQuestionOrder:parsed.classQuestionOrder||[],classTeamStreaks:parsed.classTeamStreaks||[],atelierBest:parsed.atelierBest||{},atelierClaimed:parsed.atelierClaimed||[]};}catch(e){return structuredClone(defaultState);}}
+function saveState(){try{localStorage.setItem('laleDevriGameV1',JSON.stringify(state));}catch(e){showToast('Tarayıcı kaydı yapılamadı. Tarayıcı depolama alanını kontrol et.');}}
+function showToast(message){const el=document.getElementById('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2800);}
+function exportSave(){try{const blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='lale-devri-oyun-yedegi.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);showToast('Oyun yedeğin indirildi.');}catch(e){showToast('Yedek oluşturulamadı.');}}
+function importSaveFile(file){if(!file)return;const reader=new FileReader();reader.onload=()=>{try{const data=JSON.parse(String(reader.result||''));if(!data||typeof data!=='object'||Array.isArray(data))throw new Error('Geçersiz yedek');const clean=structuredClone(defaultState);clean.completed=Array.isArray(data.completed)?[...new Set(data.completed.filter(n=>Number.isInteger(n)&&n>=0&&n<chapters.length))].sort((a,b)=>a-b):[];clean.points=Number.isFinite(Number(data.points))?Math.max(0,Math.min(100000000,Number(data.points))):0;clean.chapterPoints={};if(data.chapterPoints&&typeof data.chapterPoints==='object')Object.entries(data.chapterPoints).forEach(([k,v])=>{const i=Number(k),n=Number(v);if(Number.isInteger(i)&&i>=0&&i<chapters.length&&Number.isFinite(n))clean.chapterPoints[i]=Math.max(0,Math.min(100000000,n));});clean.achievements=Array.isArray(data.achievements)?[...new Set(data.achievements.filter(x=>achievementInfo.some(a=>a.name===x)))]:[];clean.teams=Array.isArray(data.teams)?data.teams.slice(0,4).map((t,i)=>({name:String(t?.name||defaultTeamNames[i]).slice(0,24),score:Number.isFinite(Number(t?.score))?Math.max(0,Math.min(100000000,Number(t.score))):0})):[];clean.classTurn=clean.teams.length?Math.max(0,Math.min(clean.teams.length-1,Number(data.classTurn)||0)):0;clean.classQuestion=Math.max(0,Number.isInteger(data.classQuestion)?data.classQuestion:0);clean.classChapter=Math.max(0,Math.min(chapters.length-1,Number(data.classChapter)||0));clean.classAnswers=Array.isArray(data.classAnswers)?data.classAnswers.filter(x=>x&&Number.isInteger(x.chapter)&&x.chapter>=0&&x.chapter<chapters.length&&Number.isInteger(x.question)&&x.question>=0&&x.question<chapters[x.chapter].questions.length&&Number.isInteger(x.team)&&x.team>=0&&x.team<clean.teams.length).slice(-500):[];clean.classRunning=Boolean(data.classRunning);clean.classQuestionOrder=Array.isArray(data.classQuestionOrder)?data.classQuestionOrder.filter(x=>x&&Number.isInteger(x.chapter)&&x.chapter>=0&&x.chapter<chapters.length&&Number.isInteger(x.question)&&x.question>=0&&x.question<chapters[x.chapter].questions.length).slice(0,100):[];clean.classTeamStreaks=clean.teams.map((_,i)=>Math.max(0,Math.min(2,Number(data.classTeamStreaks?.[i])||0)));clean.chapterProgress={};if(data.chapterProgress&&typeof data.chapterProgress==='object')Object.entries(data.chapterProgress).forEach(([k,v])=>{const i=Number(k);if(Number.isInteger(i)&&i>=0&&i<chapters.length&&v&&typeof v==='object'){clean.chapterProgress[i]={index:Math.max(0,Math.min(chapters[i].questions.length-1,Number(v.index)||0)),answered:Boolean(v.answered),selected:Array.isArray(v.selected)?[...new Set(v.selected.filter(n=>Number.isInteger(n)&&n>=0&&n<4))].slice(0,4):(Number.isInteger(v.selected)&&v.selected>=0&&v.selected<4?v.selected:null)};}});clean.atelierBest={};const limits={chronology:100,people:120,truefalse:160,detective:120,memory:150,cipher:120};Object.entries(limits).forEach(([k,max])=>{if(Number.isFinite(Number(data.atelierBest?.[k])))clean.atelierBest[k]=Math.max(0,Math.min(max,Number(data.atelierBest[k])));});clean.atelierClaimed=Array.isArray(data.atelierClaimed)?[...new Set(data.atelierClaimed.filter(k=>Object.hasOwn(limits,k)))]:[];state=clean;updateAchievements();saveState();renderMap();renderCollection();renderAtelierMenu();createTeamInputs();showToast('Yedek başarıyla geri yüklendi.');}catch(e){showToast('Bu dosya geçerli bir Lale Devri oyun yedeği değil.');}document.getElementById('importSaveFile').value='';};reader.onerror=()=>showToast('Yedek dosyası okunamadı.');reader.readAsText(file);}
+function showView(id){document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));window.scrollTo({top:0,behavior:'smooth'});}
+function updateAchievements(){const done=state.completed.length;if(done>=1&&!state.achievements.includes('İlk Adım'))state.achievements.push('İlk Adım');if(done>=4&&!state.achievements.includes('Tarih Meraklısı'))state.achievements.push('Tarih Meraklısı');if(done>=8&&!state.achievements.includes('Lale Devri Uzmanı'))state.achievements.push('Lale Devri Uzmanı');if(state.points>=500&&!state.achievements.includes('Bilgi Avcısı'))state.achievements.push('Bilgi Avcısı');if(done>=4&&!state.achievements.includes('Koleksiyoncu'))state.achievements.push('Koleksiyoncu');if(done>=8&&!state.achievements.includes('Tam Koleksiyon'))state.achievements.push('Tam Koleksiyon');if(state.atelierClaimed.includes('detective')&&!state.achievements.includes('Arşiv Dedektifi'))state.achievements.push('Arşiv Dedektifi');if(['chronology','people','truefalse','detective','memory','cipher'].every(k=>state.atelierClaimed.includes(k))&&!state.achievements.includes('Atölye Ustası'))state.achievements.push('Atölye Ustası');}
+function updateProgress(){const done=state.completed.length;document.getElementById('progressLabel').textContent=`${done} / ${chapters.length} bölüm tamamlandı`;document.getElementById('progressSub').textContent=done===chapters.length?'Tebrikler! Bütün bölümleri tamamladın.':done?`${chapters.length-done} bölüm daha seni bekliyor.`:'İlk görevin seni bekliyor.';document.getElementById('progressFill').style.width=`${done/chapters.length*100}%`;document.getElementById('totalPoints').textContent=state.points;const ranks=[{min:0,name:'Kâtip Adayı',next:300},{min:300,name:'Saray Kâtibi',next:700},{min:700,name:'Elçi',next:1200},{min:1200,name:'Saray Bilgesi',next:2000},{min:2000,name:'Tarih Ustası',next:null}];const rank=[...ranks].reverse().find(r=>state.points>=r.min)||ranks[0];const rankEl=document.getElementById('playerRank');if(rankEl)rankEl.textContent=rank.next?`${rank.name} · Sonraki unvana ${rank.next-state.points} puan`:`${rank.name} · En yüksek unvan`;}
+function chapterStars(points){return points>=250?3:points>=150?2:1;}
+function renderMap(){updateAchievements();updateProgress();const grid=document.getElementById('chapterGrid');grid.innerHTML='';chapters.forEach((ch,i)=>{const unlocked=i===0||state.completed.includes(i-1);const done=state.completed.includes(i);const btn=document.createElement('button');btn.type='button';btn.className='chapter-card';btn.disabled=!unlocked;const prog=state.chapterProgress[i];const count=ch.questions.length;const finished=done?count:(prog?Math.min(prog.index+(prog.answered?1:0),count):0);btn.innerHTML=`<span class="chapter-number">BÖLÜM ${String(i+1).padStart(2,'0')}</span><span class="chapter-symbol">${ch.symbol}</span><strong>${ch.title}</strong><small>${ch.place}</small><span class="chapter-extra">${done?`✓ Tamamlandı · ${'★'.repeat(chapterStars(state.chapterPoints[i]||0))}${'☆'.repeat(3-chapterStars(state.chapterPoints[i]||0))}`:unlocked?`${finished}/${count} görev`:'Kilitli'}</span><span class="chapter-status">${done?'✓':unlocked?'↗':'🔒'}</span>`;btn.addEventListener('click',()=>openChapter(i));grid.appendChild(btn);});}
+function openChapter(index){if(index>0&&!state.completed.includes(index-1)){showToast('Önceki bölümü tamamlamalısın.');return;}currentChapter=index;const ch=chapters[index];let prog=state.chapterProgress[index];if(state.completed.includes(index)){questionIndex=0;prog={index:0,answered:false,selected:null};state.chapterProgress[index]=prog;}else if(prog){questionIndex=Math.min(prog.index||0,ch.questions.length-1);}else{questionIndex=0;state.chapterProgress[index]={index:0,answered:false,selected:null};}questionAnswered=!!state.chapterProgress[index].answered;document.getElementById('chapterEyebrow').textContent=`BÖLÜM ${index+1} · ${ch.place}`;document.getElementById('chapterHeading').textContent=ch.title;document.getElementById('chapterSubheading').textContent=ch.subtitle;document.getElementById('storyKicker').textContent=ch.place;document.getElementById('storyTitle').textContent=ch.title;document.getElementById('storyLead').textContent=ch.lead;document.getElementById('storyText').innerHTML=ch.story.map(p=>`<p>${p}</p>`).join('');document.getElementById('missionText').textContent=ch.mission;document.getElementById('chapterFacts').innerHTML=ch.facts.map(f=>`<li>${f}</li>`).join('');document.getElementById('storyPanel').classList.remove('hidden');document.getElementById('quizArea').classList.remove('hidden');document.getElementById('chapterCompletion').classList.add('hidden');saveState();updateChapterStats();renderExploreQuestion();showView('chapterView');}
+function updateChapterStats(){const chPoints=state.chapterPoints[currentChapter]||0;document.getElementById('chapterScore').textContent=chPoints;const total=chapters[currentChapter].questions.length;document.getElementById('chapterDone').textContent=`${Math.min(questionIndex+(questionAnswered?1:0),total)}/${total}`;}
+function renderExploreQuestion(){
+ const q=chapters[currentChapter].questions[questionIndex],prog=state.chapterProgress[currentChapter]||{index:questionIndex,answered:false};
+ questionAnswered=!!prog.answered;
+ document.getElementById('questionCounter').textContent=`GÖREV ${questionIndex+1} / ${chapters[currentChapter].questions.length}`;
+ document.getElementById('questionTypeLabel').textContent=q.kind+(q.type==='multi'?' · Birden fazla doğru cevap':'');
+ document.getElementById('questionText').textContent=q.q;
+ document.getElementById('questionPoints').textContent='+50 PUAN';
+ const fb=document.getElementById('feedback');fb.className='feedback';fb.textContent='';
+ document.getElementById('nextQuestionBtn').classList.add('hidden');
+ document.getElementById('questionHint').textContent=q.type==='multi'?'Birden fazla doğru seçeneği işaretle, ardından kontrol et.':'Düşün, seç ve öğren.';
+ const wrap=document.getElementById('answerButtons');
+ const ui=createQuestionOptions(wrap,q,answerExplore);
+ if(questionAnswered){
+  const selected=prog.selected;
+  const response=q.type==='multi'?(Array.isArray(selected)?selected:[]):selected;
+  ui.setSelected(q.type==='multi'?response:[]);ui.lock(response);
+  const good=answerIsCorrect(q,response);
+  fb.className=`feedback ${good?'good':'bad'} show`;
+  fb.textContent=(good?'Doğru cevap! ':'Bu kez olmadı. Doğru cevap: '+correctAnswerText(q)+'. ')+q.e;
+  document.getElementById('questionHint').textContent=state.completed.includes(currentChapter)?'Tekrar oynama · Ek puan yok.':'Cevabın kaydedildi.';
+  document.getElementById('nextQuestionBtn').classList.remove('hidden');
+  document.getElementById('nextQuestionBtn').textContent=questionIndex===chapters[currentChapter].questions.length-1?'Bölümü tamamla ✓':'Sonraki görev →';
+ }
+}
+function answerExplore(response,button){
+ if(questionAnswered)return;questionAnswered=true;
+ const q=chapters[currentChapter].questions[questionIndex],good=answerIsCorrect(q,response),chosen=Array.isArray(response)?response:[response];
+ const wrap=document.getElementById('answerButtons');const ui={buttons:[...wrap.querySelectorAll('.answer-btn')]};
+ ui.buttons.forEach((b,i)=>{b.disabled=true;if(correctIndexes(q).includes(i))b.classList.add('correct');if(chosen.includes(i)&&!correctIndexes(q).includes(i))b.classList.add('wrong');});
+ const submit=wrap.querySelector('.multi-submit');if(submit){submit.disabled=true;submit.classList.add('hidden');}
+ if(button&&q.type!=='multi'&&!good)button.classList.add('wrong');
+ const fb=document.getElementById('feedback'),wasComplete=state.completed.includes(currentChapter);
+ if(good){
+  if(!wasComplete){state.points+=50;state.chapterPoints[currentChapter]=(state.chapterPoints[currentChapter]||0)+50;fb.className='feedback good show';fb.textContent='Doğru cevap! '+q.e;document.getElementById('questionHint').textContent='+50 puan kazandın.';}
+  else{fb.className='feedback good show';fb.textContent='Doğru cevap! '+q.e+' Bu bölümü daha önce tamamladığın için tekrar oynarken ek puan verilmedi.';document.getElementById('questionHint').textContent='Tekrar oynama · Ek puan yok.';}
+ }else{fb.className='feedback bad show';fb.textContent='Bu kez olmadı. Doğru cevap: '+correctAnswerText(q)+'. '+q.e;document.getElementById('questionHint').textContent='Açıklamayı oku ve devam et.';}
+ state.chapterProgress[currentChapter]={index:questionIndex,answered:true,selected:q.type==='multi'?chosen:response};
+ updateAchievements();saveState();updateChapterStats();document.getElementById('nextQuestionBtn').classList.remove('hidden');
+ document.getElementById('nextQuestionBtn').textContent=questionIndex===chapters[currentChapter].questions.length-1?'Bölümü tamamla ✓':'Sonraki görev →';
+}
+function nextExploreQuestion(){if(questionIndex<chapters[currentChapter].questions.length-1){questionIndex++;questionAnswered=false;state.chapterProgress[currentChapter]={index:questionIndex,answered:false,selected:null};saveState();renderExploreQuestion();updateChapterStats();}else{completeChapter();}}
+function completeChapter(){if(!state.completed.includes(currentChapter))state.completed.push(currentChapter);state.completed.sort((a,b)=>a-b);state.chapterProgress[currentChapter]={index:chapters[currentChapter].questions.length-1,answered:true,selected:state.chapterProgress[currentChapter]?.selected??null};updateAchievements();saveState();document.getElementById('quizArea').classList.add('hidden');document.getElementById('chapterCompletion').classList.remove('hidden');document.getElementById('completionText').textContent=`${chapters[currentChapter].title} bölümünü tamamladın. Bu bölümde ${state.chapterPoints[currentChapter]||0} puan topladın ve ${chapterStars(state.chapterPoints[currentChapter]||0)} yıldız kazandın. ${state.completed.length===8?'Bütün bölümleri bitirdin ve Lale Devri Uzmanı oldun! Tarih koleksiyonunun tamamı açıldı.':'Yeni bilgiler öğrendin ve bu bölümün tarih kartını koleksiyonuna ekledin.'}`;const next=document.getElementById('nextChapterBtn');if(currentChapter===chapters.length-1){next.textContent='Bölüm haritasına dön';next.onclick=()=>{renderMap();showView('mapView');};}else{next.textContent='Sonraki bölüme geç →';next.onclick=()=>openChapter(currentChapter+1);}updateChapterStats();renderCollection();}
+function renderCollection(){updateAchievements();const grid=document.getElementById('collectionGrid');grid.innerHTML='';collectionCards.forEach((card,i)=>{const unlocked=state.completed.includes(i);const el=document.createElement('article');el.className='collection-card'+(unlocked?'':' locked');el.innerHTML=`<div class="collect-icon">${unlocked?card.icon:'🔒'}</div><h3>${unlocked?card.title:'Gizli tarih kartı'}</h3><p>${unlocked?card.text:'Bu kartı açmak için '+(i+1)+'. bölümü tamamla.'}</p><small>${unlocked?card.date:'Henüz keşfedilmedi'}</small>`;grid.appendChild(el);});document.getElementById('collectionCount').textContent=`${state.completed.length} / 8 kart açıldı`;document.getElementById('achievementCount').textContent=`${state.achievements.length} başarı kazanıldı`;const ag=document.getElementById('achievementGrid');ag.innerHTML='';achievementInfo.forEach(a=>{const earned=state.achievements.includes(a.name);const el=document.createElement('div');el.className='achievement'+(earned?' earned':'');el.innerHTML=`<strong>${earned?'🏅':'🔒'} ${a.name}</strong><span>${a.desc}</span>`;ag.appendChild(el);});}
+function createTeamInputs(){const count=Number(document.getElementById('teamCount').value);const wrap=document.getElementById('teamInputs');wrap.innerHTML='';for(let i=0;i<count;i++){const div=document.createElement('div');div.className='field';const label=document.createElement('label');label.textContent=`${i+1}. takım`;label.htmlFor=`teamName${i}`;const input=document.createElement('input');input.id=`teamName${i}`;input.maxLength=24;input.value=state.teams[i]?.name||defaultTeamNames[i];input.placeholder=defaultTeamNames[i];div.append(label,input);wrap.appendChild(div);}}
+function shuffle(items){const arr=[...items];for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+function buildClassQuestionOrder(){const selected=document.getElementById('classChapterSelect').value;const lengthSelect=document.getElementById('classLengthSelect');const selects=document.querySelector('.class-selects');lengthSelect.disabled=selected!=='all';lengthSelect.parentElement.classList.toggle('hidden',selected!=='all');selects.classList.toggle('single',selected!=='all');lengthSelect.title='Karışık turun uzunluğunu seç';let pool=[];if(selected==='all'){chapters.forEach((ch,ci)=>ch.questions.forEach((q,qi)=>pool.push({chapter:ci,question:qi})));pool=shuffle(pool);const length=document.getElementById('classLengthSelect').value;const count=length==='all'?pool.length:Math.min(Number(length),pool.length);state.classQuestionOrder=pool.slice(0,count);}else{const ci=Number(selected);pool=chapters[ci].questions.map((q,qi)=>({chapter:ci,question:qi}));state.classQuestionOrder=shuffle(pool);}state.classQuestion=0;classQuestionAnswered=false;saveState();}
+function enterClass(){state.teams=Array.from({length:Number(document.getElementById('teamCount').value)},(_,i)=>({name:(document.getElementById(`teamName${i}`).value.trim()||defaultTeamNames[i]),score:0}));state.classTurn=0;state.classQuestion=0;state.classChapter=0;state.classAnswers=[];state.classTeamStreaks=state.teams.map(()=>0);state.classRunning=true;const sel=document.getElementById('classChapterSelect');sel.innerHTML='<option value="all">Tüm bölümler · Karışık</option>'+chapters.map((c,i)=>`<option value="${i}">Bölüm ${i+1}: ${c.title}</option>`).join('');sel.value='all';document.getElementById('classLengthSelect').value='10';buildClassQuestionOrder();saveState();document.getElementById('classSetupPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.add('hidden');document.getElementById('classPlayPanel').classList.remove('hidden');document.getElementById('playTab').disabled=false;document.getElementById('resultsTab').disabled=true;document.getElementById('setupTab').classList.remove('active');document.getElementById('playTab').classList.add('active');renderScoreboard();renderClassQuestion();}
+function renderScoreboard(){const list=document.getElementById('scoreList');list.innerHTML='';const ordered=state.teams.map((t,i)=>({...t,index:i})).sort((a,b)=>b.score-a.score);ordered.forEach((t,rank)=>{const li=document.createElement('li');li.className='score-row'+(t.index===state.classTurn?' current':'');li.innerHTML=`<span class="score-name">${['🥇','🥈','🥉','🏅'][rank]||'•'} ${escapeHtml(t.name)}</span><strong class="score-points">${t.score}</strong>`;list.appendChild(li);});document.getElementById('classTurn').textContent=`Sıra: ${state.teams[state.classTurn]?.name||'—'}`;const adjust=document.getElementById('scoreAdjustTeam');if(adjust){const selected=adjust.value;adjust.innerHTML='';state.teams.forEach((team,i)=>{const option=document.createElement('option');option.value=String(i);option.textContent=team.name;adjust.appendChild(option);});if(selected&&Number(selected)<state.teams.length)adjust.value=selected;}}
+function adjustTeamScore(delta){const i=Number(document.getElementById('scoreAdjustTeam').value);if(!Number.isInteger(i)||!state.teams[i])return;state.teams[i].score=Math.max(0,state.teams[i].score+delta);saveState();renderScoreboard();showToast(`${state.teams[i].name}: ${delta>0?'+':''}${delta} puan uygulandı.`);}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function currentClassEntry(){return state.classQuestionOrder[state.classQuestion];}
+function renderClassQuestion(){
+ const entry=currentClassEntry();if(!entry){showClassResults();return;}
+ const ch=chapters[entry.chapter],q=ch.questions[entry.question];state.classChapter=entry.chapter;classQuestionAnswered=false;
+ document.getElementById('classQuestionCount').textContent=`SORU ${state.classQuestion+1} / ${state.classQuestionOrder.length}`;
+ document.getElementById('classQuestionMeta').textContent=document.getElementById('classChapterSelect').value==='all'?`KARIŞIK TUR · BÖLÜM ${entry.chapter+1}: ${ch.title}`:`BÖLÜM ${entry.chapter+1} · ${ch.title} · ${ch.questions.length} GÖREV`;
+ document.getElementById('classQuestionType').textContent=q.kind+(q.type==='multi'?' · Birden fazla doğru cevap':'');
+ document.getElementById('classQuestionText').textContent=q.q;document.getElementById('classFeedback').className='feedback';document.getElementById('classFeedback').textContent='';
+ document.getElementById('classNextBtn').classList.add('hidden');document.getElementById('classHint').textContent=q.type==='multi'?'Birden fazla seçeneği işaretleyin, ardından öğretmen kontrol etsin.':'Takımınız cevabını söylesin.';
+ const wrap=document.getElementById('classAnswers');createQuestionOptions(wrap,q,answerClass);renderScoreboard();
+}
+function answerClass(response,button){
+ if(classQuestionAnswered)return;classQuestionAnswered=true;
+ const entry=currentClassEntry(),q=chapters[entry.chapter].questions[entry.question],good=answerIsCorrect(q,response),chosen=Array.isArray(response)?response:[response];
+ const buttons=[...document.querySelectorAll('#classAnswers .answer-btn')];buttons.forEach((b,i)=>{b.disabled=true;if(correctIndexes(q).includes(i))b.classList.add('correct');if(chosen.includes(i)&&!correctIndexes(q).includes(i))b.classList.add('wrong');});
+ const submit=document.querySelector('#classAnswers .multi-submit');if(submit){submit.disabled=true;submit.classList.add('hidden');}
+ const fb=document.getElementById('classFeedback'),teamIndex=state.classTurn,team=state.teams[teamIndex];
+ if(good){team.score+=100;state.classTeamStreaks[teamIndex]=(state.classTeamStreaks[teamIndex]||0)+1;let bonus='';if(state.classTeamStreaks[teamIndex]===3){team.score+=50;bonus=' Üç doğru cevaplık seri için +50 bonus!';state.classTeamStreaks[teamIndex]=0;}fb.className='feedback good show';fb.textContent=`Doğru cevap! ${team.name} 100 puan kazandı.${bonus} ${q.e}`;}
+ else{state.classTeamStreaks[teamIndex]=0;fb.className='feedback bad show';fb.textContent=`Doğru cevap: ${correctAnswerText(q)}. ${q.e}`;}
+ document.getElementById('classHint').textContent='Sıradaki takımın düşünme zamanı.';state.classTurn=(state.classTurn+1)%state.teams.length;
+ state.classAnswers.push({chapter:entry.chapter,question:entry.question,team:teamIndex,correct:good});saveState();renderScoreboard();
+ document.getElementById('classNextBtn').classList.remove('hidden');document.getElementById('classNextBtn').textContent=state.classQuestion===state.classQuestionOrder.length-1?'Sonuçları göster 🏆':'Sıradaki soru →';
+}
+function nextClassQuestion(){if(state.classQuestion<state.classQuestionOrder.length-1){state.classQuestion++;saveState();renderClassQuestion();}else{showClassResults();}}
+function showClassResults(){document.getElementById('classPlayPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.remove('hidden');document.getElementById('resultsTab').disabled=false;document.getElementById('playTab').classList.remove('active');document.getElementById('resultsTab').classList.add('active');const ordered=[...state.teams].sort((a,b)=>b.score-a.score);const best=ordered.length?ordered[0].score:0;const winners=ordered.filter(t=>t.score===best);document.getElementById('finalResults').innerHTML=ordered.map((t,i)=>`<div class="score-row" style="max-width:480px;margin:8px auto;text-align:left"><span class="score-name">${['🥇','🥈','🥉','🏅'][i]||'•'} ${escapeHtml(t.name)}</span><strong class="score-points">${t.score} puan</strong></div>`).join('')+`<p style="font:14px Arial,sans-serif;color:var(--muted);margin-top:16px">${winners.length>1?'Yarışma berabere bitti!':`Kazanan: <strong>${escapeHtml(winners[0].name)}</strong> 🎉`}<br>${state.classAnswers.length} soruda ${state.classAnswers.filter(a=>a.correct).length} doğru cevap verildi.</p>`;}
+function openClass(){document.getElementById('classSetupPanel').classList.remove('hidden');document.getElementById('classPlayPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.add('hidden');document.getElementById('setupTab').classList.add('active');document.getElementById('playTab').classList.remove('active');document.getElementById('resultsTab').classList.remove('active');document.getElementById('teamCount').value='2';createTeamInputs();showView('classView');}
+function resetClassScores(){if(!confirm('Bütün takım puanları sıfırlansın ve bu yarışma yeniden başlasın mı?'))return;state.teams.forEach(t=>t.score=0);state.classTurn=0;state.classQuestion=0;state.classAnswers=[];state.classTeamStreaks=state.teams.map(()=>0);buildClassQuestionOrder();renderScoreboard();renderClassQuestion();showToast('Takım puanları ve yarışma sıfırlandı.');}
+function renderAtelierMenu(){const labels={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık'};const ids={chronology:'bestChronology',people:'bestPeople',truefalse:'bestTruefalse',detective:'bestDetective',memory:'bestMemory',cipher:'bestCipher'};Object.keys(labels).forEach(key=>{const el=document.getElementById(ids[key]);if(el)el.textContent=state.atelierBest[key]!==undefined?`En iyi sonuç: ${state.atelierBest[key]} puan`:'Henüz oynanmadı';});document.getElementById('atelierCards').classList.remove('hidden');document.getElementById('atelierPlayPanel').classList.add('hidden');document.getElementById('atelierResults').classList.add('hidden');}
+function openAtelier(){renderAtelierMenu();showView('atelierView');}
+function startAtelier(mode){atelierMode=mode;atelierRound=0;atelierScore=0;atelierAnswered=false;atelierOrder=[];atelierItems=[];memoryOpen=[];memoryMatched=[];memoryMoves=0;memoryBusy=false;cipherLetters=[];cipherSelected=[];cipherSolved=false;const titles={chronology:['ZAMAN TÜNELİ','Zaman Tüneli','Olayları en eskiden en yeniye doğru sırala.'],people:['KİM KİMDİR?','Kim Kimdir?','Her tarihî kişinin doğru görevini veya alanını seç.'],truefalse:['DOĞRU MU, YANLIŞ MI?','Doğru mu, Yanlış mı?','Her ifadeyi dikkatlice oku ve doğru olup olmadığına karar ver.'],detective:['ARŞİV DOSYALARI','Belge Avı','Üç ipucunu birleştir, tarihî dosyanın cevabını bul. Her doğru çözüm 20 puan.'],memory:['HAFIZA MEYDANI','Hafıza Oyunu','Kartları çevir ve altı tarihî eşleşmeyi bul. Az hamleyle tamamla!'],cipher:['ŞİFRELİ SANDIK','Şifreli Sandık','Karışık harfleri doğru sıraya koyarak altı tarihî kelimeyi çöz.']};if(!titles[mode])return;document.getElementById('atelierModeLabel').textContent=titles[mode][0];document.getElementById('atelierTitle').textContent=titles[mode][1];document.getElementById('atelierInstruction').textContent=titles[mode][2];document.getElementById('atelierCards').classList.add('hidden');document.getElementById('atelierResults').classList.add('hidden');document.getElementById('atelierPlayPanel').classList.remove('hidden');document.getElementById('atelierClues').classList.add('hidden');document.getElementById('atelierClues').innerHTML='';const board=document.getElementById('atelierGameBoard');board.classList.add('hidden');document.getElementById('atelierQuestion').classList.remove('hidden');document.getElementById('atelierAnswers').classList.remove('hidden');document.querySelector('#atelierPlayPanel .quiz-footer').classList.toggle('hidden',['memory','cipher'].includes(mode));if(mode==='chronology'){atelierItems=shuffle(atelierTimeline);renderAtelierChronology();}else if(mode==='memory'){document.getElementById('atelierQuestion').classList.add('hidden');document.getElementById('atelierAnswers').classList.add('hidden');startMemoryGame();}else if(mode==='cipher'){document.getElementById('atelierQuestion').classList.add('hidden');document.getElementById('atelierAnswers').classList.add('hidden');atelierItems=shuffle(atelierCiphers);renderCipherGame();}else{atelierItems=shuffle(mode==='people'?atelierPeople:mode==='detective'?atelierDossiers:atelierFacts);renderAtelierQuestion();}document.getElementById('atelierPlayPanel').scrollIntoView({behavior:'smooth',block:'start'});}
+function updateAtelierProgress(total){const done=atelierMode==='chronology'?atelierOrder.length:atelierMode==='memory'?memoryMatched.length/2:atelierMode==='cipher'?atelierRound+(cipherSolved?1:0):atelierRound+(atelierAnswered?1:0);const label=atelierMode==='chronology'?`${atelierOrder.length} / ${atelierItems.length} olay seçildi`:atelierMode==='memory'?`${memoryMatched.length/2} / ${atelierMemoryPairs.length} eşleşme · ${memoryMoves} hamle`:atelierMode==='cipher'?`${atelierRound+(cipherSolved?1:0)} / ${atelierItems.length} şifre çözüldü`:`${atelierRound+1} / ${atelierItems.length}`;document.getElementById('atelierCounter').textContent=label;document.getElementById('atelierProgressFill').style.width=`${Math.min(100,(atelierMode==='chronology'?atelierOrder.length/atelierItems.length:atelierMode==='memory'?(memoryMatched.length/2)/atelierMemoryPairs.length:done/atelierItems.length)*100)}%`;document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`; }
+function renderAtelierChronology(){document.getElementById('atelierGameBoard').classList.add('hidden');document.getElementById('atelierClues').classList.add('hidden');document.getElementById('atelierClues').innerHTML='';updateAtelierProgress(atelierItems.length);document.getElementById('atelierQuestion').textContent='Önce en eski olayı seç. Ardından olayları tarih sırasına göre diz.';document.getElementById('atelierHint').textContent='Seçtiğin olaylar sırayla numaralanacak.';document.getElementById('atelierFeedback').className='feedback';document.getElementById('atelierFeedback').textContent='';document.getElementById('atelierNextBtn').classList.add('hidden');document.getElementById('atelierCheckBtn').classList.toggle('hidden',atelierOrder.length!==atelierItems.length);const wrap=document.getElementById('atelierAnswers');wrap.innerHTML='';atelierItems.forEach(item=>{const b=document.createElement('button');b.type='button';b.className='atelier-option'+(atelierOrder.includes(item.id)?' selected':'');const pos=atelierOrder.indexOf(item.id);b.textContent=(pos>=0?`${pos+1}. `:'＋ ')+item.event;b.disabled=pos>=0||atelierOrder.length===atelierItems.length;b.addEventListener('click',()=>{if(atelierOrder.length>=atelierItems.length)return;atelierOrder.push(item.id);renderAtelierChronology();});wrap.appendChild(b);});}
+function checkAtelierChronology(){const correct=atelierTimeline.map(x=>x.id);atelierScore=atelierOrder.reduce((sum,id,i)=>sum+(id===correct[i]?20:0),0);const fb=document.getElementById('atelierFeedback');fb.className='feedback '+(atelierScore===100?'good':'bad')+' show';const sequence=atelierTimeline.map(x=>x.event).join(' → ');fb.textContent=`${atelierScore===100?'Mükemmel! Bütün olayları doğru sıraladın.':'Sıralamanı kontrol ettin. Doğru kronoloji şöyle: '+sequence} ${atelierTimeline.map(x=>x.note).join(' ')}`;document.querySelectorAll('#atelierAnswers .atelier-option').forEach(b=>b.disabled=true);document.getElementById('atelierCheckBtn').classList.add('hidden');document.getElementById('atelierHint').textContent='Kronoloji etkinliği tamamlandı.';updateAtelierProgress(atelierItems.length);finishAtelier();}
+function renderAtelierQuestion(){document.getElementById('atelierGameBoard').classList.add('hidden');document.getElementById('atelierQuestion').classList.remove('hidden');document.getElementById('atelierAnswers').classList.remove('hidden');const item=atelierItems[atelierRound];atelierAnswered=false;updateAtelierProgress(atelierItems.length);document.getElementById('atelierQuestion').textContent=item.q;const clueBoard=document.getElementById('atelierClues');clueBoard.innerHTML='';clueBoard.classList.toggle('hidden',atelierMode!=='detective');if(atelierMode==='detective'){const title=document.createElement('div');title.className='clue-board-title';title.textContent='ARŞİVDEN ÇIKAN İPUÇLARI';clueBoard.appendChild(title);item.clues.forEach((clue,i)=>{const card=document.createElement('div');card.className='clue-item';const number=document.createElement('b');number.textContent=String(i+1);const text=document.createElement('span');text.textContent=clue;card.append(number,text);clueBoard.appendChild(card);});}document.getElementById('atelierFeedback').className='feedback';document.getElementById('atelierFeedback').textContent='';document.getElementById('atelierHint').textContent=atelierMode==='detective'?'İpuçlarını birleştirerek doğru dosyayı bul.':'Cevabını seç ve açıklamayı oku.';document.getElementById('atelierNextBtn').classList.add('hidden');document.getElementById('atelierCheckBtn').classList.add('hidden');const wrap=document.getElementById('atelierAnswers');wrap.innerHTML='';const choices=['people','detective'].includes(atelierMode)?item.a:['Doğru','Yanlış'];choices.forEach((choice,i)=>{const b=document.createElement('button');b.type='button';b.className='atelier-option';b.textContent=choice;b.addEventListener('click',()=>answerAtelier(i,b));wrap.appendChild(b);});}
+function answerAtelier(index,button){if(atelierAnswered)return;atelierAnswered=true;const item=atelierItems[atelierRound];const multipleChoice=['people','detective'].includes(atelierMode);const correct=multipleChoice?index===item.c:(index===0)===item.c;const buttons=[...document.querySelectorAll('#atelierAnswers .atelier-option')];buttons.forEach((b,i)=>{b.disabled=true;const isCorrect=multipleChoice?i===item.c:(i===0)===item.c;if(isCorrect)b.classList.add('correct');});if(!correct)button.classList.add('wrong');if(correct)atelierScore+=20;const fb=document.getElementById('atelierFeedback');fb.className=`feedback ${correct?'good':'bad'} show`;fb.textContent=(correct?'Doğru! ':'Bir daha düşün. ')+item.e;document.getElementById('atelierHint').textContent=correct?'+20 puan kazandın.':'Açıklamayı okuyarak yeni bir bilgi öğrendin.';document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;document.getElementById('atelierNextBtn').classList.remove('hidden');document.getElementById('atelierNextBtn').textContent=atelierRound===atelierItems.length-1?'Etkinliği tamamla ✓':'Sonraki soru →';}
+function nextAtelierQuestion(){if(atelierRound<atelierItems.length-1){atelierRound++;renderAtelierQuestion();}else{finishAtelier();}}
+function startMemoryGame(){memoryDeck=shuffle(atelierMemoryPairs.flatMap(pair=>[{id:pair.id,label:pair.left,side:'left'},{id:pair.id,label:pair.right,side:'right'}]));const board=document.getElementById('atelierGameBoard');board.classList.remove('hidden');board.innerHTML='<div class="memory-stats"><span id="memoryMatchedStat">0 / 6 eşleşme</span><span id="memoryMovesStat">0 hamle</span><span>Her eşleşme +20 puan</span></div><div class="memory-grid" id="memoryGrid"></div><p class="teacher-note">Aynı konuya ait iki kartı bul. Örneğin bir tarihî kişiyi, yaptığı işle veya tanındığı alanla eşleştir.</p>';renderMemoryCards();updateAtelierProgress();}
+function renderMemoryCards(){const grid=document.getElementById('memoryGrid');if(!grid)return;grid.innerHTML='';memoryDeck.forEach((card,index)=>{const btn=document.createElement('button');btn.type='button';btn.className='memory-card'+(memoryOpen.includes(index)?' revealed':'')+(memoryMatched.includes(index)?' matched':'');btn.disabled=memoryMatched.includes(index)||memoryOpen.includes(index)||memoryBusy;btn.innerHTML=memoryMatched.includes(index)||memoryOpen.includes(index)?`<span>${escapeHtml(card.label)}</span>`:'<span class="memory-back">?</span><span>Gizli kart</span>';btn.addEventListener('click',()=>flipMemoryCard(index));grid.appendChild(btn);});const matched=document.getElementById('memoryMatchedStat'),moves=document.getElementById('memoryMovesStat');if(matched)matched.textContent=`${memoryMatched.length/2} / ${atelierMemoryPairs.length} eşleşme`;if(moves)moves.textContent=`${memoryMoves} hamle`;}
+function flipMemoryCard(index){if(memoryBusy||memoryMatched.includes(index)||memoryOpen.includes(index))return;memoryOpen.push(index);if(memoryOpen.length===2){memoryMoves++;memoryBusy=true;const a=memoryDeck[memoryOpen[0]],b=memoryDeck[memoryOpen[1]];if(a.id===b.id&&a.side!==b.side){memoryMatched.push(...memoryOpen);memoryOpen=[];memoryBusy=false;atelierScore+=20;renderMemoryCards();updateAtelierProgress();if(memoryMatched.length===atelierMemoryPairs.length*2){const bonus=memoryMoves<=8?30:memoryMoves<=11?15:0;atelierScore+=bonus;showToast(bonus?`Tüm eşleşmeler tamamlandı! +${bonus} hamle bonusu.`:'Tüm eşleşmeler tamamlandı!');setTimeout(finishAtelier,450);}else showToast('Eşleşme bulundu! +20 puan.');}else{renderMemoryCards();setTimeout(()=>{memoryOpen=[];memoryBusy=false;renderMemoryCards();updateAtelierProgress();},850);}}else{renderMemoryCards();}}
+function renderCipherGame(){cipherSolved=false;cipherSelected=[];const item=atelierItems[atelierRound];cipherLetters=shuffle(Array.from(item.word.toLocaleUpperCase('tr-TR')));const board=document.getElementById('atelierGameBoard');board.classList.remove('hidden');board.innerHTML='';const clue=document.createElement('div');clue.className='cipher-clue';clue.textContent=`İPUCU: ${item.clue}`;const slots=document.createElement('div');slots.className='cipher-slots';slots.id='cipherSlots';const letters=document.createElement('div');letters.className='cipher-letters';letters.id='cipherLetters';const feedback=document.createElement('div');feedback.className='feedback';feedback.id='cipherFeedback';const actions=document.createElement('div');actions.className='cipher-actions';const undo=document.createElement('button');undo.type='button';undo.className='subtle-btn';undo.textContent='Son harfi sil';undo.addEventListener('click',()=>{if(cipherSolved)return;cipherSelected.pop();renderCipherSlots();});const check=document.createElement('button');check.type='button';check.className='primary-btn';check.textContent='Şifreyi kontrol et';check.addEventListener('click',checkCipherAnswer);const next=document.createElement('button');next.type='button';next.className='secondary-btn hidden';next.id='cipherNextBtn';next.textContent=atelierRound===atelierItems.length-1?'Sandığı aç ✓':'Sonraki şifre →';next.addEventListener('click',nextCipherRound);actions.append(undo,check,next);board.append(clue,slots,letters,feedback,actions);renderCipherSlots();}
+function renderCipherSlots(){const slots=document.getElementById('cipherSlots'),letters=document.getElementById('cipherLetters');if(!slots||!letters)return;slots.innerHTML='';Array.from(atelierItems[atelierRound].word.toLocaleUpperCase('tr-TR')).forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.className='cipher-slot'+(cipherSelected[i]!==undefined?' filled':'');b.textContent=cipherSelected[i]!==undefined?cipherLetters[cipherSelected[i]]:'';b.title='Bu harfi kaldır';b.addEventListener('click',()=>{if(cipherSolved)return;cipherSelected.splice(i,1);renderCipherSlots();});slots.appendChild(b);});letters.innerHTML='';cipherLetters.forEach((letter,i)=>{const b=document.createElement('button');b.type='button';b.className='cipher-letter'+(cipherSelected.includes(i)?' used':'');b.textContent=letter;b.disabled=cipherSolved||cipherSelected.includes(i)||cipherSelected.length>=cipherLetters.length;b.addEventListener('click',()=>{cipherSelected.push(i);renderCipherSlots();});letters.appendChild(b);});}
+function checkCipherAnswer(){if(cipherSolved)return;const target=atelierItems[atelierRound].word.toLocaleUpperCase('tr-TR');if(cipherSelected.length!==cipherLetters.length){showToast('Önce bütün harfleri yerleştir.');return;}const answer=cipherSelected.map(i=>cipherLetters[i]).join('');const feedback=document.getElementById('cipherFeedback');if(answer===target){cipherSolved=true;atelierScore+=20;feedback.className='feedback good show';feedback.textContent=`Doğru! ${atelierItems[atelierRound].fact} +20 puan kazandın.`;document.querySelectorAll('#cipherLetters button,#cipherSlots button').forEach(b=>b.disabled=true);document.querySelector('.cipher-actions .primary-btn').classList.add('hidden');document.getElementById('cipherNextBtn').classList.remove('hidden');document.getElementById('atelierLiveScore').textContent=`${atelierScore} puan`;updateAtelierProgress();}else{feedback.className='feedback bad show';feedback.textContent='Harfler doğru sırada değil. Son harfi silebilir veya kutucuklardan birine dokunarak harfi geri alabilirsin.';}}
+function nextCipherRound(){if(!cipherSolved)return;if(atelierRound<atelierItems.length-1){atelierRound++;renderCipherGame();updateAtelierProgress();}else finishAtelier();}
+function finishAtelier(){const max=atelierMode==='chronology'?100:atelierMode==='memory'?150:atelierMode==='cipher'?atelierItems.length*20:atelierItems.length*20;const firstTime=!state.atelierClaimed.includes(atelierMode);if(state.atelierBest[atelierMode]===undefined||atelierScore>state.atelierBest[atelierMode])state.atelierBest[atelierMode]=atelierScore;if(firstTime){state.atelierClaimed.push(atelierMode);state.points+=100;}updateAchievements();saveState();renderCollection();document.getElementById('atelierPlayPanel').classList.add('hidden');document.getElementById('atelierResults').classList.remove('hidden');const names={chronology:'Zaman Tüneli',people:'Kim Kimdir?',truefalse:'Doğru mu, Yanlış mı?',detective:'Belge Avı',memory:'Hafıza Oyunu',cipher:'Şifreli Sandık'};document.getElementById('atelierResultTitle').textContent=atelierScore===max?'Harika iş!':'Etkinlik tamamlandı!';document.getElementById('atelierResultText').textContent=`${names[atelierMode]} etkinliğinde ${max?Math.round(atelierScore/max*100):0}% başarı elde ettin (${atelierScore}/${max} puan). ${firstTime?'İlk tamamlaman için +100 genel puan kazandın. ':''}${state.atelierClaimed.length===6?'Tebrikler! Altı atölye etkinliğini de tamamladın ve Atölye Ustası başarısını kazandın.':''}`;document.getElementById('atelierReplayBtn').textContent='Tekrar oyna';}
+function resetAll(){if(!confirm('Keşif ilerlemesi, puanlar, koleksiyon ve başarılar silinsin mi? Bu işlem geri alınamaz.'))return;state=structuredClone(defaultState);saveState();renderMap();renderCollection();renderAtelierMenu();showToast('Oyun ilerlemesi sıfırlandı.');showView('homeView');}
+// Navigation
+['homeBtn'].forEach(id=>document.getElementById(id).addEventListener('click',()=>showView('homeView')));
+document.getElementById('exploreBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
+document.getElementById('continueBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
+document.getElementById('classBtn').addEventListener('click',openClass);
+document.getElementById('resetBtn').addEventListener('click',resetAll);
+document.getElementById('summaryBtn').addEventListener('click',()=>showView('summaryView'));
+document.getElementById('collectionBtn').addEventListener('click',()=>{renderCollection();showView('collectionView');});
+document.getElementById('atelierBtn').addEventListener('click',openAtelier);
+document.getElementById('homeAtelierBtn').addEventListener('click',openAtelier);
+document.querySelectorAll('[data-atelier-mode]').forEach(b=>b.addEventListener('click',()=>startAtelier(b.dataset.atelierMode)));
+document.getElementById('atelierBackBtn').addEventListener('click',renderAtelierMenu);
+document.getElementById('atelierNextBtn').addEventListener('click',nextAtelierQuestion);
+document.getElementById('atelierCheckBtn').addEventListener('click',checkAtelierChronology);
+document.getElementById('atelierReplayBtn').addEventListener('click',()=>startAtelier(atelierMode));
+document.getElementById('atelierReturnBtn').addEventListener('click',renderAtelierMenu);
+document.getElementById('addTeamPointsBtn').addEventListener('click',()=>adjustTeamScore(50));
+document.getElementById('removeTeamPointsBtn').addEventListener('click',()=>adjustTeamScore(-50));
+document.getElementById('exportSaveBtn').addEventListener('click',exportSave);
+document.getElementById('importSaveBtn').addEventListener('click',()=>document.getElementById('importSaveFile').click());
+document.getElementById('importSaveFile').addEventListener('change',e=>importSaveFile(e.target.files?.[0]));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.go)));
+document.getElementById('mapBackBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
+document.getElementById('nextQuestionBtn').addEventListener('click',nextExploreQuestion);
+document.getElementById('completionMapBtn').addEventListener('click',()=>{renderMap();showView('mapView');});
+document.getElementById('teamCount').addEventListener('change',createTeamInputs);
+document.getElementById('startClassBtn').addEventListener('click',enterClass);
+document.getElementById('classNextBtn').addEventListener('click',nextClassQuestion);
+document.getElementById('classChapterSelect').addEventListener('change',()=>{buildClassQuestionOrder();renderClassQuestion();});
+document.getElementById('classLengthSelect').addEventListener('change',()=>{if(document.getElementById('classChapterSelect').value==='all'){buildClassQuestionOrder();renderClassQuestion();}});
+document.getElementById('finishClassBtn').addEventListener('click',showClassResults);
+document.getElementById('resetClassBtn').addEventListener('click',resetClassScores);
+document.getElementById('playAgainBtn').addEventListener('click',openClass);
+document.getElementById('setupTab').addEventListener('click',()=>{document.getElementById('classSetupPanel').classList.remove('hidden');document.getElementById('classPlayPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.add('hidden');document.getElementById('setupTab').classList.add('active');document.getElementById('playTab').classList.remove('active');document.getElementById('resultsTab').classList.remove('active');});
+document.getElementById('playTab').addEventListener('click',()=>{if(state.teams.length){document.getElementById('classSetupPanel').classList.add('hidden');document.getElementById('classResultsPanel').classList.add('hidden');document.getElementById('classPlayPanel').classList.remove('hidden');document.getElementById('playTab').classList.add('active');document.getElementById('resultsTab').classList.remove('active');}});
+document.getElementById('resultsTab').addEventListener('click',()=>{if(state.teams.length)showClassResults();});
+// Utility menu: reset by keyboard shortcut for teacher, intentionally confirmed.
+document.addEventListener('keydown',e=>{if(e.altKey&&e.shiftKey&&e.key.toLowerCase()==='r')resetAll();});
+renderMap();renderCollection();renderAtelierMenu();createTeamInputs();
+</script>
+</body>
+</html>
